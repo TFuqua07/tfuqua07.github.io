@@ -53,6 +53,15 @@
       "thumbnail": "https://img.youtube.com/vi/1kX2aUfdmvA/hqdefault.jpg",
       "tier": 1,
       "time": "0:15:00"
+    },
+    {
+      "name": "Spumperest Peak",
+      "campaign": "Golden Berry [FC]",
+      "video": "https://youtu.be/I5QjD3IFpfs",
+      "date": "2026-04-15T23:14:35.217Z",
+      "thumbnail": "https://img.youtube.com/vi/I5QjD3IFpfs/hqdefault.jpg",
+      "tier": 1,
+      "time": null
     }
   ],
   "celeste_clears": [
