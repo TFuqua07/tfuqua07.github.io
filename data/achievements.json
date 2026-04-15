@@ -62,6 +62,15 @@
       "thumbnail": "https://img.youtube.com/vi/I5QjD3IFpfs/hqdefault.jpg",
       "tier": 1,
       "time": null
+    },
+    {
+      "name": "Azure Caverns",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/YWorWb0p8-U",
+      "date": "2026-04-15T23:15:14.093Z",
+      "thumbnail": "https://img.youtube.com/vi/YWorWb0p8-U/hqdefault.jpg",
+      "tier": 1,
+      "time": null
     }
   ],
   "celeste_clears": [
