@@ -179,6 +179,15 @@
       "thumbnail": "https://img.youtube.com/vi/mnVQsI7SXYg/hqdefault.jpg",
       "tier": 1,
       "time": null
+    },
+    {
+      "name": "Lethal Laser Labortory",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/JAVEqKqMpeU",
+      "date": "2026-04-15T23:21:02.567Z",
+      "thumbnail": "https://img.youtube.com/vi/JAVEqKqMpeU/hqdefault.jpg",
+      "tier": 1,
+      "time": "0:17:00"
     }
   ],
   "celeste_clears": [
