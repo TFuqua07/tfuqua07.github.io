@@ -49,6 +49,15 @@
       "thumbnail": "https://img.youtube.com/vi/D537KWeDlLU/hqdefault.jpg",
       "tier": 1,
       "attempts": 3208
+    },
+    {
+      "name": "TROLLMACHINE",
+      "campaign": "TROLLM4CHINE & co.",
+      "video": "https://youtu.be/VpaKFkqtDc4",
+      "date": "2026-04-15T22:09:44.924Z",
+      "thumbnail": "https://img.youtube.com/vi/VpaKFkqtDc4/hqdefault.jpg",
+      "tier": 1,
+      "attempts": 4268
     }
   ],
   "gd_platformer": []
