@@ -262,7 +262,18 @@
       "time": null
     }
   ],
-  "celeste_clears": [],
+  "celeste_clears": [
+    {
+      "name": "splash!",
+      "campaign": "tirednwired",
+      "video": "https://youtu.be/Vmlc8hJgZmo",
+      "date": "2026-04-15T23:30:12.682Z",
+      "thumbnail": "https://img.youtube.com/vi/Vmlc8hJgZmo/hqdefault.jpg",
+      "star": 9,
+      "deaths": null,
+      "time": "15:03:17"
+    }
+  ],
   "demons": [
     {
       "name": "troll level",
