@@ -1,6 +1,15 @@
 {
   "celeste_goldens": [
     {
+      "name": "Overgrown Linn",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/hdPlDjl7s50",
+      "date": "2026-04-15T23:23:39.078Z",
+      "thumbnail": "https://img.youtube.com/vi/hdPlDjl7s50/hqdefault.jpg",
+      "tier": 2,
+      "time": null
+    },
+    {
       "name": "Binary",
       "campaign": "Full Game Run",
       "video": "https://youtu.be/FJLD20Fxt0c",
