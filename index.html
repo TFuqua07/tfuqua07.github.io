@@ -26,6 +26,7 @@
             color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.5;
+            overflow-x: hidden;
         }
 
         header {
@@ -62,46 +63,64 @@
         .tab-btn:hover { color: var(--text-primary); }
         .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-        .tier-section { margin-bottom: 2rem; }
+        /* Horizontal tier layout */
+        .tiers-container {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 1.5rem;
+            gap: 1rem;
+            min-height: calc(100vh - 130px);
+            align-items: flex-start;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+        .tiers-container::-webkit-scrollbar { height: 6px; }
+        .tiers-container::-webkit-scrollbar-track { background: transparent; }
+        .tiers-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+        .tier-column {
+            flex: 0 0 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
 
         .tier-header {
-            padding: 0.875rem 1.5rem;
-            font-weight: 600;
-            font-size: 0.9375rem;
+            padding: 0.75rem 1rem;
+            font-weight: 700;
+            font-size: 0.875rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin: 2rem 2rem 0;
-            border-radius: 8px 8px 0 0;
+            justify-content: space-between;
+            border-radius: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
+            position: sticky;
+            top: 0;
         }
 
         .tier-count {
             background: rgba(0,0,0,0.3);
-            padding: 0.25rem 0.625rem;
+            padding: 0.2rem 0.5rem;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
         }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-            padding: 1rem 2rem 2rem;
-        }
-
+        /* Achievement card */
         .achievement-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
+            cursor: default;
         }
         .achievement-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
 
         .card-thumbnail {
@@ -111,64 +130,112 @@
             position: relative;
             overflow: hidden;
         }
-        .card-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
-        .card-thumbnail .no-thumb {
+        .card-thumbnail img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.2s;
+        }
+        .card-thumbnail.has-video {
+            cursor: pointer;
+        }
+        .card-thumbnail.has-video:hover img { opacity: 0.75; }
+        .card-thumbnail.has-video::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+            background: rgba(0,0,0,0.3);
+        }
+        .card-thumbnail.has-video:hover::after { opacity: 1; }
+
+        .play-icon {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 42px; height: 42px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .card-thumbnail.has-video:hover .play-icon { opacity: 1; }
+        .play-icon svg { width: 16px; height: 16px; fill: white; margin-left: 2px; }
+
+        .no-thumb {
             width: 100%; height: 100%;
             display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); font-size: 0.875rem;
+            color: var(--text-muted); font-size: 0.8rem;
         }
 
-        .card-content { padding: 1.25rem; }
-        .card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.375rem; color: var(--text-primary); line-height: 1.4; }
-        .card-campaign { color: var(--text-secondary); font-size: 0.8125rem; margin-bottom: 1rem; font-weight: 500; }
+        .card-content { padding: 0.875rem; }
+        .card-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem; color: var(--text-primary); line-height: 1.4; }
+        .card-campaign { color: var(--text-secondary); font-size: 0.75rem; margin-bottom: 0.625rem; font-weight: 500; }
 
-        .card-stats { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .card-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
         .stat {
-            display: flex; align-items: center; gap: 0.375rem;
-            font-size: 0.8125rem; color: var(--text-secondary);
-            background: var(--bg-tertiary); padding: 0.375rem 0.625rem;
-            border-radius: 6px; font-weight: 500;
+            display: flex; align-items: center; gap: 0.3rem;
+            font-size: 0.75rem; color: var(--text-secondary);
+            background: var(--bg-tertiary); padding: 0.3rem 0.5rem;
+            border-radius: 5px; font-weight: 500;
         }
-        .stat svg { width: 14px; height: 14px; }
-
-        .video-link {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            color: var(--accent); text-decoration: none;
-            font-size: 0.8125rem; font-weight: 500;
-            padding: 0.5rem 0; transition: opacity 0.15s;
-        }
-        .video-link:hover { opacity: 0.8; }
-
-        /* Star tiers */
-        .star-10 { background: linear-gradient(90deg, #1a0a2e, #2d1b4e); color: #b8a9d9; }
-        .star-9  { background: linear-gradient(90deg, #0f172a, #1e3a5f); color: #60a5fa; }
-        .star-8  { background: linear-gradient(90deg, #0a1f1f, #134e4e); color: #2dd4bf; }
-        .star-7  { background: linear-gradient(90deg, #0a1f0a, #134e13); color: #4ade80; }
-        .star-6  { background: linear-gradient(90deg, #0a1f0a, #134e13); color: #4ade80; }
-        .star-5  { background: linear-gradient(90deg, #1f1f0a, #4e4e13); color: #facc15; }
-        .star-4  { background: linear-gradient(90deg, #1f0f0a, #4e1f13); color: #fb923c; }
-        .star-3  { background: linear-gradient(90deg, #1f0a0a, #4e1313); color: #f87171; }
-        .star-2  { background: linear-gradient(90deg, #1f0a1f, #4e134e); color: #e879f9; }
-        .star-1  { background: linear-gradient(90deg, #1a1a1a, #2a2a2a); color: #a0a0b0; }
-
-        /* Tier tiers */
-        .tier-22, .tier-21, .tier-20 { background: linear-gradient(90deg, #1a0a2e, #2d1b4e); color: #b8a9d9; }
-        .tier-19, .tier-18, .tier-17 { background: linear-gradient(90deg, #0f172a, #1e3a5f); color: #60a5fa; }
-        .tier-16, .tier-15, .tier-14 { background: linear-gradient(90deg, #1f0a0a, #4e1313); color: #f87171; }
-        .tier-13, .tier-12, .tier-11 { background: linear-gradient(90deg, #1f0f0a, #4e1f13); color: #fb923c; }
-        .tier-10, .tier-9, .tier-8   { background: linear-gradient(90deg, #1f1f0a, #4e4e13); color: #facc15; }
-        .tier-7, .tier-6, .tier-5    { background: linear-gradient(90deg, #0a1f0a, #134e13); color: #4ade80; }
-        .tier-4, .tier-3, .tier-2, .tier-1 { background: linear-gradient(90deg, #1a1a1a, #2a2a2a); color: #a0a0b0; }
+        .stat svg { width: 12px; height: 12px; }
 
         .empty-state {
             text-align: center; padding: 4rem 2rem;
             color: var(--text-muted); font-size: 0.9375rem;
+            width: 100%;
         }
 
+        /* ── Celeste Golden tier colors (Tier 1–22) ── */
+        /* Colors from goldberries.net tier naming but with your exact hex codes */
+        .tier-color-22 { background: #1a0f2e; color: #bd60ff; border: 1px solid #bd60ff44; }
+        .tier-color-21 { background: #1a0f2e; color: #d863ff; border: 1px solid #d863ff44; }
+        .tier-color-20 { background: #1a0f2e; color: #f266ff; border: 1px solid #f266ff44; }
+        .tier-color-19 { background: #1f0f1a; color: #ff68d9; border: 1px solid #ff68d944; }
+        .tier-color-18 { background: #1f0f1a; color: #ff6daa; border: 1px solid #ff6daa44; }
+        .tier-color-17 { background: #1f0f15; color: #ff6d79; border: 1px solid #ff6d7944; }
+        .tier-color-16 { background: #1f1010; color: #ff7c70; border: 1px solid #ff7c7044; }
+        .tier-color-15 { background: #1f1510; color: #ff9572; border: 1px solid #ff957244; }
+        .tier-color-14 { background: #1f1a10; color: #ffae75; border: 1px solid #ffae7544; }
+        .tier-color-13 { background: #1f1c10; color: #ffc677; border: 1px solid #ffc67744; }
+        .tier-color-12 { background: #1f1e10; color: #ffdd7a; border: 1px solid #ffdd7a44; }
+        .tier-color-11 { background: #1e1f10; color: #fff47c; border: 1px solid #fff47c44; }
+        .tier-color-10 { background: #1a1f10; color: #f4ff7f; border: 1px solid #f4ff7f44; }
+        .tier-color-9  { background: #121f10; color: #d5ff82; border: 1px solid #d5ff8244; }
+        .tier-color-8  { background: #101f10; color: #b7ff84; border: 1px solid #b7ff8444; }
+        .tier-color-7  { background: #101f10; color: #9bff87; border: 1px solid #9bff8744; }
+        .tier-color-6  { background: #101f18; color: #89ffb0; border: 1px solid #89ffb044; }
+        .tier-color-5  { background: #101f1f; color: #8cffe2; border: 1px solid #8cffe244; }
+        .tier-color-4  { background: #101a1f; color: #8eecff; border: 1px solid #8eecff44; }
+        .tier-color-3  { background: #10151f; color: #91c8ff; border: 1px solid #91c8ff44; }
+        .tier-color-2  { background: #10121f; color: #93aeff; border: 1px solid #93aeff44; }
+        .tier-color-1  { background: #10101f; color: #9696ff; border: 1px solid #9696ff44; }
+
+        /* ── Celeste Clears star colors ── */
+        .star-color-9 { background: #0d1020; color: #6496ff; border: 1px solid #6496ff44; }
+        .star-color-8 { background: #0d1820; color: #64d4ff; border: 1px solid #64d4ff44; }
+        .star-color-7 { background: #0d2018; color: #64ffb4; border: 1px solid #64ffb444; }
+        .star-color-6 { background: #0d2010; color: #96ff64; border: 1px solid #96ff6444; }
+        .star-color-5 { background: #1c200d; color: #e6ff64; border: 1px solid #e6ff6444; }
+        .star-color-4 { background: #20150d; color: #ffb464; border: 1px solid #ffb46444; }
+        .star-color-3 { background: #200d0d; color: #ff6464; border: 1px solid #ff646444; }
+        .star-color-2 { background: #1a0d20; color: #e664ff; border: 1px solid #e664ff44; }
+        .star-color-1 { background: #151520; color: #9696c8; border: 1px solid #9696c844; }
+
+        /* ── GD Demon tier colors (same hex scale as goldens) ── */
+        /* GD uses same tier 1-22 scale */
+
         @media (max-width: 640px) {
-            .cards-grid { padding: 0.75rem 1rem 1.5rem; grid-template-columns: 1fr; }
-            .tier-header { margin: 1rem 1rem 0; }
+            .tiers-container { padding: 1rem; }
+            .tier-column { flex: 0 0 240px; }
         }
     </style>
 </head>
@@ -178,20 +245,20 @@
     </header>
 
     <nav class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('celeste_goldens')">Celeste Goldens</button>
-        <button class="tab-btn" onclick="switchTab('celeste_clears')">Celeste Clears</button>
-        <button class="tab-btn" onclick="switchTab('demons')">Demons</button>
-        <button class="tab-btn" onclick="switchTab('gd_platformer')">GD Platformers</button>
+        <button class="tab-btn active" onclick="switchTab('celeste_goldens', this)">Celeste Goldens</button>
+        <button class="tab-btn" onclick="switchTab('celeste_clears', this)">Celeste Clears</button>
+        <button class="tab-btn" onclick="switchTab('demons', this)">Demons</button>
+        <button class="tab-btn" onclick="switchTab('gd_platformer', this)">GD Platformers</button>
     </nav>
 
     <main id="content"></main>
 
     <script>
-        // Fetches directly from your GitHub repo — no backend needed
         const RAW_URL = 'https://raw.githubusercontent.com/TFuqua07/tfuqua07.github.io/main/data/achievements.json';
 
         let currentData = {};
         let currentTab = 'celeste_goldens';
+        let dataLoaded = false;
 
         const tierNames = {
             1: 'Beginner', 2: 'Easy', 3: 'Medium', 4: 'Hard', 5: 'Very Hard',
@@ -202,10 +269,22 @@
             20: 'Extreme Demon', 21: 'Easy Demon', 22: 'Medium Demon'
         };
 
+        // GD-specific tier names (no demon subcategories mixed in)
+        const gdTierNames = {
+            1: 'Beginner', 2: 'Easy', 3: 'Medium', 4: 'Hard', 5: 'Very Hard',
+            6: 'Insane', 7: 'Extreme', 8: 'Remorseless', 9: 'Relentless',
+            10: 'Terrifying', 11: 'Catastrophic', 12: 'Merciless',
+            13: 'Excruciating', 14: 'Monstrous', 15: 'Apocalyptic',
+            16: 'Demonic', 17: 'Menacing', 18: 'Unreal', 19: 'Nightmare',
+            20: 'Tier 20', 21: 'Tier 21', 22: 'Tier 22'
+        };
+
         async function loadAchievements() {
             try {
                 const response = await fetch(RAW_URL + '?t=' + Date.now());
+                if (!response.ok) throw new Error('HTTP ' + response.status);
                 currentData = await response.json();
+                dataLoaded = true;
                 renderTab(currentTab);
             } catch (error) {
                 document.getElementById('content').innerHTML =
@@ -213,27 +292,21 @@
             }
         }
 
-        function switchTab(tab) {
+        function switchTab(tab, btn) {
             currentTab = tab;
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.toLowerCase().includes(
-                    tab === 'gd_platformer' ? 'platformer' : tab.replace('_', ' ')
-                )) btn.classList.add('active');
-            });
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
             renderTab(tab);
         }
 
-        function getYouTubeThumbnail(url) {
+        function getYouTubeId(url) {
             if (!url) return null;
             const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
-            return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : null;
+            return match ? match[1] : null;
         }
 
         function formatTime(timeStr) {
             if (!timeStr) return null;
-            const parts = timeStr.split(':');
-            if (parts.length === 3) return `${parseInt(parts[0])}:${parts[1]}:${parts[2]}`;
             return timeStr;
         }
 
@@ -246,52 +319,71 @@
                 return;
             }
 
+            const isClears = category === 'celeste_clears';
+            const isGD = category === 'demons' || category === 'gd_platformer';
+
+            // Group by tier or star
             const grouped = {};
             items.forEach(item => {
-                const key = item.tier !== undefined ? `tier-${item.tier}` : `star-${item.star}`;
+                const key = isClears
+                    ? `star-${item.star}`
+                    : `tier-${item.tier}`;
                 if (!grouped[key]) grouped[key] = [];
                 grouped[key].push(item);
             });
 
+            // Sort keys highest → lowest (hardest first)
             const sortedKeys = Object.keys(grouped).sort((a, b) =>
                 parseInt(b.split('-')[1]) - parseInt(a.split('-')[1])
             );
 
-            let html = '';
+            let html = '<div class="tiers-container">';
+
             sortedKeys.forEach(key => {
                 const group = grouped[key];
                 const isTier = key.startsWith('tier');
-                const num = key.split('-')[1];
-                const cssClass = isTier ? `tier-${num}` : `star-${num}`;
-                const label = isTier ? (tierNames[num] || `Tier ${num}`) : `${num} Star`;
+                const num = parseInt(key.split('-')[1]);
 
+                let colorClass, label;
+                if (isClears) {
+                    colorClass = `star-color-${num}`;
+                    label = `${num}★`;
+                } else {
+                    colorClass = `tier-color-${num}`;
+                    label = isGD ? (gdTierNames[num] || `Tier ${num}`) : (tierNames[num] || `Tier ${num}`);
+                }
+
+                html += `<div class="tier-column">`;
                 html += `
-                    <div class="tier-section">
-                        <div class="tier-header ${cssClass}">
-                            ${label}
-                            <span class="tier-count">${group.length}</span>
-                        </div>
-                        <div class="cards-grid">
-                            ${group.map(item => renderCard(item, category)).join('')}
-                        </div>
+                    <div class="tier-header ${colorClass}">
+                        <span>${label}</span>
+                        <span class="tier-count">${group.length}</span>
                     </div>
                 `;
+
+                group.forEach(item => {
+                    html += renderCard(item, category);
+                });
+
+                html += `</div>`;
             });
 
+            html += '</div>';
             container.innerHTML = html;
         }
 
         function renderCard(item, category) {
-            const isClear = category === 'celeste_clears';
-            let statsHtml = '';
+            const isClears = category === 'celeste_clears';
+            const isGoldens = category === 'celeste_goldens';
 
-            if (isClear) {
+            let statsHtml = '';
+            if (isClears) {
                 if (item.deaths !== undefined && item.deaths !== null) {
-                    statsHtml += `<div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>${item.deaths} deaths</div>`;
+                    statsHtml += `<div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>${item.deaths} deaths</div>`;
                 }
                 const t = formatTime(item.time);
                 if (t) statsHtml += `<div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${t}</div>`;
-            } else if (category === 'celeste_goldens') {
+            } else if (isGoldens) {
                 const t = formatTime(item.time);
                 if (t) statsHtml += `<div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>${t}</div>`;
             } else {
@@ -300,30 +392,39 @@
                 }
             }
 
-            const thumbnailUrl = item.thumbnail || getYouTubeThumbnail(item.video);
-            const thumbnailHtml = thumbnailUrl
+            const ytId = getYouTubeId(item.video);
+            const thumbnailUrl = item.thumbnail || (ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : null);
+            const hasVideo = !!item.video;
+
+            const thumbHtml = thumbnailUrl
                 ? `<img src="${escapeHtml(thumbnailUrl)}" alt="" loading="lazy">`
-                : '<div class="no-thumb">No Thumbnail</div>';
+                : `<div class="no-thumb">No Thumbnail</div>`;
+
+            const thumbClick = hasVideo
+                ? `onclick="window.open('${escapeHtml(item.video)}','_blank')"`
+                : '';
+
+            const playIcon = hasVideo
+                ? `<div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>`
+                : '';
 
             return `
                 <article class="achievement-card">
-                    <div class="card-thumbnail">${thumbnailHtml}</div>
+                    <div class="card-thumbnail ${hasVideo ? 'has-video' : ''}" ${thumbClick}>
+                        ${thumbHtml}
+                        ${playIcon}
+                    </div>
                     <div class="card-content">
                         <h3 class="card-title">${escapeHtml(item.name)}</h3>
                         ${item.campaign ? `<div class="card-campaign">${escapeHtml(item.campaign)}</div>` : ''}
                         <div class="card-stats">${statsHtml}</div>
-                        ${item.video ? `
-                            <a href="${escapeHtml(item.video)}" target="_blank" class="video-link">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                                Watch Video
-                            </a>
-                        ` : ''}
                     </div>
                 </article>
             `;
         }
 
         function escapeHtml(text) {
+            if (!text) return '';
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
