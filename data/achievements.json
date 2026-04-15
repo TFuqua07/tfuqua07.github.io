@@ -107,6 +107,15 @@
       "thumbnail": "https://img.youtube.com/vi/YWorWb0p8-U/hqdefault.jpg",
       "tier": 1,
       "time": null
+    },
+    {
+      "name": "Loopy Lagoon",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/l5oooalAkkI",
+      "date": "2026-04-15T23:17:28.882Z",
+      "thumbnail": "https://img.youtube.com/vi/l5oooalAkkI/hqdefault.jpg",
+      "tier": 1,
+      "time": null
     }
   ],
   "celeste_clears": [
