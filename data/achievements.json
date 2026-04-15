@@ -134,6 +134,15 @@
       "thumbnail": "https://img.youtube.com/vi/yC-vSI2BX-4/hqdefault.jpg",
       "tier": 1,
       "time": null
+    },
+    {
+      "name": "The Tower",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/wVVBscl5cgs",
+      "date": "2026-04-15T23:19:05.819Z",
+      "thumbnail": "https://img.youtube.com/vi/wVVBscl5cgs/hqdefault.jpg",
+      "tier": 1,
+      "time": "0:05:00"
     }
   ],
   "celeste_clears": [
