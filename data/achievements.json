@@ -215,6 +215,15 @@
       "thumbnail": "https://img.youtube.com/vi/75Qn6PjOYqc/hqdefault.jpg",
       "tier": 1,
       "time": null
+    },
+    {
+      "name": "The Mountain's Call",
+      "campaign": "Segment [Halls]",
+      "video": "https://youtu.be/meANO5o3L-8",
+      "date": "2026-04-15T23:22:51.659Z",
+      "thumbnail": "https://img.youtube.com/vi/meANO5o3L-8/hqdefault.jpg",
+      "tier": 1,
+      "time": "0:05:18"
     }
   ],
   "celeste_clears": [
