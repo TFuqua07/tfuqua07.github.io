@@ -24,6 +24,15 @@
   ],
   "demons": [
     {
+      "name": "Julie SyncJaws",
+      "campaign": "The Evil",
+      "video": "https://youtu.be/1UHrq0evFKo",
+      "date": "2026-04-15T22:47:50.059Z",
+      "thumbnail": "https://img.youtube.com/vi/1UHrq0evFKo/hqdefault.jpg",
+      "tier": 20,
+      "attempts": 999999
+    },
+    {
       "name": "troll level",
       "campaign": "lexycat and co.",
       "video": "https://youtu.be/RNjeAdp4HhI",
