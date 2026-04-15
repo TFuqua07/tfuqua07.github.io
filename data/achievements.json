@@ -22,6 +22,16 @@
       "time": "15:03:17"
     }
   ],
-  "demons": [],
+  "demons": [
+    {
+      "name": "troll level",
+      "campaign": "lexycat and co.",
+      "video": "https://youtu.be/RNjeAdp4HhI",
+      "date": "2026-04-15T22:07:51.612Z",
+      "thumbnail": "https://img.youtube.com/vi/RNjeAdp4HhI/hqdefault.jpg",
+      "tier": 1,
+      "attempts": 9241
+    }
+  ],
   "gd_platformer": []
 }
