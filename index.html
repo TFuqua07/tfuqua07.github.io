@@ -80,10 +80,10 @@
         .tiers-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
         .tier-column {
-            flex: 0 0 320px;
+            flex: 0 0 360px;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .tier-header {
@@ -108,26 +108,31 @@
             font-weight: 600;
         }
 
-        /* Horizontal card layout matching goldberries.net */
+        /* New card style matching the image - glowing border, gradient bg */
         .achievement-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(30,30,46,0.9) 0%, rgba(20,20,35,0.95) 100%);
+            border: 2px solid;
+            border-radius: 12px;
             overflow: hidden;
             display: flex;
             flex-direction: row;
             align-items: stretch;
-            transition: border-color 0.15s;
+            transition: all 0.2s ease;
             cursor: default;
-            min-height: 72px;
+            min-height: 90px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .achievement-card:hover { border-color: #3a3a4a; }
+        .achievement-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
 
         .card-thumb {
-            flex: 0 0 110px;
+            flex: 0 0 160px;
             position: relative;
             overflow: hidden;
             background: var(--bg-tertiary);
+            aspect-ratio: 16/9;
         }
         .card-thumb img {
             width: 100%; height: 100%;
@@ -137,17 +142,17 @@
         .card-thumb .no-thumb {
             width: 100%; height: 100%;
             display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); font-size: 0.7rem;
+            color: var(--text-muted); font-size: 0.75rem;
         }
         .card-thumb.has-video { cursor: pointer; }
-        .card-thumb.has-video:hover img { opacity: 0.7; }
+        .card-thumb.has-video:hover img { opacity: 0.8; }
 
         .play-icon {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 32px; height: 32px;
-            background: rgba(0,0,0,0.75);
+            width: 36px; height: 36px;
+            background: rgba(0,0,0,0.8);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             opacity: 0;
@@ -155,11 +160,11 @@
             pointer-events: none;
         }
         .card-thumb.has-video:hover .play-icon { opacity: 1; }
-        .play-icon svg { width: 12px; height: 12px; fill: white; margin-left: 2px; }
+        .play-icon svg { width: 14px; height: 14px; fill: white; margin-left: 2px; }
 
         .card-body {
             flex: 1;
-            padding: 0.55rem 0.75rem;
+            padding: 0.75rem 1rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -167,7 +172,7 @@
         }
 
         .card-title {
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--text-primary);
             line-height: 1.3;
@@ -177,34 +182,34 @@
         }
 
         .card-campaign {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             font-weight: 500;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            margin-top: 0.1rem;
+            margin-top: 0.15rem;
         }
 
         .card-bottom {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 0.35rem;
-            gap: 0.4rem;
+            margin-top: 0.5rem;
+            gap: 0.5rem;
         }
 
         .card-meta {
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.35rem;
         }
 
         .meta-icon { display: flex; align-items: center; color: var(--text-muted); }
-        .meta-icon svg { width: 11px; height: 11px; }
+        .meta-icon svg { width: 12px; height: 12px; }
 
         .meta-text {
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             font-weight: 500;
         }
@@ -212,21 +217,21 @@
         .card-rating {
             display: flex;
             align-items: center;
-            gap: 0.2rem;
+            gap: 0.35rem;
             flex-shrink: 0;
         }
 
         .rating-heart { color: #9090a0; }
-        .rating-heart svg { width: 12px; height: 12px; fill: currentColor; display: block; }
+        .rating-heart svg { width: 14px; height: 14px; fill: currentColor; display: block; }
 
         .rating-value {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            font-size: 0.72rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-primary);
-            padding: 0.1rem 0.35rem;
+            padding: 0.15rem 0.5rem;
         }
 
         .empty-state {
@@ -236,70 +241,123 @@
         }
 
         /* ── Celeste Golden tier colors (Tier 1–22) ── */
-        .tier-color-22 { background: #1a0f2e; color: #bd60ff; border: 1px solid #bd60ff44; }
-        .tier-color-21 { background: #1a0f2e; color: #d863ff; border: 1px solid #d863ff44; }
-        .tier-color-20 { background: #1a0f2e; color: #f266ff; border: 1px solid #f266ff44; }
-        .tier-color-19 { background: #1f0f1a; color: #ff68d9; border: 1px solid #ff68d944; }
-        .tier-color-18 { background: #1f0f1a; color: #ff6daa; border: 1px solid #ff6daa44; }
-        .tier-color-17 { background: #1f0f15; color: #ff6d79; border: 1px solid #ff6d7944; }
-        .tier-color-16 { background: #1f1010; color: #ff7c70; border: 1px solid #ff7c7044; }
-        .tier-color-15 { background: #1f1510; color: #ff9572; border: 1px solid #ff957244; }
-        .tier-color-14 { background: #1f1a10; color: #ffae75; border: 1px solid #ffae7544; }
-        .tier-color-13 { background: #1f1c10; color: #ffc677; border: 1px solid #ffc67744; }
-        .tier-color-12 { background: #1f1e10; color: #ffdd7a; border: 1px solid #ffdd7a44; }
-        .tier-color-11 { background: #1e1f10; color: #fff47c; border: 1px solid #fff47c44; }
-        .tier-color-10 { background: #1a1f10; color: #f4ff7f; border: 1px solid #f4ff7f44; }
-        .tier-color-9  { background: #121f10; color: #d5ff82; border: 1px solid #d5ff8244; }
-        .tier-color-8  { background: #101f10; color: #b7ff84; border: 1px solid #b7ff8444; }
-        .tier-color-7  { background: #101f10; color: #9bff87; border: 1px solid #9bff8744; }
-        .tier-color-6  { background: #101f18; color: #89ffb0; border: 1px solid #89ffb044; }
-        .tier-color-5  { background: #101f1f; color: #8cffe2; border: 1px solid #8cffe244; }
-        .tier-color-4  { background: #101a1f; color: #8eecff; border: 1px solid #8eecff44; }
-        .tier-color-3  { background: #10151f; color: #91c8ff; border: 1px solid #91c8ff44; }
-        .tier-color-2  { background: #10121f; color: #93aeff; border: 1px solid #93aeff44; }
-        .tier-color-1  { background: #10101f; color: #9696ff; border: 1px solid #9696ff44; }
+        .tier-color-22 { background: #1a0f2e; color: #bd60ff; border-color: #bd60ff44; }
+        .tier-color-21 { background: #1a0f2e; color: #d863ff; border-color: #d863ff44; }
+        .tier-color-20 { background: #1a0f2e; color: #f266ff; border-color: #f266ff44; }
+        .tier-color-19 { background: #1f0f1a; color: #ff68d9; border-color: #ff68d944; }
+        .tier-color-18 { background: #1f0f1a; color: #ff6daa; border-color: #ff6daa44; }
+        .tier-color-17 { background: #1f0f15; color: #ff6d79; border-color: #ff6d7944; }
+        .tier-color-16 { background: #1f1010; color: #ff7c70; border-color: #ff7c7044; }
+        .tier-color-15 { background: #1f1510; color: #ff9572; border-color: #ff957244; }
+        .tier-color-14 { background: #1f1a10; color: #ffae75; border-color: #ffae7544; }
+        .tier-color-13 { background: #1f1c10; color: #ffc677; border-color: #ffc67744; }
+        .tier-color-12 { background: #1f1e10; color: #ffdd7a; border-color: #ffdd7a44; }
+        .tier-color-11 { background: #1e1f10; color: #fff47c; border-color: #fff47c44; }
+        .tier-color-10 { background: #1a1f10; color: #f4ff7f; border-color: #f4ff7f44; }
+        .tier-color-9  { background: #121f10; color: #d5ff82; border-color: #d5ff8244; }
+        .tier-color-8  { background: #101f10; color: #b7ff84; border-color: #b7ff8444; }
+        .tier-color-7  { background: #101f10; color: #9bff87; border-color: #9bff8744; }
+        .tier-color-6  { background: #101f18; color: #89ffb0; border-color: #89ffb044; }
+        .tier-color-5  { background: #101f1f; color: #8cffe2; border-color: #8cffe244; }
+        .tier-color-4  { background: #101a1f; color: #8eecff; border-color: #8eecff44; }
+        .tier-color-3  { background: #10151f; color: #91c8ff; border-color: #91c8ff44; }
+        .tier-color-2  { background: #10121f; color: #93aeff; border-color: #93aeff44; }
+        .tier-color-1  { background: #10101f; color: #9696ff; border-color: #9696ff44; }
+
+        /* Card border colors matching tier */
+        .achievement-card.tier-border-22 { border-color: #bd60ff66; }
+        .achievement-card.tier-border-21 { border-color: #d863ff66; }
+        .achievement-card.tier-border-20 { border-color: #f266ff66; }
+        .achievement-card.tier-border-19 { border-color: #ff68d966; }
+        .achievement-card.tier-border-18 { border-color: #ff6daa66; }
+        .achievement-card.tier-border-17 { border-color: #ff6d7966; }
+        .achievement-card.tier-border-16 { border-color: #ff7c7066; }
+        .achievement-card.tier-border-15 { border-color: #ff957266; }
+        .achievement-card.tier-border-14 { border-color: #ffae7566; }
+        .achievement-card.tier-border-13 { border-color: #ffc67766; }
+        .achievement-card.tier-border-12 { border-color: #ffdd7a66; }
+        .achievement-card.tier-border-11 { border-color: #fff47c66; }
+        .achievement-card.tier-border-10 { border-color: #f4ff7f66; }
+        .achievement-card.tier-border-9  { border-color: #d5ff8266; }
+        .achievement-card.tier-border-8  { border-color: #b7ff8466; }
+        .achievement-card.tier-border-7  { border-color: #9bff8766; }
+        .achievement-card.tier-border-6  { border-color: #89ffb066; }
+        .achievement-card.tier-border-5  { border-color: #8cffe266; }
+        .achievement-card.tier-border-4  { border-color: #8eecff66; }
+        .achievement-card.tier-border-3  { border-color: #91c8ff66; }
+        .achievement-card.tier-border-2  { border-color: #93aeff66; }
+        .achievement-card.tier-border-1  { border-color: #9696ff66; }
 
         /* ── Celeste Clears star colors ── */
-        .star-color-9 { background: #0d1020; color: #6496ff; border: 1px solid #6496ff44; }
-        .star-color-8 { background: #0d1820; color: #64d4ff; border: 1px solid #64d4ff44; }
-        .star-color-7 { background: #0d2018; color: #64ffb4; border: 1px solid #64ffb444; }
-        .star-color-6 { background: #0d2010; color: #96ff64; border: 1px solid #96ff6444; }
-        .star-color-5 { background: #1c200d; color: #e6ff64; border: 1px solid #e6ff6444; }
-        .star-color-4 { background: #20150d; color: #ffb464; border: 1px solid #ffb46444; }
-        .star-color-3 { background: #200d0d; color: #ff6464; border: 1px solid #ff646444; }
-        .star-color-2 { background: #1a0d20; color: #e664ff; border: 1px solid #e664ff44; }
-        .star-color-1 { background: #151520; color: #9696c8; border: 1px solid #9696c844; }
+        .star-color-9 { background: #0d1020; color: #6496ff; border-color: #6496ff44; }
+        .star-color-8 { background: #0d1820; color: #64d4ff; border-color: #64d4ff44; }
+        .star-color-7 { background: #0d2018; color: #64ffb4; border-color: #64ffb444; }
+        .star-color-6 { background: #0d2010; color: #96ff64; border-color: #96ff6444; }
+        .star-color-5 { background: #1c200d; color: #e6ff64; border-color: #e6ff6444; }
+        .star-color-4 { background: #20150d; color: #ffb464; border-color: #ffb46444; }
+        .star-color-3 { background: #200d0d; color: #ff6464; border-color: #ff646444; }
+        .star-color-2 { background: #1a0d20; color: #e664ff; border-color: #e664ff44; }
+        .star-color-1 { background: #151520; color: #9696c8; border-color: #9696c844; }
+
+        .achievement-card.star-border-9 { border-color: #6496ff66; }
+        .achievement-card.star-border-8 { border-color: #64d4ff66; }
+        .achievement-card.star-border-7 { border-color: #64ffb466; }
+        .achievement-card.star-border-6 { border-color: #96ff6466; }
+        .achievement-card.star-border-5 { border-color: #e6ff6466; }
+        .achievement-card.star-border-4 { border-color: #ffb46466; }
+        .achievement-card.star-border-3 { border-color: #ff646466; }
+        .achievement-card.star-border-2 { border-color: #e664ff66; }
+        .achievement-card.star-border-1 { border-color: #9696c866; }
 
         /* ── GD tier colors — edit these to your liking! ── */
         /* Separate class prefix (gd-tier-color-N) so they never affect Celeste tabs */
-        .gd-tier-color-22 { background: #1a0f2e; color: #bd60ff; border: 1px solid #bd60ff44; }
-        .gd-tier-color-21 { background: #1a0f2e; color: #d863ff; border: 1px solid #d863ff44; }
-        .gd-tier-color-20 { background: #1a0f2e; color: #f266ff; border: 1px solid #f266ff44; }
-        .gd-tier-color-19 { background: #1f0f1a; color: #ff68d9; border: 1px solid #ff68d944; }
-        .gd-tier-color-18 { background: #1f0f1a; color: #ff6daa; border: 1px solid #ff6daa44; }
-        .gd-tier-color-17 { background: #1f0f15; color: #ff6d79; border: 1px solid #ff6d7944; }
-        .gd-tier-color-16 { background: #1f1010; color: #ff7c70; border: 1px solid #ff7c7044; }
-        .gd-tier-color-15 { background: #1f1510; color: #ff9572; border: 1px solid #ff957244; }
-        .gd-tier-color-14 { background: #1f1a10; color: #ffae75; border: 1px solid #ffae7544; }
-        .gd-tier-color-13 { background: #1f1c10; color: #ffc677; border: 1px solid #ffc67744; }
-        .gd-tier-color-12 { background: #1f1e10; color: #ffdd7a; border: 1px solid #ffdd7a44; }
-        .gd-tier-color-11 { background: #1e1f10; color: #fff47c; border: 1px solid #fff47c44; }
-        .gd-tier-color-10 { background: #1a1f10; color: #f4ff7f; border: 1px solid #f4ff7f44; }
-        .gd-tier-color-9  { background: #121f10; color: #d5ff82; border: 1px solid #d5ff8244; }
-        .gd-tier-color-8  { background: #101f10; color: #b7ff84; border: 1px solid #b7ff8444; }
-        .gd-tier-color-7  { background: #101f10; color: #9bff87; border: 1px solid #9bff8744; }
-        .gd-tier-color-6  { background: #101f18; color: #89ffb0; border: 1px solid #89ffb044; }
-        .gd-tier-color-5  { background: #101f1f; color: #8cffe2; border: 1px solid #8cffe244; }
-        .gd-tier-color-4  { background: #101a1f; color: #8eecff; border: 1px solid #8eecff44; }
-        .gd-tier-color-3  { background: #10151f; color: #91c8ff; border: 1px solid #91c8ff44; }
-        .gd-tier-color-2  { background: #10121f; color: #93aeff; border: 1px solid #93aeff44; }
-        .gd-tier-color-1  { background: #10101f; color: #9696ff; border: 1px solid #9696ff44; }
+        .gd-tier-color-19 { background: #1f0f1a; color: #ff68d9; border-color: #ff68d944; }
+        .gd-tier-color-18 { background: #1f0f1a; color: #ff6daa; border-color: #ff6daa44; }
+        .gd-tier-color-17 { background: #1f0f15; color: #ff6d79; border-color: #ff6d7944; }
+        .gd-tier-color-16 { background: #1f1010; color: #ff7c70; border-color: #ff7c7044; }
+        .gd-tier-color-15 { background: #1f1510; color: #ff9572; border-color: #ff957244; }
+        .gd-tier-color-14 { background: #1f1a10; color: #ffae75; border-color: #ffae7544; }
+        .gd-tier-color-13 { background: #1f1c10; color: #ffc677; border-color: #ffc67744; }
+        .gd-tier-color-12 { background: #1f1e10; color: #ffdd7a; border-color: #ffdd7a44; }
+        .gd-tier-color-11 { background: #1e1f10; color: #fff47c; border-color: #fff47c44; }
+        .gd-tier-color-10 { background: #1a1f10; color: #f4ff7f; border-color: #f4ff7f44; }
+        .gd-tier-color-9  { background: #121f10; color: #d5ff82; border-color: #d5ff8244; }
+        .gd-tier-color-8  { background: #101f10; color: #b7ff84; border-color: #b7ff8444; }
+        .gd-tier-color-7  { background: #101f10; color: #9bff87; border-color: #9bff8744; }
+        .gd-tier-color-6  { background: #101f18; color: #89ffb0; border-color: #89ffb044; }
+        .gd-tier-color-5  { background: #101f1f; color: #8cffe2; border-color: #8cffe244; }
+        .gd-tier-color-4  { background: #101a1f; color: #8eecff; border-color: #8eecff44; }
+        .gd-tier-color-3  { background: #10151f; color: #91c8ff; border-color: #91c8ff44; }
+        .gd-tier-color-2  { background: #10121f; color: #93aeff; border-color: #93aeff44; }
+        .gd-tier-color-1  { background: #10101f; color: #9696ff; border-color: #9696ff44; }
+
+        .achievement-card.gd-tier-border-19 { border-color: #ff68d966; }
+        .achievement-card.gd-tier-border-18 { border-color: #ff6daa66; }
+        .achievement-card.gd-tier-border-17 { border-color: #ff6d7966; }
+        .achievement-card.gd-tier-border-16 { border-color: #ff7c7066; }
+        .achievement-card.gd-tier-border-15 { border-color: #ff957266; }
+        .achievement-card.gd-tier-border-14 { border-color: #ffae7566; }
+        .achievement-card.gd-tier-border-13 { border-color: #ffc67766; }
+        .achievement-card.gd-tier-border-12 { border-color: #ffdd7a66; }
+        .achievement-card.gd-tier-border-11 { border-color: #fff47c66; }
+        .achievement-card.gd-tier-border-10 { border-color: #f4ff7f66; }
+        .achievement-card.gd-tier-border-9  { border-color: #d5ff8266; }
+        .achievement-card.gd-tier-border-8  { border-color: #b7ff8466; }
+        .achievement-card.gd-tier-border-7  { border-color: #9bff8766; }
+        .achievement-card.gd-tier-border-6  { border-color: #89ffb066; }
+        .achievement-card.gd-tier-border-5  { border-color: #8cffe266; }
+        .achievement-card.gd-tier-border-4  { border-color: #8eecff66; }
+        .achievement-card.gd-tier-border-3  { border-color: #91c8ff66; }
+        .achievement-card.gd-tier-border-2  { border-color: #93aeff66; }
+        .achievement-card.gd-tier-border-1  { border-color: #9696ff66; }
 
         @media (max-width: 640px) {
             .tiers-container { padding: 1rem; }
-            .tier-column { flex: 0 0 260px; }
+            .tier-column { flex: 0 0 320px; }
+            .card-thumb { flex: 0 0 140px; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <header>
@@ -321,14 +379,13 @@
         let currentData = {};
         let currentTab = 'celeste_goldens';
 
-        // Only used for GD tabs — Celeste goldens just use "Tier N"
+        // GD tier names - only 1-19, Nightmare is the last
         const gdTierNames = {
             1: 'Beginner', 2: 'Easy', 3: 'Medium', 4: 'Hard', 5: 'Very Hard',
             6: 'Insane', 7: 'Extreme', 8: 'Remorseless', 9: 'Relentless',
             10: 'Terrifying', 11: 'Catastrophic', 12: 'Merciless',
             13: 'Excruciating', 14: 'Monstrous', 15: 'Apocalyptic',
-            16: 'Demonic', 17: 'Menacing', 18: 'Unreal', 19: 'Nightmare',
-            20: 'Tier 20', 21: 'Tier 21', 22: 'Tier 22'
+            16: 'Demonic', 17: 'Menacing', 18: 'Unreal', 19: 'Nightmare'
         };
 
         async function loadAchievements() {
@@ -386,18 +443,21 @@
                 const group = grouped[key];
                 const num = parseInt(key.split('-')[1]);
 
-                let colorClass, label;
+                let colorClass, label, borderClass;
 
                 if (isClears) {
                     colorClass = `star-color-${num}`;
+                    borderClass = `star-border-${num}`;
                     label = `${num}★`;
                 } else if (isGoldens) {
-                    // ← THE FIX: Celeste goldens just show "Tier N", no named tiers
+                    // Celeste goldens: numbers 1-22, no naming
                     colorClass = `tier-color-${num}`;
+                    borderClass = `tier-border-${num}`;
                     label = `Tier ${num}`;
                 } else {
-                    // GD tabs get named tiers + their own color classes
+                    // GD: names only, 1-19
                     colorClass = `gd-tier-color-${num}`;
+                    borderClass = `gd-tier-border-${num}`;
                     label = gdTierNames[num] || `Tier ${num}`;
                 }
 
@@ -408,7 +468,7 @@
                         <span class="tier-count">${group.length}</span>
                     </div>
                 `;
-                group.forEach(item => { html += renderCard(item, category); });
+                group.forEach(item => { html += renderCard(item, category, borderClass); });
                 html += `</div>`;
             });
 
@@ -416,7 +476,7 @@
             container.innerHTML = html;
         }
 
-        function renderCard(item, category) {
+        function renderCard(item, category, borderClass) {
             const isClears  = category === 'celeste_clears';
             const isGoldens = category === 'celeste_goldens';
             const isGD      = category === 'demons' || category === 'gd_platformer';
@@ -459,7 +519,7 @@
                 </div>` : '';
 
             return `
-                <article class="achievement-card">
+                <article class="achievement-card ${borderClass}">
                     <div class="card-thumb ${hasVideo ? 'has-video' : ''}" ${thumbClick}>
                         ${thumbContent}
                         ${playIcon}
