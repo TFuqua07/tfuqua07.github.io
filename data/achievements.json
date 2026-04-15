@@ -282,6 +282,16 @@
       "star": 1,
       "deaths": 13476,
       "time": "26:36:38"
+    },
+    {
+      "name": "Pinball Purgatory",
+      "campaign": "Maya",
+      "video": "https://www.youtube.com/watch?v=9ZHlCRQ40eU",
+      "date": "2026-04-15T23:32:45.041Z",
+      "thumbnail": "https://img.youtube.com/vi/9ZHlCRQ40eU/hqdefault.jpg",
+      "star": 1,
+      "deaths": 15414,
+      "time": "32:03:56"
     }
   ],
   "demons": [
