@@ -125,6 +125,15 @@
       "thumbnail": "https://img.youtube.com/vi/IQP1gl_k9lE/hqdefault.jpg",
       "tier": 1,
       "time": "0:06:30"
+    },
+    {
+      "name": "Sophie Rochalia",
+      "campaign": "Golden Berry",
+      "video": "https://youtu.be/yC-vSI2BX-4",
+      "date": "2026-04-15T23:18:31.140Z",
+      "thumbnail": "https://img.youtube.com/vi/yC-vSI2BX-4/hqdefault.jpg",
+      "tier": 1,
+      "time": null
     }
   ],
   "celeste_clears": [
