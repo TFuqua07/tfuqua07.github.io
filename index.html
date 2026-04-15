@@ -433,6 +433,11 @@
                 grouped[key].push(item);
             });
 
+            // Sort alphabetically by name within each tier
+            Object.keys(grouped).forEach(key => {
+                grouped[key].sort((a, b) => a.name.localeCompare(b.name));
+            });
+
             const sortedKeys = Object.keys(grouped).sort((a, b) =>
                 parseInt(b.split('-')[1]) - parseInt(a.split('-')[1])
             );
