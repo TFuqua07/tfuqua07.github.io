@@ -116,6 +116,15 @@
       "thumbnail": "https://img.youtube.com/vi/l5oooalAkkI/hqdefault.jpg",
       "tier": 1,
       "time": null
+    },
+    {
+      "name": "Pointless Machines",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/IQP1gl_k9lE",
+      "date": "2026-04-15T23:18:01.955Z",
+      "thumbnail": "https://img.youtube.com/vi/IQP1gl_k9lE/hqdefault.jpg",
+      "tier": 1,
+      "time": "0:06:30"
     }
   ],
   "celeste_clears": [
