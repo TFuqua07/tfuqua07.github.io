@@ -264,16 +264,6 @@
   ],
   "celeste_clears": [
     {
-      "name": "test",
-      "campaign": "campaign",
-      "video": "https://www.youtube.com/watch?v=Vmlc8hJgZmo",
-      "date": "2026-04-15T21:11:42.713Z",
-      "thumbnail": "https://img.youtube.com/vi/Vmlc8hJgZmo/hqdefault.jpg",
-      "star": 9,
-      "deaths": null,
-      "time": null
-    },
-    {
       "name": "splash!",
       "campaign": null,
       "video": "https://www.youtube.com/watch?v=Vmlc8hJgZmo",
