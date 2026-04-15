@@ -40,6 +40,15 @@
       "thumbnail": "https://img.youtube.com/vi/eeXAOUT5Z9k/hqdefault.jpg",
       "tier": 1,
       "attempts": 3057
+    },
+    {
+      "name": "Acu",
+      "campaign": "neigefeu",
+      "video": "https://www.youtube.com/watch?v=D537KWeDlLU",
+      "date": "2026-04-15T22:09:02.474Z",
+      "thumbnail": "https://img.youtube.com/vi/D537KWeDlLU/hqdefault.jpg",
+      "tier": 1,
+      "attempts": 3208
     }
   ],
   "gd_platformer": []
