@@ -474,9 +474,9 @@
                 }
                 celesteFields.style.display = 'block';
             } else {
-                // GD: names only, 1-19 (Nightmare is last)
+                // GD: names only, 1-20
                 diffLabel.textContent = 'Tier *';
-                for (let i = 19; i >= 1; i--) {
+                for (let i = 20; i >= 1; i--) {
                     const o = document.createElement('option');
                     o.value = i; o.textContent = gdTierNames[i];
                     diffSelect.appendChild(o);
