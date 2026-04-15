@@ -206,6 +206,15 @@
       "thumbnail": "https://img.youtube.com/vi/ZyFrYy_GYAA/hqdefault.jpg",
       "tier": 1,
       "time": "0:05:00"
+    },
+    {
+      "name": "Cat Isle",
+      "campaign": "Golden Berry",
+      "video": "https://youtu.be/75Qn6PjOYqc",
+      "date": "2026-04-15T23:22:04.390Z",
+      "thumbnail": "https://img.youtube.com/vi/75Qn6PjOYqc/hqdefault.jpg",
+      "tier": 1,
+      "time": null
     }
   ],
   "celeste_clears": [
