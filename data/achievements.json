@@ -262,18 +262,7 @@
       "time": null
     }
   ],
-  "celeste_clears": [
-    {
-      "name": "splash!",
-      "campaign": null,
-      "video": "https://www.youtube.com/watch?v=Vmlc8hJgZmo",
-      "date": "2026-04-15T21:06:08.174Z",
-      "thumbnail": "https://img.youtube.com/vi/Vmlc8hJgZmo/hqdefault.jpg",
-      "star": 1,
-      "deaths": 9155,
-      "time": "15:03:17"
-    }
-  ],
+  "celeste_clears": [],
   "demons": [
     {
       "name": "troll level",
