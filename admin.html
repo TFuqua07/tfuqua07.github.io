@@ -173,6 +173,7 @@
         }
         .setup-notice strong { color: var(--text-primary); }
     </style>
+<base target="_blank">
 </head>
 <body>
     <header>
@@ -316,12 +317,13 @@
         const REPO_NAME  = 'tfuqua07.github.io';
         const FILE_PATH  = 'data/achievements.json';
 
-        const tierNames = {
-            1:'Beginner',2:'Easy',3:'Medium',4:'Hard',5:'Very Hard',
-            6:'Insane',7:'Extreme',8:'Remorseless',9:'Relentless',
-            10:'Terrifying',11:'Catastrophic',12:'Merciless',
-            13:'Excruciating',14:'Monstrous',15:'Apocalyptic',
-            16:'Demonic',17:'Menacing',18:'Unreal',19:'Nightmare'
+        // GD tier names - only 1-19, Nightmare is the last tier
+        const gdTierNames = {
+            1: 'Beginner', 2: 'Easy', 3: 'Medium', 4: 'Hard', 5: 'Very Hard',
+            6: 'Insane', 7: 'Extreme', 8: 'Remorseless', 9: 'Relentless',
+            10: 'Terrifying', 11: 'Catastrophic', 12: 'Merciless',
+            13: 'Excruciating', 14: 'Monstrous', 15: 'Apocalyptic',
+            16: 'Demonic', 17: 'Menacing', 18: 'Unreal', 19: 'Nightmare'
         };
 
         let allEntries = {};
@@ -453,6 +455,7 @@
             diffRow.style.display = 'block';
 
             if (category === 'celeste_clears') {
+                // Celeste clears: 9-1 stars
                 diffLabel.textContent = 'Star Rating *';
                 for (let i = 9; i >= 1; i--) {
                     const o = document.createElement('option');
@@ -461,18 +464,24 @@
                 }
                 celesteFields.style.display = 'block';
                 deathsGroup.style.display = 'block';
-            } else {
+            } else if (category === 'celeste_goldens') {
+                // Celeste goldens: 22-1 numbers only
                 diffLabel.textContent = 'Tier *';
                 for (let i = 22; i >= 1; i--) {
                     const o = document.createElement('option');
-                    o.value = i; o.textContent = tierNames[i] || `Tier ${i}`;
+                    o.value = i; o.textContent = `Tier ${i}`;
                     diffSelect.appendChild(o);
                 }
-                if (category === 'celeste_goldens') {
-                    celesteFields.style.display = 'block';
-                } else {
-                    gdFields.style.display = 'block';
+                celesteFields.style.display = 'block';
+            } else {
+                // GD: names only, 1-19 (Nightmare is last)
+                diffLabel.textContent = 'Tier *';
+                for (let i = 19; i >= 1; i--) {
+                    const o = document.createElement('option');
+                    o.value = i; o.textContent = gdTierNames[i];
+                    diffSelect.appendChild(o);
                 }
+                gdFields.style.display = 'block';
             }
         }
 
@@ -590,7 +599,18 @@
                 items.forEach((item, i) => {
                     const isStar = item.star !== undefined;
                     const num = isStar ? item.star : item.tier;
-                    const badge = isStar ? `${num} Star` : (tierNames[num] || `Tier ${num}`);
+                    let badge;
+
+                    if (isStar) {
+                        badge = `${num} Star`;
+                    } else if (cat === 'celeste_goldens') {
+                        // Celeste goldens: numbers only
+                        badge = `Tier ${num}`;
+                    } else {
+                        // GD: names only
+                        badge = gdTierNames[num] || `Tier ${num}`;
+                    }
+
                     const extra = item.time ? ` • ${item.time}` : (item.deaths != null ? ` • ${item.deaths} deaths` : (item.attempts ? ` • ${item.attempts.toLocaleString()} attempts` : ''));
                     html += `
                         <div class="entry-item">
