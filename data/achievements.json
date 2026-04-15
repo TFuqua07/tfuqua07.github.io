@@ -272,6 +272,16 @@
       "star": 1,
       "deaths": null,
       "time": "15:03:17"
+    },
+    {
+      "name": "The Solar Express",
+      "campaign": "Soloiini",
+      "video": "https://youtu.be/Q69IRESWLBE",
+      "date": "2026-04-15T23:32:09.869Z",
+      "thumbnail": "https://img.youtube.com/vi/Q69IRESWLBE/hqdefault.jpg",
+      "star": 1,
+      "deaths": 13476,
+      "time": "26:36:38"
     }
   ],
   "demons": [
