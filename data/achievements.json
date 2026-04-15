@@ -1,6 +1,15 @@
 {
   "celeste_goldens": [
     {
+      "name": "Fractured Iridescence",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/2p9rU6Sx9T8",
+      "date": "2026-04-15T23:24:10.712Z",
+      "thumbnail": "https://img.youtube.com/vi/2p9rU6Sx9T8/hqdefault.jpg",
+      "tier": 3,
+      "time": "3:30:00"
+    },
+    {
       "name": "Overgrown Linn",
       "campaign": "Silver Berry",
       "video": "https://youtu.be/hdPlDjl7s50",
