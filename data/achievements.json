@@ -1,5 +1,15 @@
 {
-  "celeste_goldens": [],
+  "celeste_goldens": [
+    {
+      "name": "Blueberry Bay",
+      "campaign": "The Beginner Heartside",
+      "video": "https://youtu.be/P8ENhVdWKEs?si=1TTvOvJgljh5a-le",
+      "date": "2026-04-15T23:06:22.738Z",
+      "thumbnail": "https://img.youtube.com/vi/P8ENhVdWKEs/hqdefault.jpg",
+      "tier": 3,
+      "time": null
+    }
+  ],
   "celeste_clears": [
     {
       "name": "test",
