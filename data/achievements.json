@@ -35,6 +35,15 @@
       "thumbnail": "https://img.youtube.com/vi/F95sdaELuvQ/hqdefault.jpg",
       "tier": 1,
       "time": "0:15:00"
+    },
+    {
+      "name": "Supernautica",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/zDvR5rOE6yQ",
+      "date": "2026-04-15T23:13:16.967Z",
+      "thumbnail": "https://img.youtube.com/vi/zDvR5rOE6yQ/hqdefault.jpg",
+      "tier": 1,
+      "time": "0:25:00"
     }
   ],
   "celeste_clears": [
