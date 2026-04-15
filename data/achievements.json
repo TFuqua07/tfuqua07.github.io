@@ -161,6 +161,15 @@
       "thumbnail": "https://img.youtube.com/vi/obABpdiEaSg/hqdefault.jpg",
       "tier": 1,
       "time": null
+    },
+    {
+      "name": "A Picturesque City",
+      "campaign": "Silver Berry",
+      "video": "https://youtu.be/mnVQsI7SXYg",
+      "date": "2026-04-15T23:20:17.809Z",
+      "thumbnail": "https://img.youtube.com/vi/mnVQsI7SXYg/hqdefault.jpg",
+      "tier": 1,
+      "time": null
     }
   ],
   "celeste_clears": [
