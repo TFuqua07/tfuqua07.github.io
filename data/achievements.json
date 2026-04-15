@@ -152,6 +152,15 @@
       "thumbnail": "https://img.youtube.com/vi/A3YKmh4xWOA/hqdefault.jpg",
       "tier": 1,
       "time": null
+    },
+    {
+      "name": "When it Rains",
+      "campaign": "Deathless [FC]",
+      "video": "https://youtu.be/obABpdiEaSg",
+      "date": "2026-04-15T23:19:45.853Z",
+      "thumbnail": "https://img.youtube.com/vi/obABpdiEaSg/hqdefault.jpg",
+      "tier": 1,
+      "time": null
     }
   ],
   "celeste_clears": [
