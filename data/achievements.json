@@ -224,6 +224,15 @@
       "thumbnail": "https://img.youtube.com/vi/meANO5o3L-8/hqdefault.jpg",
       "tier": 1,
       "time": "0:05:18"
+    },
+    {
+      "name": "Spumper Peak",
+      "campaign": "Golden Berry",
+      "video": "https://youtu.be/OY4I7OWqj6A",
+      "date": "2026-04-15T23:23:13.237Z",
+      "thumbnail": "https://img.youtube.com/vi/OY4I7OWqj6A/hqdefault.jpg",
+      "tier": 1,
+      "time": null
     }
   ],
   "celeste_clears": [
