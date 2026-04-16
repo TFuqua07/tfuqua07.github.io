@@ -361,6 +361,14 @@
     },
     {
       "mission": "Rebirth",
+      "stage": "Climb",
+      "pb": "00:12.747",
+      "medal": "red",
+      "video": null,
+      "date": "2026-04-16T11:05:11.481Z"
+    },
+    {
+      "mission": "Rebirth",
       "stage": "Elevate",
       "pb": "00:18.262",
       "medal": "ace",
