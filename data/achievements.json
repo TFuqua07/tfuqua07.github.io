@@ -662,7 +662,9 @@
       {
         "id": 5,
         "completed": true,
-        "bindings": {}
+        "bindings": {
+          "soul": true
+        }
       }
     ]
   }
