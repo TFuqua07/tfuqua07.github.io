@@ -473,6 +473,14 @@
     },
     {
       "mission": "Only Shallow",
+      "stage": "Mountain",
+      "pb": "00:24.804",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T12:15:26.212Z"
+    },
+    {
+      "mission": "Only Shallow",
       "stage": "Sprint",
       "pb": "00:24.329",
       "medal": "ace",
