@@ -353,6 +353,14 @@
     },
     {
       "mission": "Killer Inside",
+      "stage": "Dancer",
+      "pb": "00:24.571",
+      "medal": null,
+      "video": null,
+      "date": "2026-04-16T12:14:00.999Z"
+    },
+    {
+      "mission": "Killer Inside",
       "stage": "Dasher",
       "pb": "00:14.711",
       "medal": "ace",
