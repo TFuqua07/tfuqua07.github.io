@@ -94,10 +94,31 @@
 
         .section-title { color: var(--text-secondary); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; margin: 1.5rem 0 0.75rem; }
 
-        /* Medal preview strip */
-        .medal-preview { display: flex; gap: 0.4rem; margin-top: 0.75rem; flex-wrap: wrap; }
-        .mp-chip { padding: 0.2rem 0.55rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; border: 1px solid; opacity: 0.4; transition: opacity 0.15s; }
+        /* Medal preview strip - 3 per row, centered */
+        .medal-preview { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 0.75rem; 
+            margin-top: 0.75rem; 
+            text-align: center;
+        }
+        
+        .mp-chip { 
+            padding: 0.5rem 0.25rem; 
+            border-radius: 8px; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            border: 1px solid; 
+            opacity: 0.3; 
+            transition: opacity 0.15s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
         .mp-chip.earned { opacity: 1; }
+        
         .mp-ace      { background: rgba(255,230,80,0.12);  color: #ffe040; border-color: #ffe04044; }
         .mp-red      { background: rgba(255,50,50,0.12);   color: #ff5252; border-color: #ff525244; }
         .mp-emerald  { background: rgba(0,200,100,0.12);   color: #00e676; border-color: #00e67644; }
@@ -105,6 +126,11 @@
         .mp-sapphire { background: rgba(0,150,255,0.12);   color: #40c4ff; border-color: #40c4ff44; }
         .mp-topaz    { background: rgba(255,165,0,0.12);   color: #ffb300; border-color: #ffb30044; }
         .mp-diamond  { background: rgba(100,240,255,0.13); color: #7fffff; border-color: #7fffff55; }
+
+        /* Center the last item when it's alone in a row */
+        .mp-chip:nth-child(7):last-child {
+            grid-column: 2;
+        }
 
         .setup-notice { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: 10px; padding: 1rem 1.25rem; font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
         .setup-notice strong { color: var(--text-primary); }
@@ -159,7 +185,7 @@
                     </select>
                 </div>
 
-                <!-- Standard fields (Celeste / GD) -->
+                <!-- Standard fields (Celeste / GD) - wrapped in container -->
                 <div id="standard-fields">
                     <div class="form-group">
                         <label>Challenge Name *</label>
@@ -465,7 +491,7 @@
         const achievedIdx = achievedMedal ? MEDAL_ORDER.indexOf(achievedMedal) : -1;
         container.innerHTML = MEDAL_ORDER.map((m, i) => {
             const earned = achievedIdx >= 0 && i >= achievedIdx;
-            return `<span class="mp-chip mp-${m} ${earned ? 'earned' : ''}">${MEDAL_LABELS[m]}: ${stageData[m]}</span>`;
+            return `<span class="mp-chip mp-${m} ${earned ? 'earned' : ''}">${MEDAL_LABELS[m]}<br>${stageData[m]}</span>`;
         }).join('');
     }
 
@@ -495,67 +521,68 @@
         document.getElementById('medal-preview').innerHTML = '';
     }
 
-function updateFormFields() {
-    const category = document.getElementById('category').value;
-    const standardFields = document.getElementById('standard-fields');
-    const diffRow = document.getElementById('difficulty-row');
-    const diffSelect = document.getElementById('difficulty');
-    const diffLabel = document.getElementById('difficulty-label');
-    const celesteFields = document.getElementById('celeste-fields');
-    const gdFields = document.getElementById('gd-fields');
-    const deathsGroup = document.getElementById('deaths-group');
-    const nwFields = document.getElementById('nw-fields');
-    const saveBtn = document.getElementById('save-standard-btn');
+    // ─── Form (Celeste / GD) ─────────────────────────────────────────────────
+    function updateFormFields() {
+        const category = document.getElementById('category').value;
+        const standardFields = document.getElementById('standard-fields');
+        const diffRow = document.getElementById('difficulty-row');
+        const diffSelect = document.getElementById('difficulty');
+        const diffLabel = document.getElementById('difficulty-label');
+        const celesteFields = document.getElementById('celeste-fields');
+        const gdFields = document.getElementById('gd-fields');
+        const deathsGroup = document.getElementById('deaths-group');
+        const nwFields = document.getElementById('nw-fields');
+        const saveBtn = document.getElementById('save-standard-btn');
 
-    // Reset visibility - hide everything first
-    standardFields.style.display = 'none';
-    celesteFields.style.display = 'none';
-    gdFields.style.display = 'none';
-    deathsGroup.style.display = 'none';
-    diffRow.style.display = 'none';
-    nwFields.style.display = 'none';
-    saveBtn.style.display = 'none';
-    diffSelect.innerHTML = '';
+        // Reset visibility - hide everything first
+        standardFields.style.display = 'none';
+        celesteFields.style.display = 'none';
+        gdFields.style.display = 'none';
+        deathsGroup.style.display = 'none';
+        diffRow.style.display = 'none';
+        nwFields.style.display = 'none';
+        saveBtn.style.display = 'none';
+        diffSelect.innerHTML = '';
 
-    if (!category) return;
+        if (!category) return;
 
-    if (category === 'neon_white') {
-        nwFields.style.display = 'block';
-        return;
+        if (category === 'neon_white') {
+            nwFields.style.display = 'block';
+            return;
+        }
+
+        // Show standard fields for Celeste/Demon/Platformer categories
+        standardFields.style.display = 'block';
+        saveBtn.style.display = 'inline-block';
+        diffRow.style.display = 'block';
+
+        if (category === 'celeste_clears') {
+            diffLabel.textContent = 'Star Rating *';
+            for (let i = 9; i >= 1; i--) {
+                const o = document.createElement('option');
+                o.value = i; o.textContent = `${i} Star`;
+                diffSelect.appendChild(o);
+            }
+            celesteFields.style.display = 'block';
+            deathsGroup.style.display = 'block';
+        } else if (category === 'celeste_goldens') {
+            diffLabel.textContent = 'Tier *';
+            for (let i = 22; i >= 1; i--) {
+                const o = document.createElement('option');
+                o.value = i; o.textContent = `Tier ${i}`;
+                diffSelect.appendChild(o);
+            }
+            celesteFields.style.display = 'block';
+        } else {
+            diffLabel.textContent = 'Tier *';
+            for (let i = 20; i >= 1; i--) {
+                const o = document.createElement('option');
+                o.value = i; o.textContent = gdTierNames[i];
+                diffSelect.appendChild(o);
+            }
+            gdFields.style.display = 'block';
+        }
     }
-
-    // Show standard fields for Celeste/Demon/Platformer categories
-    standardFields.style.display = 'block';
-    saveBtn.style.display = 'inline-block';
-    diffRow.style.display = 'block';
-
-    if (category === 'celeste_clears') {
-        diffLabel.textContent = 'Star Rating *';
-        for (let i = 9; i >= 1; i--) {
-            const o = document.createElement('option');
-            o.value = i; o.textContent = `${i} Star`;
-            diffSelect.appendChild(o);
-        }
-        celesteFields.style.display = 'block';
-        deathsGroup.style.display = 'block';
-    } else if (category === 'celeste_goldens') {
-        diffLabel.textContent = 'Tier *';
-        for (let i = 22; i >= 1; i--) {
-            const o = document.createElement('option');
-            o.value = i; o.textContent = `Tier ${i}`;
-            diffSelect.appendChild(o);
-        }
-        celesteFields.style.display = 'block';
-    } else {
-        diffLabel.textContent = 'Tier *';
-        for (let i = 20; i >= 1; i--) {
-            const o = document.createElement('option');
-            o.value = i; o.textContent = gdTierNames[i];
-            diffSelect.appendChild(o);
-        }
-        gdFields.style.display = 'block';
-    }
-}
 
     function previewThumbnail() {
         const url = document.getElementById('video').value;
@@ -630,7 +657,6 @@ function updateFormFields() {
             showMessage('Error: ' + err.message, 'error');
         }
     }
-
     // ─── Manage / render entries ─────────────────────────────────────────────
     function renderEntries() {
         const filter = document.getElementById('filter-category')?.value || 'all';
