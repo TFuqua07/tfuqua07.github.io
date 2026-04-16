@@ -345,6 +345,14 @@
   "neon_white": [
     {
       "mission": "Rebirth",
+      "stage": "Cascade",
+      "pb": "00:12.683",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T11:04:34.012Z"
+    },
+    {
+      "mission": "Rebirth",
       "stage": "Gunner",
       "pb": "00:13.244",
       "medal": "ace",
