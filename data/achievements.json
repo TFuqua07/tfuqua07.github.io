@@ -653,6 +653,12 @@
         "ascended": true
       }
     ],
-    "pantheons": []
+    "pantheons": [
+      {
+        "id": 1,
+        "completed": true,
+        "bindings": {}
+      }
+    ]
   }
 }
