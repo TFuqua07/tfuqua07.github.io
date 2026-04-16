@@ -342,5 +342,14 @@
     }
   ],
   "gd_platformer": [],
-  "neon_white": []
+  "neon_white": [
+    {
+      "mission": "Rebirth",
+      "stage": "Movement",
+      "pb": "00:23.846",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T11:04:07.873Z"
+    }
+  ]
 }
