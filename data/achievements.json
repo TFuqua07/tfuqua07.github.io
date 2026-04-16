@@ -639,5 +639,14 @@
       "video": null,
       "date": "2026-04-16T12:16:21.892Z"
     }
-  ]
+  ],
+  "hollow_knight": {
+    "hall_of_gods": [
+      {
+        "name": "Gruz Mother",
+        "ascended": true
+      }
+    ],
+    "pantheons": []
+  }
 }
