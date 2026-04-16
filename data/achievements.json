@@ -345,6 +345,14 @@
   "neon_white": [
     {
       "mission": "Killer Inside",
+      "stage": "Godspeed",
+      "pb": "00:09.959",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T12:12:55.228Z"
+    },
+    {
+      "mission": "Killer Inside",
       "stage": "Take Flight",
       "pb": "00:22.613",
       "medal": "ace",
