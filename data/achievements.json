@@ -361,6 +361,14 @@
     },
     {
       "mission": "Killer Inside",
+      "stage": "Outstretched",
+      "pb": "00:12.428",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T12:13:22.469Z"
+    },
+    {
+      "mission": "Killer Inside",
       "stage": "Take Flight",
       "pb": "00:22.613",
       "medal": "ace",
