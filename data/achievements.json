@@ -665,7 +665,8 @@
         "bindings": {
           "soul": true,
           "nail": true,
-          "shell": true
+          "shell": true,
+          "heart": true
         }
       }
     ]
