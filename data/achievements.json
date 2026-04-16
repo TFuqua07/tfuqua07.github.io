@@ -385,6 +385,14 @@
     },
     {
       "mission": "Rebirth",
+      "stage": "Glass Port",
+      "pb": "00:35.695",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T11:05:34.651Z"
+    },
+    {
+      "mission": "Rebirth",
       "stage": "Gunner",
       "pb": "00:13.244",
       "medal": "ace",
