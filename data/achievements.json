@@ -344,6 +344,14 @@
   "gd_platformer": [],
   "neon_white": [
     {
+      "mission": "Killer Inside",
+      "stage": "Take Flight",
+      "pb": "00:22.613",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T12:12:40.194Z"
+    },
+    {
       "mission": "Rebirth",
       "stage": "Bounce",
       "pb": "00:20.995",
