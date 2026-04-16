@@ -663,7 +663,9 @@
         "id": 5,
         "completed": true,
         "bindings": {
-          "soul": true
+          "soul": true,
+          "heart": true,
+          "shell": true
         }
       }
     ]
