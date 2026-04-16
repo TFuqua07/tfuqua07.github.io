@@ -646,6 +646,11 @@
         "name": "Gruz Mother",
         "ascended": false,
         "radiant": false
+      },
+      {
+        "name": "Hornet Protector",
+        "radiant": true,
+        "ascended": true
       }
     ],
     "pantheons": []
