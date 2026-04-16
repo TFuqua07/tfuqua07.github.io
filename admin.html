@@ -41,77 +41,29 @@
         }
 
         h1 { font-size: 1.25rem; font-weight: 600; }
-
         .back-link { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
         .back-link:hover { color: var(--text-primary); }
 
         main { max-width: 800px; margin: 0 auto; padding: 2rem; }
 
-        /* Login screen */
-        .login-container {
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; min-height: 60vh; gap: 1.5rem;
-        }
-        .login-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            width: 100%; max-width: 400px;
-        }
+        .login-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; gap: 1.5rem; }
+        .login-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; width: 100%; max-width: 400px; }
         .login-box h2 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
         .login-box p { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1.5rem; }
 
-        /* Buttons */
-        button {
-            background: var(--accent);
-            color: white; border: none;
-            padding: 0.625rem 1.25rem;
-            border-radius: 8px;
-            font-size: 0.875rem; font-weight: 500;
-            cursor: pointer; transition: background 0.15s;
-            font-family: inherit;
-        }
+        button { background: var(--accent); color: white; border: none; padding: 0.625rem 1.25rem; border-radius: 8px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background 0.15s; font-family: inherit; }
         button:hover { background: var(--accent-hover); }
         button:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        button.secondary {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
+        button.secondary { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
         button.secondary:hover { border-color: var(--text-secondary); color: var(--text-primary); background: transparent; }
-
-        button.danger {
-            background: transparent;
-            border: 1px solid rgba(239,68,68,0.3);
-            color: var(--error);
-        }
+        button.danger { background: transparent; border: 1px solid rgba(239,68,68,0.3); color: var(--error); }
         button.danger:hover { background: rgba(239,68,68,0.1); border-color: var(--error); }
 
-        /* Admin panel */
         .admin-panel { display: none; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 
-        .admin-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .tabs {
-            display: flex; gap: 0.5rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .tab {
-            background: none; border: none;
-            color: var(--text-secondary);
-            padding: 0.75rem 1.25rem;
-            cursor: pointer; font-size: 0.875rem; font-weight: 500;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px; font-family: inherit;
-            transition: all 0.15s;
-        }
+        .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+        .tab { background: none; border: none; color: var(--text-secondary); padding: 0.75rem 1.25rem; cursor: pointer; font-size: 0.875rem; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; font-family: inherit; transition: all 0.15s; }
         .tab:hover { color: var(--text-primary); background: none; }
         .tab.active { color: var(--accent); border-bottom-color: var(--accent); background: none; }
 
@@ -119,61 +71,45 @@
         .form-section.active { display: block; }
 
         .form-group { margin-bottom: 1.25rem; }
-
-        label {
-            display: block; margin-bottom: 0.375rem;
-            color: var(--text-secondary); font-size: 0.875rem; font-weight: 500;
-        }
-
-        input, select {
-            width: 100%;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            padding: 0.625rem 0.875rem;
-            border-radius: 8px; font-size: 0.875rem;
-            font-family: inherit; transition: border-color 0.15s;
-        }
+        label { display: block; margin-bottom: 0.375rem; color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; }
+        input, select { width: 100%; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-primary); padding: 0.625rem 0.875rem; border-radius: 8px; font-size: 0.875rem; font-family: inherit; transition: border-color 0.15s; }
         input:focus, select:focus { outline: none; border-color: var(--accent); }
         select option { background: var(--bg-secondary); }
 
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-        .message {
-            padding: 0.875rem 1rem; border-radius: 8px;
-            margin-bottom: 1.25rem; font-size: 0.875rem; display: none;
-        }
-        .message.error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); color: var(--error); display: block; }
+        .message { padding: 0.875rem 1rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.875rem; display: none; }
+        .message.error   { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); color: var(--error); display: block; }
         .message.success { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); color: var(--success); display: block; }
-
-        .entries-list { margin-top: 1.5rem; }
-
-        .entry-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px; padding: 1rem;
-            margin-bottom: 0.625rem;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .entry-info { flex: 1; }
-        .entry-name { font-weight: 500; font-size: 0.9375rem; margin-bottom: 0.25rem; }
-        .entry-meta { font-size: 0.8125rem; color: var(--text-secondary); }
-        .entry-actions { display: flex; gap: 0.5rem; }
-
-        .btn-small { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
 
         .help-text { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.375rem; }
 
-        .setup-notice {
-            background: rgba(99,102,241,0.08);
-            border: 1px solid rgba(99,102,241,0.2);
-            border-radius: 10px; padding: 1rem 1.25rem;
-            font-size: 0.8125rem; color: var(--text-secondary);
-            margin-bottom: 1.5rem; line-height: 1.6;
-        }
+        .entries-list { margin-top: 1.5rem; }
+        .entry-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 0.625rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+        .entry-info { flex: 1; min-width: 0; }
+        .entry-name { font-weight: 500; font-size: 0.9375rem; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .entry-meta { font-size: 0.8125rem; color: var(--text-secondary); }
+        .entry-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+        .btn-small { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
+
+        .section-title { color: var(--text-secondary); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; margin: 1.5rem 0 0.75rem; }
+
+        /* Medal preview strip */
+        .medal-preview { display: flex; gap: 0.4rem; margin-top: 0.75rem; flex-wrap: wrap; }
+        .mp-chip { padding: 0.2rem 0.55rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; border: 1px solid; opacity: 0.4; transition: opacity 0.15s; }
+        .mp-chip.earned { opacity: 1; }
+        .mp-ace      { background: rgba(255,230,80,0.12);  color: #ffe040; border-color: #ffe04044; }
+        .mp-red      { background: rgba(255,50,50,0.12);   color: #ff5252; border-color: #ff525244; }
+        .mp-emerald  { background: rgba(0,200,100,0.12);   color: #00e676; border-color: #00e67644; }
+        .mp-amethyst { background: rgba(180,80,255,0.12);  color: #ce93ff; border-color: #ce93ff44; }
+        .mp-sapphire { background: rgba(0,150,255,0.12);   color: #40c4ff; border-color: #40c4ff44; }
+        .mp-topaz    { background: rgba(255,165,0,0.12);   color: #ffb300; border-color: #ffb30044; }
+        .mp-diamond  { background: rgba(100,240,255,0.13); color: #7fffff; border-color: #7fffff55; }
+
+        .setup-notice { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: 10px; padding: 1rem 1.25rem; font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
         .setup-notice strong { color: var(--text-primary); }
     </style>
-<base target="_blank">
+    <base target="_blank">
 </head>
 <body>
     <header>
@@ -182,7 +118,6 @@
     </header>
 
     <main>
-        <!-- Login view -->
         <div id="login-view" class="login-container">
             <div class="login-box">
                 <h2>Admin Login</h2>
@@ -196,10 +131,9 @@
             </div>
         </div>
 
-        <!-- Admin view -->
         <div id="admin-view" class="admin-panel">
             <div class="admin-header">
-                <span style="color: var(--text-secondary); font-size: 0.875rem;">Logged in as admin</span>
+                <span style="color:var(--text-secondary);font-size:0.875rem">Logged in as admin</span>
                 <button class="secondary" onclick="logout()">Logout</button>
             </div>
 
@@ -211,7 +145,7 @@
                 <button class="tab" onclick="switchTab('settings', this)">Settings</button>
             </div>
 
-            <!-- Add tab -->
+            <!-- ── ADD TAB ── -->
             <div id="add-tab" class="form-section active">
                 <div class="form-group">
                     <label>Category *</label>
@@ -221,62 +155,95 @@
                         <option value="celeste_clears">Celeste Clears</option>
                         <option value="demons">Demons</option>
                         <option value="gd_platformer">Platformer Levels (GD)</option>
+                        <option value="neon_white">Neon White Times</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label>Challenge Name *</label>
-                    <input type="text" id="name" placeholder="e.g. Starfruit Supernova">
-                </div>
-
-                <div class="form-group" id="difficulty-row" style="display:none">
-                    <label id="difficulty-label">Difficulty *</label>
-                    <select id="difficulty"></select>
-                </div>
-
-                <div class="form-group">
-                    <label>Campaign <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
-                    <input type="text" id="campaign" placeholder="e.g. Strawberry Jam">
-                </div>
-
-                <div class="form-group">
-                    <label>Video URL <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
-                    <input type="url" id="video" placeholder="https://youtu.be/..." oninput="previewThumbnail()">
-                    <div class="help-text">Thumbnail auto-extracted from YouTube</div>
-                </div>
-
-                <div class="form-group" id="thumbnail-preview" style="display:none">
-                    <label>Thumbnail Preview</label>
-                    <img id="thumb-img" style="max-width:320px;border-radius:8px;border:1px solid var(--border)" src="">
-                </div>
-
-                <!-- Celeste fields -->
-                <div id="celeste-fields" style="display:none">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Time <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
-                            <input type="text" id="time" placeholder="h:mm:ss">
-                            <div class="help-text">Format: h:mm:ss</div>
-                        </div>
-                        <div class="form-group" id="deaths-group" style="display:none">
-                            <label>Deaths <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
-                            <input type="number" id="deaths" min="0" placeholder="0">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GD fields -->
-                <div id="gd-fields" style="display:none">
+                <!-- Standard fields (Celeste / GD) -->
+                <div id="standard-fields">
                     <div class="form-group">
-                        <label>Attempts <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
-                        <input type="number" id="attempts" min="1" placeholder="e.g. 1500">
+                        <label>Challenge Name *</label>
+                        <input type="text" id="name" placeholder="e.g. Starfruit Supernova">
                     </div>
+
+                    <div class="form-group" id="difficulty-row" style="display:none">
+                        <label id="difficulty-label">Difficulty *</label>
+                        <select id="difficulty"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Campaign <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
+                        <input type="text" id="campaign" placeholder="e.g. Strawberry Jam">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Video URL <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
+                        <input type="url" id="video" placeholder="https://youtu.be/..." oninput="previewThumbnail()">
+                        <div class="help-text">Thumbnail auto-extracted from YouTube</div>
+                    </div>
+
+                    <div class="form-group" id="thumbnail-preview" style="display:none">
+                        <label>Thumbnail Preview</label>
+                        <img id="thumb-img" style="max-width:320px;border-radius:8px;border:1px solid var(--border)" src="">
+                    </div>
+
+                    <div id="celeste-fields" style="display:none">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Time <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
+                                <input type="text" id="time" placeholder="h:mm:ss">
+                                <div class="help-text">Format: h:mm:ss</div>
+                            </div>
+                            <div class="form-group" id="deaths-group" style="display:none">
+                                <label>Deaths <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
+                                <input type="number" id="deaths" min="0" placeholder="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="gd-fields" style="display:none">
+                        <div class="form-group">
+                            <label>Attempts <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
+                            <input type="number" id="attempts" min="1" placeholder="e.g. 1500">
+                        </div>
+                    </div>
+
+                    <button id="save-standard-btn" style="display:none" onclick="saveAchievement()">Save Achievement</button>
                 </div>
 
-                <button onclick="saveAchievement()">Save Achievement</button>
+                <!-- Neon White fields -->
+                <div id="nw-fields" style="display:none">
+                    <div class="form-group">
+                        <label>Mission *</label>
+                        <select id="nw-mission" onchange="onAdminMissionChange()">
+                            <option value="">Select mission...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stage *</label>
+                        <select id="nw-stage" onchange="updateMedalPreview()">
+                            <option value="">Select stage...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Personal Best *</label>
+                        <input type="text" id="nw-pb" placeholder="m:ss.ms  e.g. 0:17.342" oninput="updateMedalPreview()">
+                        <div class="help-text">Format: m:ss.ms  (e.g. 0:17.342 or 1:06.499)</div>
+                        <div id="medal-preview" class="medal-preview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Video URL <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label>
+                        <input type="url" id="nw-video" placeholder="https://youtu.be/...">
+                    </div>
+
+                    <button onclick="submitNWTime()">Save Time</button>
+                </div>
             </div>
 
-            <!-- Manage tab -->
+            <!-- ── MANAGE TAB ── -->
             <div id="manage-tab" class="form-section">
                 <div class="form-group">
                     <label>Filter by Category</label>
@@ -286,12 +253,19 @@
                         <option value="celeste_clears">Celeste Clears</option>
                         <option value="demons">Demons</option>
                         <option value="gd_platformer">Platformer Levels (GD)</option>
+                        <option value="neon_white">Neon White Times</option>
+                    </select>
+                </div>
+                <div class="form-group" id="nw-filter-mission-group" style="display:none">
+                    <label>Filter by Mission</label>
+                    <select id="nw-filter-mission" onchange="renderEntries()">
+                        <option value="">All Missions</option>
                     </select>
                 </div>
                 <div id="entries-list" class="entries-list"></div>
             </div>
 
-            <!-- Settings tab -->
+            <!-- ── SETTINGS TAB ── -->
             <div id="settings-tab" class="form-section">
                 <div class="setup-notice">
                     <strong>GitHub Token</strong><br>
@@ -311,346 +285,501 @@
     </main>
 
     <script>
-        const ADMIN_PASSWORD_HASH = 'c2ebb017e2ae8238800b3548d588ad58f5e839b1746f592f08579c078d0a3f5f';
+    const ADMIN_PASSWORD_HASH = 'c2ebb017e2ae8238800b3548d588ad58f5e839b1746f592f08579c078d0a3f5f';
+    const REPO_OWNER = 'TFuqua07';
+    const REPO_NAME  = 'tfuqua07.github.io';
+    const FILE_PATH  = 'data/achievements.json';
 
-        const REPO_OWNER = 'TFuqua07';
-        const REPO_NAME  = 'tfuqua07.github.io';
-        const FILE_PATH  = 'data/achievements.json';
+    // ─── Neon White data ─────────────────────────────────────────────────────
+    const NW_DATA = {"Rebirth": [{"stage": "Movement", "diamond": "00:17.549", "topaz": "00:17.599", "sapphire": "00:17.699", "amethyst": "00:17.899", "emerald": "00:18.199", "red": "00:18.930", "ace": "00:24.000"}, {"stage": "Pummel", "diamond": "00:05.599", "topaz": "00:05.799", "sapphire": "00:06.139", "amethyst": "00:06.799", "emerald": "00:07.249", "red": "00:08.329", "ace": "00:13.000"}, {"stage": "Gunner", "diamond": "00:06.299", "topaz": "00:06.449", "sapphire": "00:06.666", "amethyst": "00:06.999", "emerald": "00:07.549", "red": "00:09.479", "ace": "00:14.000"}, {"stage": "Cascade", "diamond": "00:08.649", "topaz": "00:08.729", "sapphire": "00:08.899", "amethyst": "00:09.199", "emerald": "00:09.549", "red": "00:10.210", "ace": "00:15.500"}, {"stage": "Elevate", "diamond": "00:13.799", "topaz": "00:13.799", "sapphire": "00:14.349", "amethyst": "00:14.849", "emerald": "00:15.399", "red": "00:16.420", "ace": "00:21.000"}, {"stage": "Bounce", "diamond": "00:14.949", "topaz": "00:14.999", "sapphire": "00:15.149", "amethyst": "00:15.599", "emerald": "00:16.249", "red": "00:19.059", "ace": "00:30.000"}, {"stage": "Purify", "diamond": "00:07.949", "topaz": "00:07.999", "sapphire": "00:08.219", "amethyst": "00:08.449", "emerald": "00:08.799", "red": "00:10.449", "ace": "00:13.500"}, {"stage": "Climb", "diamond": "00:10.299", "topaz": "00:10.349", "sapphire": "00:10.459", "amethyst": "00:10.649", "emerald": "00:10.999", "red": "00:12.750", "ace": "00:27.000"}, {"stage": "Fasttrack", "diamond": "00:18.699", "topaz": "00:18.999", "sapphire": "00:19.499", "amethyst": "00:20.999", "emerald": "00:21.999", "red": "00:25.440", "ace": "00:30.000"}, {"stage": "Glass Port", "diamond": "00:16.599", "topaz": "00:17.199", "sapphire": "00:18.499", "amethyst": "00:19.459", "emerald": "00:22.199", "red": "00:25.319", "ace": "00:37.000"}], "Killer Inside": [{"stage": "Take Flight", "diamond": "00:13.849", "topaz": "00:14.149", "sapphire": "00:14.599", "amethyst": "00:15.249", "emerald": "00:15.799", "red": "00:17.540", "ace": "00:23.000"}, {"stage": "Godspeed", "diamond": "00:05.699", "topaz": "00:05.749", "sapphire": "00:05.899", "amethyst": "00:05.950", "emerald": "00:05.969", "red": "00:06.139", "ace": "00:11.000"}, {"stage": "Dasher", "diamond": "00:08.499", "topaz": "00:08.579", "sapphire": "00:08.779", "amethyst": "00:09.199", "emerald": "00:09.599", "red": "00:10.210", "ace": "00:15.000"}, {"stage": "Thrasher", "diamond": "00:11.199", "topaz": "00:11.219", "sapphire": "00:11.339", "amethyst": "00:11.499", "emerald": "00:11.849", "red": "00:12.420", "ace": "00:18.000"}, {"stage": "Outstretched", "diamond": "00:08.899", "topaz": "00:08.949", "sapphire": "00:09.149", "amethyst": "00:09.499", "emerald": "00:09.999", "red": "00:10.350", "ace": "00:12.500"}, {"stage": "Smackdown", "diamond": "00:08.799", "topaz": "00:08.929", "sapphire": "00:09.299", "amethyst": "00:09.799", "emerald": "00:09.999", "red": "00:10.819", "ace": "00:14.000"}, {"stage": "Catwalk", "diamond": "00:12.999", "topaz": "00:13.099", "sapphire": "00:13.349", "amethyst": "00:13.549", "emerald": "00:13.849", "red": "00:14.229", "ace": "00:16.500"}, {"stage": "Fastlane", "diamond": "00:21.149", "topaz": "00:21.239", "sapphire": "00:21.399", "amethyst": "00:21.649", "emerald": "00:21.999", "red": "00:22.450", "ace": "00:26.000"}, {"stage": "Distinguish", "diamond": "00:14.499", "topaz": "00:14.549", "sapphire": "00:14.699", "amethyst": "00:14.999", "emerald": "00:15.349", "red": "00:15.890", "ace": "00:21.500"}, {"stage": "Dancer", "diamond": "00:15.099", "topaz": "00:15.199", "sapphire": "00:15.399", "amethyst": "00:15.749", "emerald": "00:16.199", "red": "00:17.069", "ace": "00:22.000"}], "Only Shallow": [{"stage": "Guardian", "diamond": "00:16.999", "topaz": "00:17.399", "sapphire": "00:18.249", "amethyst": "00:19.679", "emerald": "00:20.549", "red": "00:22.649", "ace": "00:28.500"}, {"stage": "Stomp", "diamond": "00:12.299", "topaz": "00:12.599", "sapphire": "00:13.499", "amethyst": "00:13.899", "emerald": "00:14.699", "red": "00:15.340", "ace": "00:19.500"}, {"stage": "Jumper", "diamond": "00:10.899", "topaz": "00:11.099", "sapphire": "00:11.449", "amethyst": "00:12.599", "emerald": "00:13.599", "red": "00:19.159", "ace": "00:24.000"}, {"stage": "Dash Tower", "diamond": "00:10.299", "topaz": "00:10.449", "sapphire": "00:10.999", "amethyst": "00:12.199", "emerald": "00:12.999", "red": "00:14.729", "ace": "00:20.500"}, {"stage": "Descent", "diamond": "00:08.899", "topaz": "00:08.999", "sapphire": "00:09.229", "amethyst": "00:09.499", "emerald": "00:09.999", "red": "00:11.399", "ace": "00:16.000"}, {"stage": "Driller", "diamond": "00:09.799", "topaz": "00:10.299", "sapphire": "00:10.549", "amethyst": "00:10.879", "emerald": "00:11.199", "red": "00:12.619", "ace": "00:16.500"}, {"stage": "Canals", "diamond": "00:12.899", "topaz": "00:13.199", "sapphire": "00:13.649", "amethyst": "00:14.649", "emerald": "00:16.999", "red": "00:30.079", "ace": "00:40.000"}, {"stage": "Sprint", "diamond": "00:14.649", "topaz": "00:14.699", "sapphire": "00:15.299", "amethyst": "00:15.999", "emerald": "00:16.649", "red": "00:19.639", "ace": "00:25.000"}, {"stage": "Mountain", "diamond": "00:13.999", "topaz": "00:14.299", "sapphire": "00:15.499", "amethyst": "00:15.999", "emerald": "00:17.299", "red": "00:19.809", "ace": "00:25.000"}, {"stage": "Superkinetic", "diamond": "00:12.699", "topaz": "00:12.899", "sapphire": "00:13.499", "amethyst": "00:14.299", "emerald": "00:16.299", "red": "00:20.100", "ace": "00:24.000"}], "The Old City": [{"stage": "Arrival", "diamond": "00:20.149", "topaz": "00:20.249", "sapphire": "00:20.499", "amethyst": "00:20.849", "emerald": "00:21.579", "red": "00:22.959", "ace": "00:26.000"}, {"stage": "Forgotten City", "diamond": "00:22.449", "topaz": "00:22.699", "sapphire": "00:23.199", "amethyst": "00:24.299", "emerald": "00:27.999", "red": "00:33.020", "ace": "00:37.500"}, {"stage": "The Clocktower", "diamond": "00:29.399", "topaz": "00:29.999", "sapphire": "00:30.999", "amethyst": "00:33.899", "emerald": "00:36.599", "red": "00:53.680", "ace": "01:37.000"}], "The Burn that  Cures": [{"stage": "Fireball", "diamond": "00:15.299", "topaz": "00:15.449", "sapphire": "00:15.749", "amethyst": "00:16.499", "emerald": "00:17.299", "red": "00:19.120", "ace": "00:24.000"}, {"stage": "Ringer", "diamond": "00:10.399", "topaz": "00:10.699", "sapphire": "00:11.499", "amethyst": "00:12.879", "emerald": "00:13.999", "red": "00:16.600", "ace": "00:20.500"}, {"stage": "Cleaner", "diamond": "00:09.449", "topaz": "00:09.849", "sapphire": "00:10.299", "amethyst": "00:11.449", "emerald": "00:12.999", "red": "00:14.319", "ace": "00:28.000"}, {"stage": "Warehouse", "diamond": "00:10.149", "topaz": "00:10.349", "sapphire": "00:10.649", "amethyst": "00:11.179", "emerald": "00:11.799", "red": "00:13.989", "ace": "00:17.000"}, {"stage": "Boom", "diamond": "00:13.999", "topaz": "00:14.349", "sapphire": "00:14.799", "amethyst": "00:15.499", "emerald": "00:16.349", "red": "00:18.450", "ace": "00:24.500"}, {"stage": "Streets", "diamond": "00:05.699", "topaz": "00:05.979", "sapphire": "00:06.249", "amethyst": "00:06.899", "emerald": "00:07.399", "red": "00:09.609", "ace": "00:15.000"}, {"stage": "Steps", "diamond": "00:11.199", "topaz": "00:11.449", "sapphire": "00:11.699", "amethyst": "00:12.099", "emerald": "00:12.499", "red": "00:15.159", "ace": "00:19.000"}, {"stage": "Demolition", "diamond": "00:05.549", "topaz": "00:05.649", "sapphire": "00:05.899", "amethyst": "00:06.549", "emerald": "00:07.099", "red": "00:09.739", "ace": "00:16.500"}, {"stage": "Arcs", "diamond": "00:15.099", "topaz": "00:15.549", "sapphire": "00:15.849", "amethyst": "00:16.399", "emerald": "00:17.299", "red": "00:18.620", "ace": "00:25.500"}, {"stage": "Apartment", "diamond": "00:10.299", "topaz": "00:10.649", "sapphire": "00:11.249", "amethyst": "00:12.879", "emerald": "00:15.399", "red": "00:23.799", "ace": "00:35.000"}], "Covenant": [{"stage": "Hanging Gardens", "diamond": "00:20.999", "topaz": "00:21.199", "sapphire": "00:21.499", "amethyst": "00:21.999", "emerald": "00:22.999", "red": "00:24.790", "ace": "00:39.500"}, {"stage": "Tangled", "diamond": "00:11.499", "topaz": "00:11.649", "sapphire": "00:11.879", "amethyst": "00:12.349", "emerald": "00:13.499", "red": "00:13.989", "ace": "00:21.500"}, {"stage": "Waterworks", "diamond": "00:18.899", "topaz": "00:18.999", "sapphire": "00:19.199", "amethyst": "00:19.499", "emerald": "00:20.299", "red": "00:21.979", "ace": "00:25.000"}, {"stage": "Killswitch", "diamond": "00:21.999", "topaz": "00:22.449", "sapphire": "00:22.999", "amethyst": "00:23.999", "emerald": "00:25.299", "red": "00:27.649", "ace": "00:32.500"}, {"stage": "Falling", "diamond": "00:18.199", "topaz": "00:18.349", "sapphire": "00:18.599", "amethyst": "00:19.149", "emerald": "00:20.499", "red": "00:22.489", "ace": "00:28.000"}, {"stage": "Shocker", "diamond": "00:21.299", "topaz": "00:21.799", "sapphire": "00:23.399", "amethyst": "00:27.299", "emerald": "00:28.299", "red": "00:28.750", "ace": "00:37.000"}, {"stage": "Bouquet", "diamond": "00:17.299", "topaz": "00:18.499", "sapphire": "00:19.699", "amethyst": "00:20.999", "emerald": "00:22.499", "red": "00:27.760", "ace": "00:33.500"}, {"stage": "Prepare", "diamond": "00:21.699", "topaz": "00:23.199", "sapphire": "00:24.099", "amethyst": "00:25.249", "emerald": "00:27.599", "red": "00:30.090", "ace": "00:34.500"}, {"stage": "Triptrack", "diamond": "00:23.999", "topaz": "00:24.999", "sapphire": "00:26.099", "amethyst": "00:27.899", "emerald": "00:32.899", "red": "00:35.979", "ace": "00:44.000"}, {"stage": "Race", "diamond": "00:20.499", "topaz": "00:20.899", "sapphire": "00:21.599", "amethyst": "00:22.249", "emerald": "00:23.099", "red": "00:26.139", "ace": "00:28.500"}], "Reckoning": [{"stage": "Bubble", "diamond": "00:13.349", "topaz": "00:13.549", "sapphire": "00:13.999", "amethyst": "00:14.499", "emerald": "00:16.199", "red": "00:19.430", "ace": "00:26.500"}, {"stage": "Shield", "diamond": "00:13.349", "topaz": "00:13.649", "sapphire": "00:14.299", "amethyst": "00:15.399", "emerald": "00:16.799", "red": "00:18.739", "ace": "00:26.500"}, {"stage": "Overlook", "diamond": "00:11.299", "topaz": "00:11.549", "sapphire": "00:11.799", "amethyst": "00:12.299", "emerald": "00:13.349", "red": "00:15.449", "ace": "00:19.500"}, {"stage": "Pop", "diamond": "00:22.649", "topaz": "00:22.799", "sapphire": "00:23.349", "amethyst": "00:23.879", "emerald": "00:24.699", "red": "00:26.030", "ace": "00:41.000"}, {"stage": "Minefield", "diamond": "00:09.799", "topaz": "00:09.999", "sapphire": "00:10.549", "amethyst": "00:11.599", "emerald": "00:12.999", "red": "00:17.559", "ace": "00:22.000"}, {"stage": "Mimic", "diamond": "00:08.549", "topaz": "00:08.699", "sapphire": "00:09.099", "amethyst": "00:09.349", "emerald": "00:09.799", "red": "00:10.700", "ace": "00:14.500"}, {"stage": "Trigger", "diamond": "00:16.349", "topaz": "00:16.699", "sapphire": "00:17.499", "amethyst": "00:18.999", "emerald": "00:20.099", "red": "00:24.389", "ace": "00:31.500"}, {"stage": "Greenhouse", "diamond": "00:06.899", "topaz": "00:07.069", "sapphire": "00:07.179", "amethyst": "00:07.499", "emerald": "00:07.699", "red": "00:11.319", "ace": "00:19.500"}, {"stage": "Sweep", "diamond": "00:14.499", "topaz": "00:15.699", "sapphire": "00:16.199", "amethyst": "00:16.749", "emerald": "00:17.999", "red": "00:20.309", "ace": "00:26.000"}, {"stage": "Fuse", "diamond": "00:18.999", "topaz": "00:19.499", "sapphire": "00:20.499", "amethyst": "00:22.999", "emerald": "00:24.999", "red": "00:29.190", "ace": "00:43.500"}], "Benediction": [{"stage": "Heaven's Edge", "diamond": "00:10.499", "topaz": "00:10.599", "sapphire": "00:10.999", "amethyst": "00:11.649", "emerald": "00:12.299", "red": "00:18.139", "ace": "00:27.500"}, {"stage": "Zipline", "diamond": "00:10.799", "topaz": "00:10.899", "sapphire": "00:11.199", "amethyst": "00:11.579", "emerald": "00:11.899", "red": "00:17.559", "ace": "00:22.000"}, {"stage": "Swing", "diamond": "00:12.599", "topaz": "00:12.999", "sapphire": "00:13.999", "amethyst": "00:15.349", "emerald": "00:16.699", "red": "00:23.120", "ace": "00:30.000"}, {"stage": "Chute", "diamond": "00:32.649", "topaz": "00:33.299", "sapphire": "00:34.499", "amethyst": "00:36.499", "emerald": "00:39.899", "red": "00:46.279", "ace": "00:53.000"}, {"stage": "Crash", "diamond": "00:22.999", "topaz": "00:23.549", "sapphire": "00:24.499", "amethyst": "00:26.379", "emerald": "00:28.499", "red": "00:33.220", "ace": "00:41.000"}, {"stage": "Ascent", "diamond": "00:19.999", "topaz": "00:20.299", "sapphire": "00:20.849", "amethyst": "00:22.499", "emerald": "00:25.599", "red": "00:34.659", "ace": "00:43.000"}, {"stage": "Straightaway", "diamond": "00:33.649", "topaz": "00:34.599", "sapphire": "00:36.299", "amethyst": "00:37.999", "emerald": "00:39.599", "red": "00:42.209", "ace": "00:48.500"}, {"stage": "Firecracker", "diamond": "00:24.599", "topaz": "00:25.799", "sapphire": "00:26.999", "amethyst": "00:30.579", "emerald": "00:33.999", "red": "00:40.569", "ace": "00:48.500"}, {"stage": "Streak", "diamond": "00:17.699", "topaz": "00:18.399", "sapphire": "00:19.749", "amethyst": "00:21.499", "emerald": "00:25.099", "red": "00:38.450", "ace": "00:46.000"}, {"stage": "Mirror", "diamond": "00:22.299", "topaz": "00:22.799", "sapphire": "00:23.449", "amethyst": "00:24.999", "emerald": "00:27.999", "red": "00:47.200", "ace": "00:57.000"}], "Apocrypha": [{"stage": "Escalation", "diamond": "00:20.999", "topaz": "00:21.799", "sapphire": "00:22.666", "amethyst": "00:23.999", "emerald": "00:25.899", "red": "00:28.940", "ace": "00:49.000"}, {"stage": "Bolt", "diamond": "00:20.499", "topaz": "00:21.999", "sapphire": "00:23.899", "amethyst": "00:25.599", "emerald": "00:29.299", "red": "00:40.189", "ace": "00:48.500"}, {"stage": "Godstreak", "diamond": "00:20.699", "topaz": "00:21.999", "sapphire": "00:24.399", "amethyst": "00:25.799", "emerald": "00:26.999", "red": "00:30.760", "ace": "00:41.000"}, {"stage": "Plunge", "diamond": "00:27.999", "topaz": "00:28.499", "sapphire": "00:28.899", "amethyst": "00:29.799", "emerald": "00:31.199", "red": "00:35.430", "ace": "00:45.500"}, {"stage": "Mayhem", "diamond": "00:13.699", "topaz": "00:14.199", "sapphire": "00:15.499", "amethyst": "00:16.749", "emerald": "00:18.199", "red": "00:28.270", "ace": "00:42.000"}, {"stage": "Barrage", "diamond": "00:21.999", "topaz": "00:24.099", "sapphire": "00:25.799", "amethyst": "00:28.299", "emerald": "00:31.899", "red": "00:36.979", "ace": "00:46.000"}, {"stage": "Estate", "diamond": "00:25.999", "topaz": "00:26.999", "sapphire": "00:28.699", "amethyst": "00:31.999", "emerald": "00:36.727", "red": "00:44.979", "ace": "00:58.000"}, {"stage": "Trapwire", "diamond": "00:19.299", "topaz": "00:19.499", "sapphire": "00:19.899", "amethyst": "00:20.399", "emerald": "00:22.099", "red": "00:24.600", "ace": "00:37.000"}, {"stage": "Ricochet", "diamond": "00:22.999", "topaz": "00:27.199", "sapphire": "00:28.999", "amethyst": "00:31.179", "emerald": "00:33.799", "red": "00:36.330", "ace": "00:43.500"}, {"stage": "Fortress", "diamond": "00:19.349", "topaz": "00:21.199", "sapphire": "00:22.666", "amethyst": "00:24.199", "emerald": "00:29.099", "red": "00:34.810", "ace": "00:49.500"}], "The Third Temple": [{"stage": "Holy Ground", "diamond": "00:49.499", "topaz": "00:49.749", "sapphire": "00:50.549", "amethyst": "00:51.499", "emerald": "00:52.799", "red": "01:16.500", "ace": "02:00.000"}, {"stage": "The Third Temple", "diamond": "00:46.999", "topaz": "00:48.999", "sapphire": "00:53.499", "amethyst": "00:59.999", "emerald": "01:09.799", "red": "02:27.169", "ace": "03:57.500"}], "Thousand Pound Butterfly": [{"stage": "Spree", "diamond": "00:05.999", "topaz": "00:06.249", "sapphire": "00:06.666", "amethyst": "00:07.499", "emerald": "00:08.399", "red": "00:20.649", "ace": "00:27.000"}, {"stage": "Breakthrough", "diamond": "00:03.999", "topaz": "00:04.299", "sapphire": "00:04.599", "amethyst": "00:05.299", "emerald": "00:07.899", "red": "00:17.450", "ace": "00:23.000"}, {"stage": "Glide", "diamond": "00:06.899", "topaz": "00:07.299", "sapphire": "00:07.777", "amethyst": "00:08.699", "emerald": "00:09.899", "red": "00:23.319", "ace": "00:31.000"}, {"stage": "Closer", "diamond": "00:09.599", "topaz": "00:09.799", "sapphire": "00:10.099", "amethyst": "00:10.899", "emerald": "00:12.399", "red": "00:34.150", "ace": "00:38.000"}, {"stage": "Hike", "diamond": "00:05.499", "topaz": "00:05.749", "sapphire": "00:06.249", "amethyst": "00:07.099", "emerald": "00:08.099", "red": "00:22.489", "ace": "00:36.500"}, {"stage": "Switch", "diamond": "00:09.549", "topaz": "00:09.899", "sapphire": "00:10.499", "amethyst": "00:11.889", "emerald": "00:12.899", "red": "00:32.430", "ace": "00:43.000"}, {"stage": "Access", "diamond": "00:11.699", "topaz": "00:12.099", "sapphire": "00:13.199", "amethyst": "00:14.799", "emerald": "00:16.499", "red": "00:23.850", "ace": "00:35.500"}, {"stage": "Congregation", "diamond": "00:19.899", "topaz": "00:20.299", "sapphire": "00:20.899", "amethyst": "00:22.899", "emerald": "00:24.899", "red": "00:33.240", "ace": "00:47.500"}, {"stage": "Sequence", "diamond": "00:07.999", "topaz": "00:08.499", "sapphire": "00:09.099", "amethyst": "00:09.849", "emerald": "00:10.999", "red": "00:14.319", "ace": "00:25.000"}, {"stage": "Marathon", "diamond": "00:09.999", "topaz": "00:10.799", "sapphire": "00:11.799", "amethyst": "00:12.999", "emerald": "00:15.299", "red": "01:31.330", "ace": "01:59.980"}], "Hand of God": [{"stage": "Sacrifice", "diamond": "00:15.999", "topaz": "00:16.349", "sapphire": "00:16.859", "amethyst": "00:18.999", "emerald": "00:19.599", "red": "01:28.680", "ace": "01:39.000"}, {"stage": "Absolution", "diamond": "01:06.499", "topaz": "01:09.999", "sapphire": "01:13.999", "amethyst": "01:18.999", "emerald": "01:25.999", "red": "01:47.629", "ace": "02:45.000"}]};
 
-        // GD tier names - 20 tiers
-        const gdTierNames = {
-            1: 'Beginner', 2: 'Easy', 3: 'Medium', 4: 'Hard', 5: 'Very Hard',
-            6: 'Insane', 7: 'Extreme', 8: 'Remorseless', 9: 'Relentless',
-            10: 'Terrifying', 11: 'Catastrophic', 12: 'Inexorable',
-            13: 'Excruciating', 14: 'Merciless', 15: 'Monstrous',
-            16: 'Apocalyptic', 17: 'Demonic', 18: 'Menacing', 19: 'Unreal', 20: 'Nightmare'
+    const MEDAL_ORDER  = ['diamond','topaz','sapphire','amethyst','emerald','red','ace'];
+    const MEDAL_LABELS = { diamond:'Diamond', topaz:'Topaz', sapphire:'Sapphire', amethyst:'Amethyst', emerald:'Emerald', red:'Red', ace:'Ace' };
+
+    const gdTierNames = {
+        1:'Beginner',2:'Easy',3:'Medium',4:'Hard',5:'Very Hard',
+        6:'Insane',7:'Extreme',8:'Remorseless',9:'Relentless',10:'Terrifying',
+        11:'Catastrophic',12:'Inexorable',13:'Excruciating',14:'Merciless',15:'Monstrous',
+        16:'Apocalyptic',17:'Demonic',18:'Menacing',19:'Unreal',20:'Nightmare'
+    };
+
+    let allEntries = {};
+    let currentSha = null;
+
+    // ─── Auth ────────────────────────────────────────────────────────────────
+    async function hashPassword(pw) {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+        return [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2,'0')).join('');
+    }
+
+    async function login() {
+        const pw = document.getElementById('password-input').value;
+        const hash = await hashPassword(pw);
+        if (hash === ADMIN_PASSWORD_HASH) {
+            sessionStorage.setItem('admin_auth', '1');
+            showAdmin();
+        } else {
+            const msg = document.getElementById('login-message');
+            msg.textContent = 'Incorrect password';
+            msg.className = 'message error';
+        }
+    }
+
+    function logout() {
+        sessionStorage.removeItem('admin_auth');
+        document.getElementById('admin-view').style.display = 'none';
+        document.getElementById('login-view').style.display = 'flex';
+        document.getElementById('password-input').value = '';
+    }
+
+    function showAdmin() {
+        document.getElementById('login-view').style.display = 'none';
+        document.getElementById('admin-view').style.display = 'block';
+        updateTokenStatus();
+        loadEntries();
+        populateNWMissionDropdowns();
+    }
+
+    if (sessionStorage.getItem('admin_auth') === '1') showAdmin();
+
+    // ─── Token / GitHub ──────────────────────────────────────────────────────
+    function getToken() { return localStorage.getItem('gh_token') || ''; }
+
+    function saveToken() {
+        const t = document.getElementById('token-input').value.trim();
+        if (!t) { showMessage('Please enter a token', 'error'); return; }
+        localStorage.setItem('gh_token', t);
+        document.getElementById('token-input').value = '';
+        updateTokenStatus();
+        showMessage('Token saved!', 'success');
+    }
+
+    function clearToken() {
+        localStorage.removeItem('gh_token');
+        updateTokenStatus();
+        showMessage('Token cleared', 'success');
+    }
+
+    function updateTokenStatus() {
+        const el = document.getElementById('token-status');
+        if (!el) return;
+        el.textContent = getToken() ? '✓ Token is set' : '⚠ No token set — saving will fail';
+        el.style.color = getToken() ? 'var(--success)' : 'var(--error)';
+    }
+
+    async function ghFetch(method, body) {
+        const token = getToken();
+        if (!token) throw new Error('No GitHub token set. Go to Settings tab.');
+        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+        const opts = {
+            method,
+            headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }
+        };
+        if (body) opts.body = JSON.stringify(body);
+        const res = await fetch(url, opts);
+        if (!res.ok) { const err = await res.text(); throw new Error(`GitHub error ${res.status}: ${err}`); }
+        return res.json();
+    }
+
+    async function loadEntries() {
+        try {
+            const data = await ghFetch('GET');
+            const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
+            currentSha = data.sha;
+            allEntries = content;
+            renderEntries();
+        } catch (err) {
+            showMessage('Error loading: ' + err.message, 'error');
+        }
+    }
+
+    async function saveEntries() {
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(allEntries, null, 2))));
+        const data = await ghFetch('PUT', { message: 'Update achievements', content, sha: currentSha });
+        currentSha = data.content.sha;
+    }
+
+    // ─── Neon White helpers ──────────────────────────────────────────────────
+    function timeToMs(str) {
+        if (!str) return Infinity;
+        const parts = str.split(':');
+        const mins = parseInt(parts[0]);
+        const secParts = parts[1].split('.');
+        return (mins * 60 + parseInt(secParts[0])) * 1000 + parseInt(secParts[1] || 0);
+    }
+
+    function isValidTimeFormat(str) { return /^\d+:\d{2}\.\d{3}$/.test(str.trim()); }
+
+    function getMedalForTime(pb, stageData) {
+        if (!pb) return null;
+        const pbMs = timeToMs(pb);
+        for (const medal of MEDAL_ORDER) {
+            if (stageData[medal] && pbMs <= timeToMs(stageData[medal])) return medal;
+        }
+        return null;
+    }
+
+    function getNWSavedData() {
+        try { return JSON.parse(localStorage.getItem('nw_times') || '{}'); } catch { return {}; }
+    }
+    function setNWSavedData(d) { localStorage.setItem('nw_times', JSON.stringify(d)); }
+
+    function populateNWMissionDropdowns() {
+        const missions = Object.keys(NW_DATA);
+        ['nw-mission', 'nw-filter-mission'].forEach(id => {
+            const sel = document.getElementById(id);
+            if (!sel) return;
+            while (sel.options.length > 1) sel.remove(1);
+            missions.forEach(m => {
+                const o = document.createElement('option');
+                o.value = m; o.textContent = m;
+                sel.appendChild(o);
+            });
+        });
+    }
+
+    function onAdminMissionChange() {
+        const mission = document.getElementById('nw-mission').value;
+        const stageSel = document.getElementById('nw-stage');
+        stageSel.innerHTML = '<option value="">Select stage...</option>';
+        if (mission && NW_DATA[mission]) {
+            NW_DATA[mission].forEach(s => {
+                const o = document.createElement('option');
+                o.value = s.stage; o.textContent = s.stage;
+                stageSel.appendChild(o);
+            });
+        }
+        updateMedalPreview();
+    }
+
+    function updateMedalPreview() {
+        const mission = document.getElementById('nw-mission').value;
+        const stage   = document.getElementById('nw-stage').value;
+        const pb      = document.getElementById('nw-pb').value.trim();
+        const container = document.getElementById('medal-preview');
+        if (!container) return;
+        if (!mission || !stage) { container.innerHTML = ''; return; }
+        const stageData = (NW_DATA[mission] || []).find(s => s.stage === stage);
+        if (!stageData) { container.innerHTML = ''; return; }
+        const achievedMedal = pb && isValidTimeFormat(pb) ? getMedalForTime(pb, stageData) : null;
+        const achievedIdx = achievedMedal ? MEDAL_ORDER.indexOf(achievedMedal) : -1;
+        container.innerHTML = MEDAL_ORDER.map((m, i) => {
+            const earned = achievedIdx >= 0 && i >= achievedIdx;
+            return `<span class="mp-chip mp-${m} ${earned ? 'earned' : ''}">${MEDAL_LABELS[m]}: ${stageData[m]}</span>`;
+        }).join('');
+    }
+
+    function submitNWTime() {
+        const mission = document.getElementById('nw-mission').value;
+        const stage   = document.getElementById('nw-stage').value;
+        const pb      = document.getElementById('nw-pb').value.trim();
+        const video   = document.getElementById('nw-video').value.trim();
+
+        if (!mission) { showMessage('Please select a mission', 'error'); return; }
+        if (!stage)   { showMessage('Please select a stage', 'error'); return; }
+        if (!pb)      { showMessage('Please enter a time', 'error'); return; }
+        if (!isValidTimeFormat(pb)) { showMessage('Time format should be m:ss.ms (e.g. 0:17.342)', 'error'); return; }
+
+        const saved = getNWSavedData();
+        const key = `${mission}||${stage}`;
+        saved[key] = { pb, video: video || null, updatedAt: new Date().toISOString() };
+        setNWSavedData(saved);
+
+        const stageData = (NW_DATA[mission] || []).find(s => s.stage === stage);
+        const medal = stageData ? getMedalForTime(pb, stageData) : null;
+        const medalMsg = medal ? ` — ${MEDAL_LABELS[medal]} medal! 🎉` : ' — no medal yet';
+        showMessage(`Saved ${stage} (${mission}): ${pb}${medalMsg}`, 'success');
+
+        document.getElementById('nw-pb').value = '';
+        document.getElementById('nw-video').value = '';
+        document.getElementById('medal-preview').innerHTML = '';
+    }
+
+function updateFormFields() {
+    const category = document.getElementById('category').value;
+    const standardFields = document.getElementById('standard-fields');
+    const diffRow = document.getElementById('difficulty-row');
+    const diffSelect = document.getElementById('difficulty');
+    const diffLabel = document.getElementById('difficulty-label');
+    const celesteFields = document.getElementById('celeste-fields');
+    const gdFields = document.getElementById('gd-fields');
+    const deathsGroup = document.getElementById('deaths-group');
+    const nwFields = document.getElementById('nw-fields');
+    const saveBtn = document.getElementById('save-standard-btn');
+
+    // Reset visibility - hide everything first
+    standardFields.style.display = 'none';
+    celesteFields.style.display = 'none';
+    gdFields.style.display = 'none';
+    deathsGroup.style.display = 'none';
+    diffRow.style.display = 'none';
+    nwFields.style.display = 'none';
+    saveBtn.style.display = 'none';
+    diffSelect.innerHTML = '';
+
+    if (!category) return;
+
+    if (category === 'neon_white') {
+        nwFields.style.display = 'block';
+        return;
+    }
+
+    // Show standard fields for Celeste/Demon/Platformer categories
+    standardFields.style.display = 'block';
+    saveBtn.style.display = 'inline-block';
+    diffRow.style.display = 'block';
+
+    if (category === 'celeste_clears') {
+        diffLabel.textContent = 'Star Rating *';
+        for (let i = 9; i >= 1; i--) {
+            const o = document.createElement('option');
+            o.value = i; o.textContent = `${i} Star`;
+            diffSelect.appendChild(o);
+        }
+        celesteFields.style.display = 'block';
+        deathsGroup.style.display = 'block';
+    } else if (category === 'celeste_goldens') {
+        diffLabel.textContent = 'Tier *';
+        for (let i = 22; i >= 1; i--) {
+            const o = document.createElement('option');
+            o.value = i; o.textContent = `Tier ${i}`;
+            diffSelect.appendChild(o);
+        }
+        celesteFields.style.display = 'block';
+    } else {
+        diffLabel.textContent = 'Tier *';
+        for (let i = 20; i >= 1; i--) {
+            const o = document.createElement('option');
+            o.value = i; o.textContent = gdTierNames[i];
+            diffSelect.appendChild(o);
+        }
+        gdFields.style.display = 'block';
+    }
+}
+
+    function previewThumbnail() {
+        const url = document.getElementById('video').value;
+        const preview = document.getElementById('thumbnail-preview');
+        const img = document.getElementById('thumb-img');
+        const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+        if (match) {
+            img.src = `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
+            preview.style.display = 'block';
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+
+    async function saveAchievement() {
+        const category = document.getElementById('category').value;
+        const name = document.getElementById('name').value.trim();
+        const difficulty = document.getElementById('difficulty').value;
+
+        if (!category) { showMessage('Please select a category', 'error'); return; }
+        if (!name) { showMessage('Please enter a name', 'error'); return; }
+        if (!difficulty) { showMessage('Please select a difficulty', 'error'); return; }
+
+        const videoUrl = document.getElementById('video').value.trim();
+        const entry = {
+            name,
+            campaign: document.getElementById('campaign').value.trim() || null,
+            video: videoUrl || null,
+            date: new Date().toISOString()
         };
 
-        let allEntries = {};
-        let currentSha = null;
-
-        async function hashPassword(pw) {
-            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
-            return [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2,'0')).join('');
+        if (videoUrl) {
+            const m = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+            if (m) entry.thumbnail = `https://img.youtube.com/vi/${m[1]}/hqdefault.jpg`;
         }
 
-        async function login() {
-            const pw = document.getElementById('password-input').value;
-            const hash = await hashPassword(pw);
-            if (hash === ADMIN_PASSWORD_HASH) {
-                sessionStorage.setItem('admin_auth', '1');
-                showAdmin();
-            } else {
-                const msg = document.getElementById('login-message');
-                msg.textContent = 'Incorrect password';
-                msg.className = 'message error';
-            }
-        }
-
-        function logout() {
-            sessionStorage.removeItem('admin_auth');
-            document.getElementById('admin-view').style.display = 'none';
-            document.getElementById('login-view').style.display = 'flex';
-            document.getElementById('password-input').value = '';
-        }
-
-        function showAdmin() {
-            document.getElementById('login-view').style.display = 'none';
-            document.getElementById('admin-view').style.display = 'block';
-            updateTokenStatus();
-            loadEntries();
-        }
-
-        // Check if already logged in this session
-        if (sessionStorage.getItem('admin_auth') === '1') showAdmin();
-
-        // ─── TOKEN SETTINGS ────────────────────────────────────────────────────
-        function getToken() { return localStorage.getItem('gh_token') || ''; }
-
-        function saveToken() {
-            const t = document.getElementById('token-input').value.trim();
-            if (!t) { showMessage('Please enter a token', 'error'); return; }
-            localStorage.setItem('gh_token', t);
-            document.getElementById('token-input').value = '';
-            updateTokenStatus();
-            showMessage('Token saved!', 'success');
-        }
-
-        function clearToken() {
-            localStorage.removeItem('gh_token');
-            updateTokenStatus();
-            showMessage('Token cleared', 'success');
-        }
-
-        function updateTokenStatus() {
-            const el = document.getElementById('token-status');
-            if (!el) return;
-            el.textContent = getToken() ? '✓ Token is set' : '⚠ No token set — saving will fail';
-            el.style.color = getToken() ? 'var(--success)' : 'var(--error)';
-        }
-
-        // ─── GITHUB API ────────────────────────────────────────────────────────
-        async function ghFetch(method, body) {
-            const token = getToken();
-            if (!token) throw new Error('No GitHub token set. Go to Settings tab.');
-
-            const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
-            const opts = {
-                method,
-                headers: {
-                    'Authorization': `token ${token}`,
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Content-Type': 'application/json'
-                }
-            };
-            if (body) opts.body = JSON.stringify(body);
-            const res = await fetch(url, opts);
-            if (!res.ok) {
-                const err = await res.text();
-                throw new Error(`GitHub error ${res.status}: ${err}`);
-            }
-            return res.json();
-        }
-
-        async function loadEntries() {
-            try {
-                const data = await ghFetch('GET');
-                const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
-                currentSha = data.sha;
-                allEntries = content;
-                renderEntries();
-            } catch (err) {
-                showMessage('Error loading: ' + err.message, 'error');
-            }
-        }
-
-        async function saveEntries() {
-            const content = btoa(unescape(encodeURIComponent(JSON.stringify(allEntries, null, 2))));
-            const data = await ghFetch('PUT', {
-                message: 'Update achievements',
-                content,
-                sha: currentSha
-            });
-            currentSha = data.content.sha;
-        }
-
-        // ─── FORM ──────────────────────────────────────────────────────────────
-        function updateFormFields() {
-            const category = document.getElementById('category').value;
-            const diffRow = document.getElementById('difficulty-row');
-            const diffSelect = document.getElementById('difficulty');
-            const diffLabel = document.getElementById('difficulty-label');
-            const celesteFields = document.getElementById('celeste-fields');
-            const gdFields = document.getElementById('gd-fields');
-            const deathsGroup = document.getElementById('deaths-group');
-
-            celesteFields.style.display = 'none';
-            gdFields.style.display = 'none';
-            deathsGroup.style.display = 'none';
-            diffRow.style.display = 'none';
-            diffSelect.innerHTML = '';
-
-            if (!category) return;
-
-            diffRow.style.display = 'block';
-
-            if (category === 'celeste_clears') {
-                // Celeste clears: 9-1 stars
-                diffLabel.textContent = 'Star Rating *';
-                for (let i = 9; i >= 1; i--) {
-                    const o = document.createElement('option');
-                    o.value = i; o.textContent = `${i} Star`;
-                    diffSelect.appendChild(o);
-                }
-                celesteFields.style.display = 'block';
-                deathsGroup.style.display = 'block';
-            } else if (category === 'celeste_goldens') {
-                // Celeste goldens: 22-1 numbers only
-                diffLabel.textContent = 'Tier *';
-                for (let i = 22; i >= 1; i--) {
-                    const o = document.createElement('option');
-                    o.value = i; o.textContent = `Tier ${i}`;
-                    diffSelect.appendChild(o);
-                }
-                celesteFields.style.display = 'block';
-            } else {
-                // GD: names only, 1-20
-                diffLabel.textContent = 'Tier *';
-                for (let i = 20; i >= 1; i--) {
-                    const o = document.createElement('option');
-                    o.value = i; o.textContent = gdTierNames[i];
-                    diffSelect.appendChild(o);
-                }
-                gdFields.style.display = 'block';
-            }
-        }
-
-        function previewThumbnail() {
-            const url = document.getElementById('video').value;
-            const preview = document.getElementById('thumbnail-preview');
-            const img = document.getElementById('thumb-img');
-            const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
-            if (match) {
-                img.src = `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
-                preview.style.display = 'block';
-            } else {
-                preview.style.display = 'none';
-            }
-        }
-
-        async function saveAchievement() {
-            const category = document.getElementById('category').value;
-            const name = document.getElementById('name').value.trim();
-            const difficulty = document.getElementById('difficulty').value;
-
-            if (!category) { showMessage('Please select a category', 'error'); return; }
-            if (!name) { showMessage('Please enter a name', 'error'); return; }
-            if (!difficulty) { showMessage('Please select a difficulty', 'error'); return; }
-
-            const videoUrl = document.getElementById('video').value.trim();
-
-            const entry = {
-                name,
-                campaign: document.getElementById('campaign').value.trim() || null,
-                video: videoUrl || null,
-                date: new Date().toISOString()
-            };
-
-            if (videoUrl) {
-                const m = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
-                if (m) entry.thumbnail = `https://img.youtube.com/vi/${m[1]}/hqdefault.jpg`;
-            }
-
-            if (category === 'celeste_clears') {
-                entry.star = parseInt(difficulty);
-                const d = document.getElementById('deaths').value;
-                entry.deaths = d !== '' ? parseInt(d) : null;
+        if (category === 'celeste_clears') {
+            entry.star = parseInt(difficulty);
+            const d = document.getElementById('deaths').value;
+            entry.deaths = d !== '' ? parseInt(d) : null;
+            entry.time = document.getElementById('time').value.trim() || null;
+        } else {
+            entry.tier = parseInt(difficulty);
+            if (category === 'celeste_goldens') {
                 entry.time = document.getElementById('time').value.trim() || null;
             } else {
-                entry.tier = parseInt(difficulty);
-                if (category === 'celeste_goldens') {
-                    entry.time = document.getElementById('time').value.trim() || null;
-                } else {
-                    const a = document.getElementById('attempts').value;
-                    entry.attempts = a !== '' ? parseInt(a) : null;
-                }
-            }
-
-            try {
-                if (!allEntries[category]) allEntries[category] = [];
-                allEntries[category].push(entry);
-
-                // Sort
-                if (category === 'celeste_clears') {
-                    allEntries[category].sort((a, b) => (b.star || 0) - (a.star || 0));
-                } else {
-                    allEntries[category].sort((a, b) => (b.tier || 0) - (a.tier || 0));
-                }
-
-                await saveEntries();
-                showMessage('Achievement saved!', 'success');
-
-                // Reset form
-                document.getElementById('name').value = '';
-                document.getElementById('campaign').value = '';
-                document.getElementById('video').value = '';
-                document.getElementById('thumbnail-preview').style.display = 'none';
-                try { document.getElementById('time').value = ''; } catch(e){}
-                try { document.getElementById('deaths').value = ''; } catch(e){}
-                try { document.getElementById('attempts').value = ''; } catch(e){}
-                renderEntries();
-            } catch (err) {
-                // Remove entry we just added if save failed
-                allEntries[category].pop();
-                showMessage('Error: ' + err.message, 'error');
+                const a = document.getElementById('attempts').value;
+                entry.attempts = a !== '' ? parseInt(a) : null;
             }
         }
 
-        async function deleteEntry(category, index) {
-            if (!confirm('Delete this entry?')) return;
-            try {
-                allEntries[category].splice(index, 1);
-                await saveEntries();
-                showMessage('Deleted', 'success');
-                renderEntries();
-            } catch (err) {
-                showMessage('Error: ' + err.message, 'error');
+        try {
+            if (!allEntries[category]) allEntries[category] = [];
+            allEntries[category].push(entry);
+            if (category === 'celeste_clears') {
+                allEntries[category].sort((a, b) => (b.star || 0) - (a.star || 0));
+            } else {
+                allEntries[category].sort((a, b) => (b.tier || 0) - (a.tier || 0));
             }
+            await saveEntries();
+            showMessage('Achievement saved!', 'success');
+            document.getElementById('name').value = '';
+            document.getElementById('campaign').value = '';
+            document.getElementById('video').value = '';
+            document.getElementById('thumbnail-preview').style.display = 'none';
+            try { document.getElementById('time').value = ''; } catch(e){}
+            try { document.getElementById('deaths').value = ''; } catch(e){}
+            try { document.getElementById('attempts').value = ''; } catch(e){}
+            renderEntries();
+        } catch (err) {
+            allEntries[category].pop();
+            showMessage('Error: ' + err.message, 'error');
+        }
+    }
+
+    // ─── Manage / render entries ─────────────────────────────────────────────
+    function renderEntries() {
+        const filter = document.getElementById('filter-category')?.value || 'all';
+        const container = document.getElementById('entries-list');
+        const nwMissionFilterGroup = document.getElementById('nw-filter-mission-group');
+
+        // Show/hide mission sub-filter for NW
+        if (nwMissionFilterGroup) {
+            nwMissionFilterGroup.style.display = (filter === 'neon_white' || filter === 'all') ? 'block' : 'none';
         }
 
-        // ─── RENDER ────────────────────────────────────────────────────────────
-        function renderEntries() {
-            const filter = document.getElementById('filter-category')?.value || 'all';
-            const container = document.getElementById('entries-list');
-            const cats = filter === 'all'
-                ? ['celeste_goldens','celeste_clears','demons','gd_platformer']
-                : [filter];
+        if (filter === 'neon_white') {
+            renderNWEntries(container);
+            return;
+        }
 
-            const catNames = {
-                celeste_goldens:'Celeste Goldens', celeste_clears:'Celeste Clears',
-                demons:'Demons', gd_platformer:'Platformer Levels (GD)'
-            };
+        const cats = filter === 'all'
+            ? ['celeste_goldens','celeste_clears','demons','gd_platformer']
+            : [filter];
 
-            let html = '';
-            cats.forEach(cat => {
-                const items = allEntries[cat] || [];
-                if (!items.length) return;
-                html += `<h3 style="margin:1.5rem 0 0.75rem;color:var(--text-secondary);font-size:0.875rem;font-weight:600;text-transform:uppercase">${catNames[cat]}</h3>`;
-                items.forEach((item, i) => {
-                    const isStar = item.star !== undefined;
-                    const num = isStar ? item.star : item.tier;
-                    let badge;
+        const catNames = {
+            celeste_goldens:'Celeste Goldens', celeste_clears:'Celeste Clears',
+            demons:'Demons', gd_platformer:'Platformer Levels (GD)'
+        };
 
-                    if (isStar) {
-                        badge = `${num} Star`;
-                    } else if (cat === 'celeste_goldens') {
-                        // Celeste goldens: numbers only
-                        badge = `Tier ${num}`;
-                    } else {
-                        // GD: names only
-                        badge = gdTierNames[num] || `Tier ${num}`;
-                    }
-
-                    const extra = item.time ? ` • ${item.time}` : (item.deaths != null ? ` • ${item.deaths} deaths` : (item.attempts ? ` • ${item.attempts.toLocaleString()} attempts` : ''));
-                    html += `
-                        <div class="entry-item">
-                            <div class="entry-info">
-                                <div class="entry-name">${escapeHtml(item.name)}</div>
-                                <div class="entry-meta">${badge}${item.campaign ? ' · ' + escapeHtml(item.campaign) : ''}${extra}</div>
-                            </div>
-                            <div class="entry-actions">
-                                <button class="danger btn-small" onclick="deleteEntry('${cat}', ${i})">Delete</button>
-                            </div>
+        let html = '';
+        cats.forEach(cat => {
+            const items = allEntries[cat] || [];
+            if (!items.length) return;
+            html += `<h3 style="margin:1.5rem 0 0.75rem;color:var(--text-secondary);font-size:0.875rem;font-weight:600;text-transform:uppercase">${catNames[cat]}</h3>`;
+            items.forEach((item, i) => {
+                const isStar = item.star !== undefined;
+                const num = isStar ? item.star : item.tier;
+                let badge;
+                if (isStar) badge = `${num} Star`;
+                else if (cat === 'celeste_goldens') badge = `Tier ${num}`;
+                else badge = gdTierNames[num] || `Tier ${num}`;
+                const extra = item.time ? ` • ${item.time}` : (item.deaths != null ? ` • ${item.deaths} deaths` : (item.attempts ? ` • ${item.attempts.toLocaleString()} attempts` : ''));
+                html += `
+                    <div class="entry-item">
+                        <div class="entry-info">
+                            <div class="entry-name">${escapeHtml(item.name)}</div>
+                            <div class="entry-meta">${badge}${item.campaign ? ' · ' + escapeHtml(item.campaign) : ''}${extra}</div>
                         </div>
-                    `;
-                });
+                        <div class="entry-actions">
+                            <button class="danger btn-small" onclick="deleteEntry('${cat}', ${i})">Delete</button>
+                        </div>
+                    </div>`;
             });
+        });
 
-            container.innerHTML = html || '<p style="color:var(--text-secondary);font-size:0.875rem">No entries found</p>';
+        // Show NW times in "All" view
+        if (filter === 'all') {
+            const nwHtml = getNWEntriesHTML(true);
+            if (nwHtml) html += `<h3 style="margin:1.5rem 0 0.75rem;color:var(--text-secondary);font-size:0.875rem;font-weight:600;text-transform:uppercase">Neon White Times</h3>` + nwHtml;
         }
 
-        function switchTab(tab, btn) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById(tab + '-tab').classList.add('active');
-            if (tab === 'manage') renderEntries();
-            if (tab === 'settings') updateTokenStatus();
-        }
+        container.innerHTML = html || '<p style="color:var(--text-secondary);font-size:0.875rem">No entries found</p>';
+    }
 
-        function showMessage(text, type) {
-            const msg = document.getElementById('message');
-            msg.textContent = text;
-            msg.className = 'message ' + type;
-            clearTimeout(msg._t);
-            msg._t = setTimeout(() => msg.className = 'message', 4000);
-        }
+    function renderNWEntries(container) {
+        const missionFilter = document.getElementById('nw-filter-mission')?.value || '';
+        container.innerHTML = getNWEntriesHTML(false, missionFilter) ||
+            '<p style="color:var(--text-secondary);font-size:0.875rem">No Neon White times recorded yet.</p>';
+    }
 
-        function escapeHtml(text) {
-            const d = document.createElement('div');
-            d.textContent = text;
-            return d.innerHTML;
+    function getNWEntriesHTML(compact, missionFilter) {
+        const saved = getNWSavedData();
+        const entries = Object.entries(saved)
+            .map(([key, val]) => {
+                const [mission, stage] = key.split('||');
+                return { key, mission, stage, ...val };
+            })
+            .filter(e => !missionFilter || e.mission === missionFilter)
+            .sort((a, b) => a.mission.localeCompare(b.mission) || a.stage.localeCompare(b.stage));
+
+        if (!entries.length) return '';
+
+        let html = '';
+        let lastMission = null;
+        entries.forEach(e => {
+            const stageData = (NW_DATA[e.mission] || []).find(s => s.stage === e.stage);
+            const medal = stageData ? getMedalForTime(e.pb, stageData) : null;
+            const medalColor = { diamond:'#7fffff', topaz:'#ffb300', sapphire:'#40c4ff', amethyst:'#ce93ff', emerald:'#00e676', red:'#ff5252', ace:'#ffe040' }[medal] || 'var(--text-secondary)';
+            const medalBadge = medal ? `<span style="color:${medalColor};font-weight:700">${MEDAL_LABELS[medal]}</span> · ` : '';
+
+            if (!compact && lastMission !== e.mission) {
+                lastMission = e.mission;
+                html += `<div class="section-title">${escapeHtml(e.mission)}</div>`;
+            }
+
+            html += `
+                <div class="entry-item">
+                    <div class="entry-info">
+                        <div class="entry-name">${escapeHtml(e.stage)}${compact ? ` <span style="color:var(--text-muted);font-size:0.8em">(${escapeHtml(e.mission)})</span>` : ''}</div>
+                        <div class="entry-meta">${medalBadge}${escapeHtml(e.pb)}${e.video ? ` · <a href="${escapeHtml(e.video)}" style="color:var(--accent)" target="_blank">VOD</a>` : ''}</div>
+                    </div>
+                    <div class="entry-actions">
+                        <button class="danger btn-small" onclick="deleteNWEntry('${e.key.replace(/'/g,"\\'")}')">Delete</button>
+                    </div>
+                </div>`;
+        });
+        return html;
+    }
+
+    function deleteNWEntry(key) {
+        if (!confirm('Delete this time?')) return;
+        const saved = getNWSavedData();
+        delete saved[key];
+        setNWSavedData(saved);
+        renderEntries();
+        showMessage('Deleted', 'success');
+    }
+
+    async function deleteEntry(category, index) {
+        if (!confirm('Delete this entry?')) return;
+        try {
+            allEntries[category].splice(index, 1);
+            await saveEntries();
+            showMessage('Deleted', 'success');
+            renderEntries();
+        } catch (err) {
+            showMessage('Error: ' + err.message, 'error');
         }
+    }
+
+    function switchTab(tab, btn) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(tab + '-tab').classList.add('active');
+        if (tab === 'manage') renderEntries();
+        if (tab === 'settings') updateTokenStatus();
+    }
+
+    function showMessage(text, type) {
+        const msg = document.getElementById('message');
+        msg.textContent = text;
+        msg.className = 'message ' + type;
+        clearTimeout(msg._t);
+        msg._t = setTimeout(() => msg.className = 'message', 5000);
+    }
+
+    function escapeHtml(text) {
+        if (!text) return '';
+        const d = document.createElement('div');
+        d.textContent = text;
+        return d.innerHTML;
+    }
     </script>
 </body>
 </html>
