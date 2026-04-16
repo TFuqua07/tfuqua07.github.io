@@ -342,15 +342,5 @@
     }
   ],
   "gd_platformer": [],
-  "neon_white": [
-    {
-      "category": "neon_white",
-      "mission": "Rebirth",
-      "stage": "Gunner",
-      "pb": "0:08.250",
-      "medal": "red",
-      "video": null,
-      "date": "2026-04-16T10:50:41.765Z"
-    }
-  ]
+  "neon_white": []
 }
