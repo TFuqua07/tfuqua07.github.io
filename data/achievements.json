@@ -353,6 +353,14 @@
     },
     {
       "mission": "Rebirth",
+      "stage": "Elevate",
+      "pb": "00:18.262",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T11:04:46.159Z"
+    },
+    {
+      "mission": "Rebirth",
       "stage": "Gunner",
       "pb": "00:13.244",
       "medal": "ace",
