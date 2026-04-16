@@ -377,6 +377,14 @@
     },
     {
       "mission": "Rebirth",
+      "stage": "Fasttrack",
+      "pb": "00:28.929",
+      "medal": "ace",
+      "video": null,
+      "date": "2026-04-16T11:05:26.925Z"
+    },
+    {
+      "mission": "Rebirth",
       "stage": "Gunner",
       "pb": "00:13.244",
       "medal": "ace",
