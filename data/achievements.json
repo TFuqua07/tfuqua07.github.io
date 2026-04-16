@@ -644,7 +644,8 @@
     "hall_of_gods": [
       {
         "name": "Gruz Mother",
-        "ascended": true
+        "ascended": false,
+        "radiant": false
       }
     ],
     "pantheons": []
