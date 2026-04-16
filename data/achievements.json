@@ -361,6 +361,14 @@
     },
     {
       "mission": "Killer Inside",
+      "stage": "Distinguish",
+      "pb": "00:28.669",
+      "medal": null,
+      "video": null,
+      "date": "2026-04-16T12:13:53.499Z"
+    },
+    {
+      "mission": "Killer Inside",
       "stage": "Fastlane",
       "pb": "00:24.683",
       "medal": "ace",
