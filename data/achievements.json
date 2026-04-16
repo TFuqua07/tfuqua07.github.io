@@ -433,6 +433,14 @@
     },
     {
       "mission": "Only Shallow",
+      "stage": "Descent",
+      "pb": "00:19.347",
+      "medal": null,
+      "video": null,
+      "date": "2026-04-16T12:14:54.381Z"
+    },
+    {
+      "mission": "Only Shallow",
       "stage": "Guardian",
       "pb": "00:29.860",
       "medal": null,
