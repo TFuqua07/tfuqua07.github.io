@@ -481,6 +481,104 @@
             .time-cell-val { font-size: 0.55rem; }
             .time-cell-label { font-size: 0.5rem; }
         }
+        /* ── Calamity tier colors ── */
+.calamity-tier-pre { background: #1a0f1a; color: #ff6b9d; border-color: #ff6b9d44; }
+.calamity-tier-hard { background: #1a0a1f; color: #c084fc; border-color: #c084fc44; }
+.calamity-tier-post { background: #0f0a1a; color: #7c3aed; border-color: #7c3aed44; }
+.achievement-card.calamity-border-pre { border-color: #ff6b9d66; }
+.achievement-card.calamity-border-hard { border-color: #c084fc66; }
+.achievement-card.calamity-border-post { border-color: #7c3aed66; }
+/* ── Calamity layout ── */
+.calamity-container {
+padding: 1.5rem;
+max-width: 1400px;
+}
+.calamity-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem;
+}
+@media (max-width: 1024px) {
+.calamity-grid { grid-template-columns: 1fr; }
+}
+.calamity-column {
+display: flex;
+flex-direction: column;
+gap: 0.75rem;
+}
+.calamity-header {
+padding: 0.75rem 1rem;
+font-weight: 700;
+font-size: 0.875rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+border-radius: 8px;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+position: sticky;
+top: 0;
+}
+.boss-count {
+background: rgba(0,0,0,0.3);
+padding: 0.2rem 0.5rem;
+border-radius: 20px;
+font-size: 0.7rem;
+font-weight: 600;
+}
+.boss-card {
+background: linear-gradient(135deg, rgba(30,30,46,0.9) 0%, rgba(20,20,35,0.95) 100%);
+border: 2px solid;
+border-radius: 12px;
+padding: 1rem;
+display: flex;
+align-items: center;
+gap: 1rem;
+transition: all 0.2s ease;
+}
+.boss-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+.boss-checkbox {
+width: 24px;
+height: 24px;
+border: 2px solid var(--border);
+border-radius: 6px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+cursor: default;
+}
+.boss-checkbox.checked {
+background: #10b981;
+border-color: #10b981;
+}
+.boss-checkbox.checked::after {
+content: '✓';
+color: white;
+font-size: 14px;
+font-weight: 700;
+}
+.boss-info {
+flex: 1;
+min-width: 0;
+}
+.boss-name {
+font-size: 0.95rem;
+font-weight: 600;
+color: var(--text-primary);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.boss-number {
+font-size: 0.75rem;
+color: var(--text-muted);
+font-weight: 500;
+}
+
     </style>
     <base target="_blank">
 </head>
@@ -495,20 +593,16 @@
         <button class="tab-btn" onclick="switchTab('demons', this)">Demons</button>
         <button class="tab-btn" onclick="switchTab('gd_platformer', this)">GD Platformers</button>
         <button class="tab-btn" onclick="switchTab('neon_white', this)">Neon White</button>
+        <button class="tab-btn" onclick="switchTab('calamity', this)">Calamity</button>
     </nav>
 
     <main id="content"></main>
 
     <script>
-    // ─── Neon White stage data (medal thresholds) ────────────────────────────
     const NW_DATA = {"Rebirth": [{"stage": "Movement", "diamond": "00:17.549", "topaz": "00:17.599", "sapphire": "00:17.699", "amethyst": "00:17.899", "emerald": "00:18.199", "red": "00:18.930", "ace": "00:24.000"}, {"stage": "Pummel", "diamond": "00:05.599", "topaz": "00:05.799", "sapphire": "00:06.139", "amethyst": "00:06.799", "emerald": "00:07.249", "red": "00:08.329", "ace": "00:13.000"}, {"stage": "Gunner", "diamond": "00:06.299", "topaz": "00:06.449", "sapphire": "00:06.666", "amethyst": "00:06.999", "emerald": "00:07.549", "red": "00:09.479", "ace": "00:14.000"}, {"stage": "Cascade", "diamond": "00:08.649", "topaz": "00:08.729", "sapphire": "00:08.899", "amethyst": "00:09.199", "emerald": "00:09.549", "red": "00:10.210", "ace": "00:15.500"}, {"stage": "Elevate", "diamond": "00:13.799", "topaz": "00:13.799", "sapphire": "00:14.349", "amethyst": "00:14.849", "emerald": "00:15.399", "red": "00:16.420", "ace": "00:21.000"}, {"stage": "Bounce", "diamond": "00:14.949", "topaz": "00:14.999", "sapphire": "00:15.149", "amethyst": "00:15.599", "emerald": "00:16.249", "red": "00:19.059", "ace": "00:30.000"}, {"stage": "Purify", "diamond": "00:07.949", "topaz": "00:07.999", "sapphire": "00:08.219", "amethyst": "00:08.449", "emerald": "00:08.799", "red": "00:10.449", "ace": "00:13.500"}, {"stage": "Climb", "diamond": "00:10.299", "topaz": "00:10.349", "sapphire": "00:10.459", "amethyst": "00:10.649", "emerald": "00:10.999", "red": "00:12.750", "ace": "00:27.000"}, {"stage": "Fasttrack", "diamond": "00:18.699", "topaz": "00:18.999", "sapphire": "00:19.499", "amethyst": "00:20.999", "emerald": "00:21.999", "red": "00:25.440", "ace": "00:30.000"}, {"stage": "Glass Port", "diamond": "00:16.599", "topaz": "00:17.199", "sapphire": "00:18.499", "amethyst": "00:19.459", "emerald": "00:22.199", "red": "00:25.319", "ace": "00:37.000"}], "Killer Inside": [{"stage": "Take Flight", "diamond": "00:13.849", "topaz": "00:14.149", "sapphire": "00:14.599", "amethyst": "00:15.249", "emerald": "00:15.799", "red": "00:17.540", "ace": "00:23.000"}, {"stage": "Godspeed", "diamond": "00:05.699", "topaz": "00:05.749", "sapphire": "00:05.899", "amethyst": "00:05.950", "emerald": "00:05.969", "red": "00:06.139", "ace": "00:11.000"}, {"stage": "Dasher", "diamond": "00:08.499", "topaz": "00:08.579", "sapphire": "00:08.779", "amethyst": "00:09.199", "emerald": "00:09.599", "red": "00:10.210", "ace": "00:15.000"}, {"stage": "Thrasher", "diamond": "00:11.199", "topaz": "00:11.219", "sapphire": "00:11.339", "amethyst": "00:11.499", "emerald": "00:11.849", "red": "00:12.420", "ace": "00:18.000"}, {"stage": "Outstretched", "diamond": "00:08.899", "topaz": "00:08.949", "sapphire": "00:09.149", "amethyst": "00:09.499", "emerald": "00:09.999", "red": "00:10.350", "ace": "00:12.500"}, {"stage": "Smackdown", "diamond": "00:08.799", "topaz": "00:08.929", "sapphire": "00:09.299", "amethyst": "00:09.799", "emerald": "00:09.999", "red": "00:10.819", "ace": "00:14.000"}, {"stage": "Catwalk", "diamond": "00:12.999", "topaz": "00:13.099", "sapphire": "00:13.349", "amethyst": "00:13.549", "emerald": "00:13.849", "red": "00:14.229", "ace": "00:16.500"}, {"stage": "Fastlane", "diamond": "00:21.149", "topaz": "00:21.239", "sapphire": "00:21.399", "amethyst": "00:21.649", "emerald": "00:21.999", "red": "00:22.450", "ace": "00:26.000"}, {"stage": "Distinguish", "diamond": "00:14.499", "topaz": "00:14.549", "sapphire": "00:14.699", "amethyst": "00:14.999", "emerald": "00:15.349", "red": "00:15.890", "ace": "00:21.500"}, {"stage": "Dancer", "diamond": "00:15.099", "topaz": "00:15.199", "sapphire": "00:15.399", "amethyst": "00:15.749", "emerald": "00:16.199", "red": "00:17.069", "ace": "00:22.000"}], "Only Shallow": [{"stage": "Guardian", "diamond": "00:16.999", "topaz": "00:17.399", "sapphire": "00:18.249", "amethyst": "00:19.679", "emerald": "00:20.549", "red": "00:22.649", "ace": "00:28.500"}, {"stage": "Stomp", "diamond": "00:12.299", "topaz": "00:12.599", "sapphire": "00:13.499", "amethyst": "00:13.899", "emerald": "00:14.699", "red": "00:15.340", "ace": "00:19.500"}, {"stage": "Jumper", "diamond": "00:10.899", "topaz": "00:11.099", "sapphire": "00:11.449", "amethyst": "00:12.599", "emerald": "00:13.599", "red": "00:19.159", "ace": "00:24.000"}, {"stage": "Dash Tower", "diamond": "00:10.299", "topaz": "00:10.449", "sapphire": "00:10.999", "amethyst": "00:12.199", "emerald": "00:12.999", "red": "00:14.729", "ace": "00:20.500"}, {"stage": "Descent", "diamond": "00:08.899", "topaz": "00:08.999", "sapphire": "00:09.229", "amethyst": "00:09.499", "emerald": "00:09.999", "red": "00:11.399", "ace": "00:16.000"}, {"stage": "Driller", "diamond": "00:09.799", "topaz": "00:10.299", "sapphire": "00:10.549", "amethyst": "00:10.879", "emerald": "00:11.199", "red": "00:12.619", "ace": "00:16.500"}, {"stage": "Canals", "diamond": "00:12.899", "topaz": "00:13.199", "sapphire": "00:13.649", "amethyst": "00:14.649", "emerald": "00:16.999", "red": "00:30.079", "ace": "00:40.000"}, {"stage": "Sprint", "diamond": "00:14.649", "topaz": "00:14.699", "sapphire": "00:15.299", "amethyst": "00:15.999", "emerald": "00:16.649", "red": "00:19.639", "ace": "00:25.000"}, {"stage": "Mountain", "diamond": "00:13.999", "topaz": "00:14.299", "sapphire": "00:15.499", "amethyst": "00:15.999", "emerald": "00:17.299", "red": "00:19.809", "ace": "00:25.000"}, {"stage": "Superkinetic", "diamond": "00:12.699", "topaz": "00:12.899", "sapphire": "00:13.499", "amethyst": "00:14.299", "emerald": "00:16.299", "red": "00:20.100", "ace": "00:24.000"}], "The Old City": [{"stage": "Arrival", "diamond": "00:20.149", "topaz": "00:20.249", "sapphire": "00:20.499", "amethyst": "00:20.849", "emerald": "00:21.579", "red": "00:22.959", "ace": "00:26.000"}, {"stage": "Forgotten City", "diamond": "00:22.449", "topaz": "00:22.699", "sapphire": "00:23.199", "amethyst": "00:24.299", "emerald": "00:27.999", "red": "00:33.020", "ace": "00:37.500"}, {"stage": "The Clocktower", "diamond": "00:29.399", "topaz": "00:29.999", "sapphire": "00:30.999", "amethyst": "00:33.899", "emerald": "00:36.599", "red": "00:53.680", "ace": "01:37.000"}], "The Burn that  Cures": [{"stage": "Fireball", "diamond": "00:15.299", "topaz": "00:15.449", "sapphire": "00:15.749", "amethyst": "00:16.499", "emerald": "00:17.299", "red": "00:19.120", "ace": "00:24.000"}, {"stage": "Ringer", "diamond": "00:10.399", "topaz": "00:10.699", "sapphire": "00:11.499", "amethyst": "00:12.879", "emerald": "00:13.999", "red": "00:16.600", "ace": "00:20.500"}, {"stage": "Cleaner", "diamond": "00:09.449", "topaz": "00:09.849", "sapphire": "00:10.299", "amethyst": "00:11.449", "emerald": "00:12.999", "red": "00:14.319", "ace": "00:28.000"}, {"stage": "Warehouse", "diamond": "00:10.149", "topaz": "00:10.349", "sapphire": "00:10.649", "amethyst": "00:11.179", "emerald": "00:11.799", "red": "00:13.989", "ace": "00:17.000"}, {"stage": "Boom", "diamond": "00:13.999", "topaz": "00:14.349", "sapphire": "00:14.799", "amethyst": "00:15.499", "emerald": "00:16.349", "red": "00:18.450", "ace": "00:24.500"}, {"stage": "Streets", "diamond": "00:05.699", "topaz": "00:05.979", "sapphire": "00:06.249", "amethyst": "00:06.899", "emerald": "00:07.399", "red": "00:09.609", "ace": "00:15.000"}, {"stage": "Steps", "diamond": "00:11.199", "topaz": "00:11.449", "sapphire": "00:11.699", "amethyst": "00:12.099", "emerald": "00:12.499", "red": "00:15.159", "ace": "00:19.000"}, {"stage": "Demolition", "diamond": "00:05.549", "topaz": "00:05.649", "sapphire": "00:05.899", "amethyst": "00:06.549", "emerald": "00:07.099", "red": "00:09.739", "ace": "00:16.500"}, {"stage": "Arcs", "diamond": "00:15.099", "topaz": "00:15.549", "sapphire": "00:15.849", "amethyst": "00:16.399", "emerald": "00:17.299", "red": "00:18.620", "ace": "00:25.500"}, {"stage": "Apartment", "diamond": "00:10.299", "topaz": "00:10.649", "sapphire": "00:11.249", "amethyst": "00:12.879", "emerald": "00:15.399", "red": "00:23.799", "ace": "00:35.000"}], "Covenant": [{"stage": "Hanging Gardens", "diamond": "00:20.999", "topaz": "00:21.199", "sapphire": "00:21.499", "amethyst": "00:21.999", "emerald": "00:22.999", "red": "00:24.790", "ace": "00:39.500"}, {"stage": "Tangled", "diamond": "00:11.499", "topaz": "00:11.649", "sapphire": "00:11.879", "amethyst": "00:12.349", "emerald": "00:13.499", "red": "00:13.989", "ace": "00:21.500"}, {"stage": "Waterworks", "diamond": "00:18.899", "topaz": "00:18.999", "sapphire": "00:19.199", "amethyst": "00:19.499", "emerald": "00:20.299", "red": "00:21.979", "ace": "00:25.000"}, {"stage": "Killswitch", "diamond": "00:21.999", "topaz": "00:22.449", "sapphire": "00:22.999", "amethyst": "00:23.999", "emerald": "00:25.299", "red": "00:27.649", "ace": "00:32.500"}, {"stage": "Falling", "diamond": "00:18.199", "topaz": "00:18.349", "sapphire": "00:18.599", "amethyst": "00:19.149", "emerald": "00:20.499", "red": "00:22.489", "ace": "00:28.000"}, {"stage": "Shocker", "diamond": "00:21.299", "topaz": "00:21.799", "sapphire": "00:23.399", "amethyst": "00:27.299", "emerald": "00:28.299", "red": "00:28.750", "ace": "00:37.000"}, {"stage": "Bouquet", "diamond": "00:17.299", "topaz": "00:18.499", "sapphire": "00:19.699", "amethyst": "00:20.999", "emerald": "00:22.499", "red": "00:27.760", "ace": "00:33.500"}, {"stage": "Prepare", "diamond": "00:21.699", "topaz": "00:23.199", "sapphire": "00:24.099", "amethyst": "00:25.249", "emerald": "00:27.599", "red": "00:30.090", "ace": "00:34.500"}, {"stage": "Triptrack", "diamond": "00:23.999", "topaz": "00:24.999", "sapphire": "00:26.099", "amethyst": "00:27.899", "emerald": "00:32.899", "red": "00:35.979", "ace": "00:44.000"}, {"stage": "Race", "diamond": "00:20.499", "topaz": "00:20.899", "sapphire": "00:21.599", "amethyst": "00:22.249", "emerald": "00:23.099", "red": "00:26.139", "ace": "00:28.500"}], "Reckoning": [{"stage": "Bubble", "diamond": "00:13.349", "topaz": "00:13.549", "sapphire": "00:13.999", "amethyst": "00:14.499", "emerald": "00:16.199", "red": "00:19.430", "ace": "00:26.500"}, {"stage": "Shield", "diamond": "00:13.349", "topaz": "00:13.649", "sapphire": "00:14.299", "amethyst": "00:15.399", "emerald": "00:16.799", "red": "00:18.739", "ace": "00:26.500"}, {"stage": "Overlook", "diamond": "00:11.299", "topaz": "00:11.549", "sapphire": "00:11.799", "amethyst": "00:12.299", "emerald": "00:13.349", "red": "00:15.449", "ace": "00:19.500"}, {"stage": "Pop", "diamond": "00:22.649", "topaz": "00:22.799", "sapphire": "00:23.349", "amethyst": "00:23.879", "emerald": "00:24.699", "red": "00:26.030", "ace": "00:41.000"}, {"stage": "Minefield", "diamond": "00:09.799", "topaz": "00:09.999", "sapphire": "00:10.549", "amethyst": "00:11.599", "emerald": "00:12.999", "red": "00:17.559", "ace": "00:22.000"}, {"stage": "Mimic", "diamond": "00:08.549", "topaz": "00:08.699", "sapphire": "00:09.099", "amethyst": "00:09.349", "emerald": "00:09.799", "red": "00:10.700", "ace": "00:14.500"}, {"stage": "Trigger", "diamond": "00:16.349", "topaz": "00:16.699", "sapphire": "00:17.499", "amethyst": "00:18.999", "emerald": "00:20.099", "red": "00:24.389", "ace": "00:31.500"}, {"stage": "Greenhouse", "diamond": "00:06.899", "topaz": "00:07.069", "sapphire": "00:07.179", "amethyst": "00:07.499", "emerald": "00:07.699", "red": "00:11.319", "ace": "00:19.500"}, {"stage": "Sweep", "diamond": "00:14.499", "topaz": "00:15.699", "sapphire": "00:16.199", "amethyst": "00:16.749", "emerald": "00:17.999", "red": "00:20.309", "ace": "00:26.000"}, {"stage": "Fuse", "diamond": "00:18.999", "topaz": "00:19.499", "sapphire": "00:20.499", "amethyst": "00:22.999", "emerald": "00:24.999", "red": "00:29.190", "ace": "00:43.500"}], "Benediction": [{"stage": "Heaven's Edge", "diamond": "00:10.499", "topaz": "00:10.599", "sapphire": "00:10.999", "amethyst": "00:11.649", "emerald": "00:12.299", "red": "00:18.139", "ace": "00:27.500"}, {"stage": "Zipline", "diamond": "00:10.799", "topaz": "00:10.899", "sapphire": "00:11.199", "amethyst": "00:11.579", "emerald": "00:11.899", "red": "00:17.559", "ace": "00:22.000"}, {"stage": "Swing", "diamond": "00:12.599", "topaz": "00:12.999", "sapphire": "00:13.999", "amethyst": "00:15.349", "emerald": "00:16.699", "red": "00:23.120", "ace": "00:30.000"}, {"stage": "Chute", "diamond": "00:32.649", "topaz": "00:33.299", "sapphire": "00:34.499", "amethyst": "00:36.499", "emerald": "00:39.899", "red": "00:46.279", "ace": "00:53.000"}, {"stage": "Crash", "diamond": "00:22.999", "topaz": "00:23.549", "sapphire": "00:24.499", "amethyst": "00:26.379", "emerald": "00:28.499", "red": "00:33.220", "ace": "00:41.000"}, {"stage": "Ascent", "diamond": "00:19.999", "topaz": "00:20.299", "sapphire": "00:20.849", "amethyst": "00:22.499", "emerald": "00:25.599", "red": "00:34.659", "ace": "00:43.000"}, {"stage": "Straightaway", "diamond": "00:33.649", "topaz": "00:34.599", "sapphire": "00:36.299", "amethyst": "00:37.999", "emerald": "00:39.599", "red": "00:42.209", "ace": "00:48.500"}, {"stage": "Firecracker", "diamond": "00:24.599", "topaz": "00:25.799", "sapphire": "00:26.999", "amethyst": "00:30.579", "emerald": "00:33.999", "red": "00:40.569", "ace": "00:48.500"}, {"stage": "Streak", "diamond": "00:17.699", "topaz": "00:18.399", "sapphire": "00:19.749", "amethyst": "00:21.499", "emerald": "00:25.099", "red": "00:38.450", "ace": "00:46.000"}, {"stage": "Mirror", "diamond": "00:22.299", "topaz": "00:22.799", "sapphire": "00:23.449", "amethyst": "00:24.999", "emerald": "00:27.999", "red": "00:47.200", "ace": "00:57.000"}], "Apocrypha": [{"stage": "Escalation", "diamond": "00:20.999", "topaz": "00:21.799", "sapphire": "00:22.666", "amethyst": "00:23.999", "emerald": "00:25.899", "red": "00:28.940", "ace": "00:49.000"}, {"stage": "Bolt", "diamond": "00:20.499", "topaz": "00:21.999", "sapphire": "00:23.899", "amethyst": "00:25.599", "emerald": "00:29.299", "red": "00:40.189", "ace": "00:48.500"}, {"stage": "Godstreak", "diamond": "00:20.699", "topaz": "00:21.999", "sapphire": "00:24.399", "amethyst": "00:25.799", "emerald": "00:26.999", "red": "00:30.760", "ace": "00:41.000"}, {"stage": "Plunge", "diamond": "00:27.999", "topaz": "00:28.499", "sapphire": "00:28.899", "amethyst": "00:29.799", "emerald": "00:31.199", "red": "00:35.430", "ace": "00:45.500"}, {"stage": "Mayhem", "diamond": "00:13.699", "topaz": "00:14.199", "sapphire": "00:15.499", "amethyst": "00:16.749", "emerald": "00:18.199", "red": "00:28.270", "ace": "00:42.000"}, {"stage": "Barrage", "diamond": "00:21.999", "topaz": "00:24.099", "sapphire": "00:25.799", "amethyst": "00:28.299", "emerald": "00:31.899", "red": "00:36.979", "ace": "00:46.000"}, {"stage": "Estate", "diamond": "00:25.999", "topaz": "00:26.999", "sapphire": "00:28.699", "amethyst": "00:31.999", "emerald": "00:36.727", "red": "00:44.979", "ace": "00:58.000"}, {"stage": "Trapwire", "diamond": "00:19.299", "topaz": "00:19.499", "sapphire": "00:19.899", "amethyst": "00:20.399", "emerald": "00:22.099", "red": "00:24.600", "ace": "00:37.000"}, {"stage": "Ricochet", "diamond": "00:22.999", "topaz": "00:27.199", "sapphire": "00:28.999", "amethyst": "00:31.179", "emerald": "00:33.799", "red": "00:36.330", "ace": "00:43.500"}, {"stage": "Fortress", "diamond": "00:19.349", "topaz": "00:21.199", "sapphire": "00:22.666", "amethyst": "00:24.199", "emerald": "00:29.099", "red": "00:34.810", "ace": "00:49.500"}], "The Third Temple": [{"stage": "Holy Ground", "diamond": "00:49.499", "topaz": "00:49.749", "sapphire": "00:50.549", "amethyst": "00:51.499", "emerald": "00:52.799", "red": "01:16.500", "ace": "02:00.000"}, {"stage": "The Third Temple", "diamond": "00:46.999", "topaz": "00:48.999", "sapphire": "00:53.499", "amethyst": "00:59.999", "emerald": "01:09.799", "red": "02:27.169", "ace": "03:57.500"}], "Thousand Pound Butterfly": [{"stage": "Spree", "diamond": "00:05.999", "topaz": "00:06.249", "sapphire": "00:06.666", "amethyst": "00:07.499", "emerald": "00:08.399", "red": "00:20.649", "ace": "00:27.000"}, {"stage": "Breakthrough", "diamond": "00:03.999", "topaz": "00:04.299", "sapphire": "00:04.599", "amethyst": "00:05.299", "emerald": "00:07.899", "red": "00:17.450", "ace": "00:23.000"}, {"stage": "Glide", "diamond": "00:06.899", "topaz": "00:07.299", "sapphire": "00:07.777", "amethyst": "00:08.699", "emerald": "00:09.899", "red": "00:23.319", "ace": "00:31.000"}, {"stage": "Closer", "diamond": "00:09.599", "topaz": "00:09.799", "sapphire": "00:10.099", "amethyst": "00:10.899", "emerald": "00:12.399", "red": "00:34.150", "ace": "00:38.000"}, {"stage": "Hike", "diamond": "00:05.499", "topaz": "00:05.749", "sapphire": "00:06.249", "amethyst": "00:07.099", "emerald": "00:08.099", "red": "00:22.489", "ace": "00:36.500"}, {"stage": "Switch", "diamond": "00:09.549", "topaz": "00:09.899", "sapphire": "00:10.499", "amethyst": "00:11.889", "emerald": "00:12.899", "red": "00:32.430", "ace": "00:43.000"}, {"stage": "Access", "diamond": "00:11.699", "topaz": "00:12.099", "sapphire": "00:13.199", "amethyst": "00:14.799", "emerald": "00:16.499", "red": "00:23.850", "ace": "00:35.500"}, {"stage": "Congregation", "diamond": "00:19.899", "topaz": "00:20.299", "sapphire": "00:20.899", "amethyst": "00:22.899", "emerald": "00:24.899", "red": "00:33.240", "ace": "00:47.500"}, {"stage": "Sequence", "diamond": "00:07.999", "topaz": "00:08.499", "sapphire": "00:09.099", "amethyst": "00:09.849", "emerald": "00:10.999", "red": "00:14.319", "ace": "00:25.000"}, {"stage": "Marathon", "diamond": "00:09.999", "topaz": "00:10.799", "sapphire": "00:11.799", "amethyst": "00:12.999", "emerald": "00:15.299", "red": "01:31.330", "ace": "01:59.980"}], "Hand of God": [{"stage": "Sacrifice", "diamond": "00:15.999", "topaz": "00:16.349", "sapphire": "00:16.859", "amethyst": "00:18.999", "emerald": "00:19.599", "red": "01:28.680", "ace": "01:39.000"}, {"stage": "Absolution", "diamond": "01:06.499", "topaz": "01:09.999", "sapphire": "01:13.999", "amethyst": "01:18.999", "emerald": "01:25.999", "red": "01:47.629", "ace": "02:45.000"}]};
 
     const MEDAL_ORDER  = ['diamond','topaz','sapphire','amethyst','emerald','red','ace'];
     const MEDAL_LABELS = { diamond:'DMD', topaz:'TPZ', sapphire:'SPH', amethyst:'AME', emerald:'EMR', red:'RED', ace:'ACE' };
-
-    // ── NW times now come from GitHub JSON, not localStorage ─────────────────
-    // nwTimes is keyed as "Mission||Stage" → { pb, video }
-    // populated after loadAchievements() resolves
     let nwTimes = {};
 
     const RAW_URL = 'https://raw.githubusercontent.com/TFuqua07/tfuqua07.github.io/main/data/achievements.json';
@@ -522,7 +616,6 @@
     let currentData = {};
     let currentTab = 'celeste_goldens';
 
-    // ── Neon White helpers ───────────────────────────────────────────────────
     function timeToMs(str) {
         if (!str) return Infinity;
         const parts = str.split(':');
@@ -573,13 +666,16 @@
         renderTab(tab);
     }
 
-    function renderTab(tab) {
-        if (tab === 'neon_white') {
-            renderNeonWhite();
-        } else {
-            renderAchievementsTab(tab);
-        }
-    }
+    Change your renderTab() function to:
+function renderTab(tab) {
+if (tab === 'neon_white') {
+renderNeonWhite();
+} else if (tab === 'calamity') {
+renderCalamity();
+} else {
+renderAchievementsTab(tab);
+}
+}
 
     // ── Celeste / GD rendering ───────────────────────────────────────────────
     function renderAchievementsTab(category) {
@@ -687,7 +783,6 @@
             </article>`;
     }
 
-    // ── Neon White rendering ─────────────────────────────────────────────────
     function renderNeonWhite() {
         const container = document.getElementById('content');
         container.innerHTML = `
@@ -717,6 +812,46 @@
         });
         renderNWCards();
     }
+
+    function renderCalamity() {
+const container = document.getElementById('content');
+const data = currentData.calamity || { bosses: {} };
+let html = '<div class="calamity-container"><div class="calamity-grid">';
+html += renderCalamityColumn('pre_hardmode', 'Pre-Hardmode', 'calamity-tier-pre', 'calamity-border-pre', data);
+html += renderCalamityColumn('hardmode', 'Hardmode', 'calamity-tier-hard', 'calamity-border-hard', data);
+html += renderCalamityColumn('post_moonlord', 'Post-Moon Lord', 'calamity-tier-post', 'calamity-border-post', data);
+html += '</div></div>';
+container.innerHTML = html;
+}
+function renderCalamityColumn(key, label, headerClass, borderClass, data) {
+const bosses = CALAMITY_BOSSES[key];
+const defeated = data.bosses || {};
+const count = bosses.filter(b => defeated[b]).length;
+let html = `<div class="calamity-column">`;
+html += `<div class="calamity-header ${headerClass}"><span>${label}</span><span class="boss-count">${count}/${bosses.length}</span></div>`;
+
+bosses.forEach((boss, index) => {
+    const isChecked = defeated[boss] || false;
+    const globalIndex = key === 'pre_hardmode' ? index : 
+                       key === 'hardmode' ? 13 + index :
+                       31 + index;
+    
+    html += `
+        <div class="boss-card ${borderClass}">
+            <div class="boss-checkbox ${isChecked ? 'checked' : ''}"></div>
+            <div class="boss-info">
+                <div class="boss-name">${escapeHtml(boss)}</div>
+                <div class="boss-number">#${globalIndex + 1}</div>
+            </div>
+        </div>
+    `;
+});
+
+html += `</div>`;
+return html;
+
+}
+
 
     function onNWMissionChange() {
         const mission = document.getElementById('nw-mission-sel').value;
@@ -818,6 +953,27 @@
         div.textContent = text;
         return div.innerHTML;
     }
+
+const CALAMITY_BOSSES = {
+pre_hardmode: [
+"King Slime", "Desert Scourge", "Eye of Cthulhu", "Crabulon",
+"Eater of Worlds", "Brain of Cthulhu", "The Hive Mind", "The Perforators",
+"Queen Bee", "Skeletron", "Deerclops", "The Slime God", "Wall of Flesh"
+],
+hardmode: [
+"Queen Slime", "Cryogen", "The Twins", "Aquatic Scourge", "The Destroyer",
+"Brimstone Elemental", "Skeletron Prime", "Calamitas Clone", "Plantera",
+"Anahita & The Leviathan", "Astrum Aureus", "Golem", "Duke Fishron",
+"Empress of Light", "Betsy", "Lunatic Cultist", "Astrum Deus", "Moon Lord"
+],
+post_moonlord: [
+"The Plaguebringer Goliath", "Ravager", "Profaned Guardians", "Dragonfolly",
+"Providence, the Profaned Goddess", "Ceaseless Void", "Storm Weaver",
+"Signus", "Polterghast", "Old Duke", "Devourer of Gods", "Yharon",
+"The Exo Mechs", "Supreme Witch, Calamitas"
+]
+};
+
 
     loadAchievements();
     </script>
