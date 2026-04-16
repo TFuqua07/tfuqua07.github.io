@@ -332,7 +332,7 @@
         .achievement-card.gd-tier-border-1  { border-color: #4a86e866; }
 
         /* ── Neon White layout ── */
-        .nw-container { padding: 1.5rem 2rem; max-width: 1400px; }
+        .nw-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
 
         .nw-selectors {
             display: flex;
@@ -374,8 +374,17 @@
 
         .nw-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1100px) {
+            .nw-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .nw-grid { grid-template-columns: 1fr; }
         }
 
         .nw-stage-card {
@@ -429,8 +438,8 @@
         }
         .time-cell.active-medal { background: rgba(255,255,255,0.05); }
 
-        .time-cell-label { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
-        .time-cell-val   { font-size: 0.68rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+        .time-cell-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+        .time-cell-val   { font-size: 0.72rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 
         .tc-ace      .time-cell-label, .tc-ace      .time-cell-val { color: #ffe040; }
         .tc-red      .time-cell-label, .tc-red      .time-cell-val { color: #ff5252; }
