@@ -920,6 +920,15 @@
       "video": null,
       "date": "2026-04-17T14:03:45.053Z",
       "star": 9
+    },
+    {
+      "category": "celeste_clears",
+      "name": "The Solar Purgatory",
+      "creator": "Zheo",
+      "campaign": null,
+      "video": "https://youtu.be/PgY8oUsI7kw",
+      "date": "2026-04-17T14:05:55.967Z",
+      "star": 6
     }
   ]
 }
