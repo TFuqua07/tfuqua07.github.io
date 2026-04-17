@@ -109,6 +109,63 @@
         .binding-admin-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
         .binding-admin-icon { width: 18px; height: 18px; }
         .hk-save-bar { display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+        .cal-admin-phase { margin-bottom: 1.75rem; }
+.cal-admin-phase-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.625rem;
+}
+.cal-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem;
+}
+.cal-admin-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.625rem 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+.cal-admin-name { font-size: 0.8rem; font-weight: 500; color: var(--text-primary); flex: 1; min-width: 0; }
+.cal-toggle-btn {
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.15s;
+    font-family: inherit;
+    flex-shrink: 0;
+}
+.cal-toggle-btn.off { background: rgba(80,80,100,0.15); color: var(--text-muted); border-color: rgba(80,80,100,0.25); }
+.cal-toggle-btn.off:hover { color: var(--success); border-color: rgba(34,197,94,0.4); background: rgba(34,197,94,0.08); }
+.cal-toggle-btn.on { background: rgba(34,197,94,0.12); color: var(--success); border-color: rgba(34,197,94,0.35); }
+.cal-toggle-btn.on:hover { background: rgba(34,197,94,0.06); }
+ 
+.cal-rush-admin {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.125rem;
+    margin-bottom: 1.75rem;
+}
+.cal-rush-admin-title { font-size: 0.9375rem; font-weight: 600; margin-bottom: 0.875rem; }
+.cal-rush-admin-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.cal-rush-admin-row label { font-size: 0.8125rem; color: var(--text-secondary); font-weight: 500; white-space: nowrap; }
+.cal-rush-admin-row select { flex: 1; min-width: 220px; max-width: 400px; }
+.cal-rush-current { font-size: 0.8125rem; color: var(--text-secondary); margin-top: 0.5rem; }
+.cal-rush-current span { color: #ffb43c; font-weight: 600; }
     </style>
     <base target="_blank">
 </head>
@@ -131,6 +188,7 @@
                 <button class="tab active" onclick="switchTab('add', this)">Add New</button>
                 <button class="tab" onclick="switchTab('manage', this)">Manage Entries</button>
                 <button class="tab" onclick="switchTab('hollow_knight', this)">Hollow Knight</button>
+                <button class="tab" onclick="switchTab('calamity_admin', this)">Calamity</button>
                 <button class="tab" onclick="switchTab('settings', this)">Settings</button>
             </div>
 
@@ -192,6 +250,26 @@
                     <div id="pantheon-admin-list" class="pantheon-admin-list"></div>
                 </div>
             </div>
+
+            <div id="calamity_admin-tab" class="form-section">
+    <div class="cal-rush-admin">
+        <div class="cal-rush-admin-title">Boss Rush Progress</div>
+        <div class="cal-rush-admin-row">
+            <label>Current furthest boss reached:</label>
+            <select id="cal-rush-select" onchange="saveCalRush()">
+                <option value="0">Not started</option>
+                <!-- populated by JS -->
+            </select>
+        </div>
+        <div id="cal-rush-current-label" class="cal-rush-current"></div>
+    </div>
+ 
+    <div id="cal-boss-admin-sections"></div>
+ 
+    <div class="hk-save-bar">
+        <span style="font-size:0.8125rem;color:var(--text-secondary)">Changes save immediately to GitHub.</span>
+    </div>
+</div>
 
             <div id="settings-tab" class="form-section">
                 <div class="setup-notice"><strong>GitHub Token</strong><br>Your GitHub Personal Access Token is stored in your browser only. It's never sent anywhere except directly to GitHub's API.<br><br><strong>How to get a token:</strong> GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → check <code>repo</code> scope.</div>
@@ -504,11 +582,108 @@ function switchHKTab(tab,btn){
     document.getElementById('hk-pantheons-section').style.display=tab==='pantheons'?'block':'none';
 }
 
+const CAL_PHASES_ADMIN = [
+    { name: "Pre-Hardmode", bosses: ["King Slime","Desert Scourge","Eye of Cthulhu","Crabulon","Eater of Worlds","Brain of Cthulhu","The Hive Mind","The Perforators","Queen Bee","Deerclops","Skeletron","The Slime God","Wall of Flesh"] },
+    { name: "Hardmode", bosses: ["Queen Slime","Cryogen","The Twins","Aquatic Scourge","The Destroyer","Brimstone Elemental","Skeletron Prime","Calamitas Clone","Plantera","Leviathan and Anahita","Astrum Aureus","Golem","The Plaguebringer Goliath","Empress of Light","Duke Fishron","Ravager","Lunatic Cultist","Astrum Deus","Moon Lord"] },
+    { name: "Post-Moon Lord — Sentinels & Profaned", bosses: ["Profaned Guardians","Dragonfolly","Providence, the Profaned Goddess","Ceaseless Void","Storm Weaver","Signus, Envoy of the Devourer","Polterghast","The Old Duke","The Devourer of Gods"] },
+    { name: "Post-Moon Lord — Endgame", bosses: ["Yharon, Dragon of Rebirth","Exo Mechs","Supreme Witch, Calamitas"] }
+];
+const CAL_ALL_BOSSES_ADMIN = CAL_PHASES_ADMIN.flatMap(p => p.bosses);
+ 
+function getCalData() {
+    if (!allEntries.calamity) allEntries.calamity = { bosses: [], boss_rush_progress: 0 };
+    if (!allEntries.calamity.bosses) allEntries.calamity.bosses = [];
+    if (!allEntries.calamity.boss_rush_progress) allEntries.calamity.boss_rush_progress = 0;
+    return allEntries.calamity;
+}
+ 
+function renderCalAdmin() {
+    // Populate rush dropdown
+    const rushSel = document.getElementById('cal-rush-select');
+    if (rushSel && rushSel.options.length === 1) {
+        CAL_ALL_BOSSES_ADMIN.forEach((name, i) => {
+            const o = document.createElement('option');
+            o.value = i + 1;
+            o.textContent = (i + 1) + '. ' + name;
+            rushSel.appendChild(o);
+        });
+        const doneOpt = document.createElement('option');
+        doneOpt.value = CAL_ALL_BOSSES_ADMIN.length;
+        doneOpt.textContent = 'All bosses complete!';
+        rushSel.appendChild(doneOpt);
+    }
+ 
+    const calData = getCalData();
+    const bossMap = {};
+    calData.bosses.forEach(b => { bossMap[b.name] = b; });
+ 
+    // Set rush dropdown value
+    if (rushSel) {
+        rushSel.value = String(calData.boss_rush_progress || 0);
+        updateCalRushLabel(calData.boss_rush_progress || 0);
+    }
+ 
+    // Render boss grids
+    const sections = document.getElementById('cal-boss-admin-sections');
+    if (!sections) return;
+ 
+    let html = '';
+    CAL_PHASES_ADMIN.forEach(phase => {
+        html += '<div class="cal-admin-phase">';
+        html += '<div class="cal-admin-phase-title">' + phase.name + '</div>';
+        html += '<div class="cal-admin-grid">';
+        phase.bosses.forEach(name => {
+            const b = bossMap[name] || {};
+            const on = !!b.defeated;
+            const safeN = name.replace(/'/g, "\\'");
+            html += '<div class="cal-admin-card">';
+            html += '<span class="cal-admin-name">' + escapeHtml(name) + '</span>';
+            html += '<button class="cal-toggle-btn ' + (on ? 'on' : 'off') + '" onclick="toggleCalBoss(\'' + safeN + '\')">' + (on ? '✓ Done' : 'Mark') + '</button>';
+            html += '</div>';
+        });
+        html += '</div></div>';
+    });
+    sections.innerHTML = html;
+}
+ 
+function updateCalRushLabel(val) {
+    const label = document.getElementById('cal-rush-current-label');
+    if (!label) return;
+    const n = parseInt(val);
+    if (n === 0) { label.innerHTML = 'Not started yet.'; }
+    else if (n >= CAL_ALL_BOSSES_ADMIN.length) { label.innerHTML = 'Full run complete!'; }
+    else { label.innerHTML = 'Reached: <span>' + escapeHtml(CAL_ALL_BOSSES_ADMIN[n - 1]) + '</span> — next up: <span>' + escapeHtml(CAL_ALL_BOSSES_ADMIN[n]) + '</span>'; }
+}
+ 
+async function saveCalRush() {
+    const val = parseInt(document.getElementById('cal-rush-select').value);
+    updateCalRushLabel(val);
+    const cal = getCalData();
+    cal.boss_rush_progress = val;
+    try {
+        await saveEntries();
+        showMessage('Boss rush progress saved!', 'success');
+    } catch(err) { showMessage('Error: ' + err.message, 'error'); }
+}
+ 
+async function toggleCalBoss(name) {
+    const cal = getCalData();
+    let boss = cal.bosses.find(b => b.name === name);
+    if (!boss) { boss = { name, defeated: false }; cal.bosses.push(boss); }
+    boss.defeated = !boss.defeated;
+    try {
+        await saveEntries();
+        showMessage(name + ': ' + (boss.defeated ? 'defeated!' : 'unmarked'), 'success');
+        renderCalAdmin();
+    } catch(err) { showMessage('Error: ' + err.message, 'error'); await loadEntries(); }
+}
+
 function switchTab(tab,btn){
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
     document.querySelectorAll('.form-section').forEach(s=>s.classList.remove('active'));
     btn.classList.add('active');document.getElementById(tab+'-tab').classList.add('active');
     if(tab==='manage')renderEntries();if(tab==='settings')updateTokenStatus();if(tab==='hollow_knight')renderHKAdmin();
+    if (tab === 'calamity_admin') renderCalAdmin();
 }
 
 function showMessage(text,type){const msg=document.getElementById('message');msg.textContent=text;msg.className='message '+type;clearTimeout(msg._t);msg._t=setTimeout(()=>msg.className='message',5000)}
