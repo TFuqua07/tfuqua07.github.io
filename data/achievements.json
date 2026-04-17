@@ -724,5 +724,16 @@
       }
     ],
     "boss_rush_progress": 0
-  }
+  },
+  "wishlist": [
+    {
+      "category": "gd_platformer",
+      "name": "Fury of 500",
+      "creator": "Split72",
+      "campaign": null,
+      "video": "https://youtu.be/jWpDjyJlEJQ",
+      "date": "2026-04-17T01:58:35.601Z",
+      "tier": 1
+    }
+  ]
 }
