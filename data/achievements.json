@@ -701,6 +701,10 @@
       {
         "name": "Eater of Worlds",
         "defeated": true
+      },
+      {
+        "name": "Brain of Cthulhu",
+        "defeated": true
       }
     ],
     "boss_rush_progress": 22
