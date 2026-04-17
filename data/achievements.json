@@ -685,6 +685,10 @@
       {
         "name": "Desert Scourge",
         "defeated": true
+      },
+      {
+        "name": "Skeletron",
+        "defeated": true
       }
     ],
     "boss_rush_progress": 22
