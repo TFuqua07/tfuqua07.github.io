@@ -666,7 +666,7 @@
           "soul": false,
           "nail": true,
           "shell": true,
-          "heart": true
+          "heart": false
         }
       },
       {
