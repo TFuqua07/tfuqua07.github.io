@@ -675,5 +675,9 @@
         "bindings": {}
       }
     ]
+  },
+  "calamity": {
+    "bosses": [],
+    "boss_rush_progress": 22
   }
 }
