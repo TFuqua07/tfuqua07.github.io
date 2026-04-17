@@ -649,8 +649,8 @@
       },
       {
         "name": "Hornet Protector",
-        "radiant": true,
-        "ascended": true
+        "radiant": false,
+        "ascended": false
       }
     ],
     "pantheons": [
