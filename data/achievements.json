@@ -680,7 +680,7 @@
     "bosses": [
       {
         "name": "King Slime",
-        "defeated": true
+        "defeated": false
       },
       {
         "name": "Desert Scourge",
