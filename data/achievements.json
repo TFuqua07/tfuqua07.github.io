@@ -721,6 +721,10 @@
       {
         "name": "Crabulon",
         "defeated": true
+      },
+      {
+        "name": "Queen Slime",
+        "defeated": true
       }
     ],
     "boss_rush_progress": 0
