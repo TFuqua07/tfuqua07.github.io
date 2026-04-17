@@ -693,6 +693,10 @@
       {
         "name": "Deerclops",
         "defeated": true
+      },
+      {
+        "name": "Queen Bee",
+        "defeated": true
       }
     ],
     "boss_rush_progress": 22
