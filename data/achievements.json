@@ -663,7 +663,7 @@
         "id": 5,
         "completed": false,
         "bindings": {
-          "soul": true,
+          "soul": false,
           "nail": true,
           "shell": true,
           "heart": true
