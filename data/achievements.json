@@ -681,6 +681,10 @@
       {
         "name": "King Slime",
         "defeated": true
+      },
+      {
+        "name": "Desert Scourge",
+        "defeated": true
       }
     ],
     "boss_rush_progress": 22
