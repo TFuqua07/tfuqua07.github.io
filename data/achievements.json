@@ -724,7 +724,7 @@
       },
       {
         "name": "Queen Slime",
-        "defeated": true
+        "defeated": false
       }
     ],
     "boss_rush_progress": 0
