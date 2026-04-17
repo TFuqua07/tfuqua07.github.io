@@ -657,7 +657,9 @@
       {
         "id": 1,
         "completed": true,
-        "bindings": {}
+        "bindings": {
+          "nail": true
+        }
       },
       {
         "id": 5,
