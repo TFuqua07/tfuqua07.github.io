@@ -661,7 +661,7 @@
       },
       {
         "id": 5,
-        "completed": true,
+        "completed": false,
         "bindings": {
           "soul": true,
           "nail": true,
