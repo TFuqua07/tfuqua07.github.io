@@ -926,11 +926,7 @@ function renderCalamity() {
     html += '<div class="cal-rush-progress-bar-bg"><div class="cal-rush-progress-bar-fill" style="width:' + pct + '%"></div></div>';
     html += '<div class="cal-rush-meta">';
     html += '<span class="cal-rush-count">' + rushProgress + ' / ' + CAL_TOTAL + ' bosses cleared</span>';
-    if (nextBossName) {
-        html += '<span class="cal-rush-next">Next: <span class="cal-rush-next-name">' + escapeHtml(nextBossName) + '</span></span>';
-    } else {
-        html += '<span class="cal-rush-next" style="color:#64c878">All bosses defeated!</span>';
-    }
+
     html += '</div></div></div>';
  
     // Boss tracker
