@@ -664,7 +664,7 @@
         "completed": false,
         "bindings": {
           "soul": false,
-          "nail": true,
+          "nail": false,
           "shell": false,
           "heart": false
         }
