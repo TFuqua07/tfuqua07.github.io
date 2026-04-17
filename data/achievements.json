@@ -709,6 +709,10 @@
       {
         "name": "The Hive Mind",
         "defeated": true
+      },
+      {
+        "name": "The Perforators",
+        "defeated": true
       }
     ],
     "boss_rush_progress": 22
