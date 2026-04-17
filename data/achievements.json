@@ -785,6 +785,15 @@
       "video": "https://www.youtube.com/watch?v=wiorM5jb2Dg",
       "date": "2026-04-17T12:12:33.453Z",
       "tier": 2
+    },
+    {
+      "category": "gd_platformer",
+      "name": "Storm Front",
+      "creator": "rtnman",
+      "campaign": null,
+      "video": "https://youtu.be/zqUfHw48gYQ",
+      "date": "2026-04-17T12:22:17.632Z",
+      "tier": 1
     }
   ]
 }
