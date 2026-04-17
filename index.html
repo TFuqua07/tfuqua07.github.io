@@ -397,7 +397,6 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
     background: var(--border);
 }
 
-/* HOG grid — centered */
 .hog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -477,19 +476,7 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
 .binding-icon { width: 20px; height: 20px; }
 .binding-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
 
-@media (max-width: 640px) {
-    .nw-container { padding: 1rem; }
-    .nw-grid { grid-template-columns: 1fr; }
-    .tiers-container { padding: 1rem; }
-    .tier-column { flex: 0 0 320px; }
-    .card-thumb { flex: 0 0 140px; }
-    .time-cell-val { font-size: 0.55rem; }
-    .time-cell-label { font-size: 0.5rem; }
-    .hk-container { padding: 1rem; }
-    .hog-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
-    .pantheon-grid { grid-template-columns: 1fr; }
-}
-
+/* Calamity */
 .cal-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
 .cal-section-title {
     font-size: 0.7rem;
@@ -503,15 +490,12 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
     gap: 0.75rem;
 }
 .cal-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
- 
 .cal-phase-block { margin-bottom: 2.5rem; }
- 
 .cal-boss-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
     gap: 0.625rem;
 }
- 
 .cal-boss-card {
     background: linear-gradient(160deg, #14141e 0%, #0e0e18 100%);
     border: 1px solid var(--border);
@@ -534,30 +518,17 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
 .cal-boss-card:hover { transform: translateY(-1px); border-color: rgba(255,140,80,0.25); }
 .cal-boss-card.defeated { border-color: rgba(100,200,120,0.4); background: linear-gradient(160deg, #0e1a10 0%, #0a110b 100%); }
 .cal-boss-card.defeated::before { background: radial-gradient(ellipse at 50% -20%, rgba(100,200,120,0.08) 0%, transparent 65%); }
- 
 .cal-boss-dot {
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     border-radius: 50%;
     flex-shrink: 0;
     border: 1.5px solid var(--text-muted);
     background: transparent;
     transition: all 0.15s;
 }
-.cal-boss-card.defeated .cal-boss-dot {
-    background: #64c878;
-    border-color: rgba(100,200,120,0.6);
-}
- 
-.cal-boss-name {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    line-height: 1.3;
-}
+.cal-boss-card.defeated .cal-boss-dot { background: #64c878; border-color: rgba(100,200,120,0.6); }
+.cal-boss-name { font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); line-height: 1.3; }
 .cal-boss-card.defeated .cal-boss-name { color: #64c878; }
- 
-/* Boss Rush card */
 .cal-rush-card {
     background: linear-gradient(160deg, #14101e 0%, #0e0a17 100%);
     border: 1px solid var(--border);
@@ -599,22 +570,100 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
     background: linear-gradient(90deg, #ffb43c, #ff8c3c);
     transition: width 0.4s ease;
 }
-.cal-rush-meta {
+.cal-rush-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; }
+.cal-rush-count { color: var(--text-secondary); }
+
+/* ===== WISHLIST ===== */
+.wishlist-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
+.wishlist-section { margin-bottom: 2.5rem; }
+.wishlist-section-header {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-size: 0.8rem;
+    gap: 0.75rem;
 }
-.cal-rush-count { color: var(--text-secondary); }
-.cal-rush-next { color: var(--text-muted); }
-.cal-rush-next-name { color: #ffb43c; font-weight: 600; }
- 
-@media (max-width: 640px) {
-    .cal-container { padding: 1rem; }
-    .cal-boss-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.wishlist-section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.wishlist-section-header .wl-count {
+    background: rgba(99,102,241,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(99,102,241,0.25);
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+.wishlist-scroll {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.75rem;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+.wishlist-scroll::-webkit-scrollbar { height: 4px; }
+.wishlist-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.wishlist-card {
+    flex: 0 0 320px;
+    background: linear-gradient(135deg, rgba(30,30,46,0.9) 0%, rgba(20,20,35,0.95) 100%);
+    border: 2px solid;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    transition: all 0.2s ease;
+    min-height: 90px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.wishlist-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+.wishlist-card .card-thumb { flex: 0 0 130px; }
+.wishlist-card .card-body { padding: 0.65rem 0.875rem; }
+.wishlist-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+    background: rgba(99,102,241,0.15);
+    color: #818cf8;
+    border: 1px solid rgba(99,102,241,0.25);
+}
+.wishlist-creator {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-</style>
+@media (max-width: 640px) {
+    .nw-container { padding: 1rem; }
+    .nw-grid { grid-template-columns: 1fr; }
+    .tiers-container { padding: 1rem; }
+    .tier-column { flex: 0 0 320px; }
+    .card-thumb { flex: 0 0 140px; }
+    .time-cell-val { font-size: 0.55rem; }
+    .time-cell-label { font-size: 0.5rem; }
+    .hk-container { padding: 1rem; }
+    .hog-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    .pantheon-grid { grid-template-columns: 1fr; }
+    .cal-container { padding: 1rem; }
+    .cal-boss-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .wishlist-container { padding: 1rem; }
+}
+    </style>
 <base target="_blank">
 </head>
 <body>
@@ -628,6 +677,7 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
     <button class="tab-btn" onclick="switchTab('neon_white', this)">Neon White</button>
     <button class="tab-btn" onclick="switchTab('hollow_knight', this)">Hollow Knight</button>
     <button class="tab-btn" onclick="switchTab('calamity', this)">Calamity</button>
+    <button class="tab-btn" onclick="switchTab('wishlist', this)">Wishlist</button>
 </nav>
 
 <main id="content"></main>
@@ -715,6 +765,7 @@ function renderTab(tab) {
     if (tab === 'neon_white') renderNeonWhite();
     else if (tab === 'hollow_knight') renderHollowKnight();
     else if (tab === 'calamity') renderCalamity();
+    else if (tab === 'wishlist') renderWishlist();
     else renderAchievementsTab(tab);
 }
 
@@ -770,6 +821,90 @@ function renderCard(item, category, borderClass) {
     }
     const ratingHtml = item.rating != null ? '<div class="card-rating"><span class="rating-heart"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="rating-value">' + item.rating + '</span></div>' : '';
     return '<article class="achievement-card ' + borderClass + '"><div class="card-thumb ' + (hasVideo ? 'has-video' : '') + '" ' + thumbClick + '>' + thumbContent + playIcon + '</div><div class="card-body"><div><div class="card-title">' + escapeHtml(item.name) + '</div>' + (item.campaign ? '<div class="card-campaign">' + escapeHtml(item.campaign) + '</div>' : '') + '</div><div class="card-bottom"><div class="card-meta">' + metaHtml + '</div>' + ratingHtml + '</div></div></article>';
+}
+
+function renderWishlist() {
+    const container = document.getElementById('content');
+    const wishlist = currentData.wishlist || [];
+
+    const sections = [
+        { key: 'celeste_goldens', label: 'Celeste Goldens' },
+        { key: 'celeste_clears',  label: 'Celeste Clears' },
+        { key: 'demons',          label: 'Demons' },
+        { key: 'gd_platformer',   label: 'GD Platformers' },
+    ];
+
+    const grouped = { celeste_goldens: [], celeste_clears: [], demons: [], gd_platformer: [] };
+    wishlist.forEach(item => { if (grouped[item.category]) grouped[item.category].push(item); });
+
+    const totalCount = wishlist.length;
+    if (totalCount === 0) {
+        container.innerHTML = '<div class="empty-state">Wishlist is empty — add items in the admin panel</div>';
+        return;
+    }
+
+    let html = '<div class="wishlist-container">';
+
+    sections.forEach(sec => {
+        const items = grouped[sec.key];
+        if (!items.length) return;
+
+        // Sort by tier/star descending
+        items.sort((a, b) => (b.tier || b.star || 0) - (a.tier || a.star || 0));
+
+        const isClears  = sec.key === 'celeste_clears';
+        const isGoldens = sec.key === 'celeste_goldens';
+        const isGD      = sec.key === 'demons' || sec.key === 'gd_platformer';
+
+        html += '<div class="wishlist-section">';
+        html += '<div class="wishlist-section-header">' + sec.label + '<span class="wl-count">' + items.length + '</span></div>';
+        html += '<div class="wishlist-scroll">';
+
+        items.forEach(item => {
+            const num = item.star || item.tier || 0;
+            let borderClass, colorClass, ratingLabel;
+
+            if (isClears) {
+                borderClass = 'star-border-' + num;
+                colorClass  = 'star-color-' + num;
+                ratingLabel = num + '★';
+            } else if (isGoldens) {
+                borderClass = 'tier-border-' + num;
+                colorClass  = 'tier-color-' + num;
+                ratingLabel = 'Tier ' + num;
+            } else {
+                borderClass = 'gd-tier-border-' + num;
+                colorClass  = 'gd-tier-color-' + num;
+                ratingLabel = gdTierNames[num] || 'Tier ' + num;
+            }
+
+            const ytId = getYouTubeId(item.video);
+            const thumbnailUrl = ytId ? 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg' : null;
+            const hasVideo = !!item.video;
+            const thumbContent = thumbnailUrl
+                ? '<img src="' + escapeHtml(thumbnailUrl) + '" alt="" loading="lazy">'
+                : '<div class="no-thumb">No Video</div>';
+            const thumbClick = hasVideo ? 'onclick="window.open(\'' + escapeHtml(item.video) + '\',\'_blank\')"' : '';
+            const playIcon = hasVideo ? '<div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' : '';
+
+            html += '<article class="wishlist-card achievement-card ' + borderClass + '">';
+            html += '<div class="card-thumb ' + (hasVideo ? 'has-video' : '') + '" ' + thumbClick + '>' + thumbContent + playIcon + '</div>';
+            html += '<div class="card-body">';
+            html += '<div>';
+            html += '<div class="wishlist-tag">' + escapeHtml(ratingLabel) + '</div>';
+            html += '<div class="card-title">' + escapeHtml(item.name) + '</div>';
+            if (item.creator) html += '<div class="wishlist-creator">by ' + escapeHtml(item.creator) + '</div>';
+            if (item.campaign) html += '<div class="card-campaign">' + escapeHtml(item.campaign) + '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</article>';
+        });
+
+        html += '</div></div>';
+    });
+
+    html += '</div>';
+    container.innerHTML = html;
 }
 
 function renderNeonWhite() {
@@ -884,54 +1019,41 @@ function escapeHtml(text) {
 }
 
 const CAL_PHASES = [
-    {
-        name: "Pre-Hardmode",
-        bosses: ["King Slime","Desert Scourge","Eye of Cthulhu","Crabulon","Eater of Worlds","Brain of Cthulhu","The Hive Mind","The Perforators","Queen Bee","Deerclops","Skeletron","The Slime God","Wall of Flesh"]
-    },
-    {
-        name: "Hardmode",
-        bosses: ["Queen Slime","Cryogen","The Twins","Aquatic Scourge","The Destroyer","Brimstone Elemental","Skeletron Prime","Calamitas Clone","Plantera","Leviathan and Anahita","Astrum Aureus","Golem","The Plaguebringer Goliath","Empress of Light","Duke Fishron","Ravager","Lunatic Cultist","Astrum Deus","Moon Lord"]
-    },
-    {
-        name: "Post-Moon Lord",
-        bosses: ["Profaned Guardians","Dragonfolly","Providence, the Profaned Goddess","Ceaseless Void","Storm Weaver","Signus, Envoy of the Devourer","Polterghast","The Old Duke","The Devourer of Gods","Yharon, Dragon of Rebirth","Exo Mechs","Supreme Witch, Calamitas"]
-    }
+    { name: "Pre-Hardmode", bosses: ["King Slime","Desert Scourge","Eye of Cthulhu","Crabulon","Eater of Worlds","Brain of Cthulhu","The Hive Mind","The Perforators","Queen Bee","Deerclops","Skeletron","The Slime God","Wall of Flesh"] },
+    { name: "Hardmode", bosses: ["Queen Slime","Cryogen","The Twins","Aquatic Scourge","The Destroyer","Brimstone Elemental","Skeletron Prime","Calamitas Clone","Plantera","Leviathan and Anahita","Astrum Aureus","Golem","The Plaguebringer Goliath","Empress of Light","Duke Fishron","Ravager","Lunatic Cultist","Astrum Deus","Moon Lord"] },
+    { name: "Post-Moon Lord", bosses: ["Profaned Guardians","Dragonfolly","Providence, the Profaned Goddess","Ceaseless Void","Storm Weaver","Signus, Envoy of the Devourer","Polterghast","The Old Duke","The Devourer of Gods","Yharon, Dragon of Rebirth","Exo Mechs","Supreme Witch, Calamitas"] }
 ];
 const CAL_ALL_BOSSES = CAL_PHASES.flatMap(p => p.bosses);
 const CAL_TOTAL = CAL_ALL_BOSSES.length;
- 
+
 function renderCalamity() {
     const container = document.getElementById('content');
     const calData = currentData.calamity || {};
     const bossMap = {};
     (calData.bosses || []).forEach(b => { bossMap[b.name] = b; });
     const rushProgress = calData.boss_rush_progress || 0;
- 
+
     const defeatedCount = CAL_ALL_BOSSES.filter(n => bossMap[n] && bossMap[n].defeated).length;
- 
-    // Boss Rush card
+
     const pct = CAL_TOTAL > 0 ? (rushProgress / CAL_TOTAL * 100).toFixed(1) : 0;
     let badgeClass = 'not-started', badgeLabel = 'Not started';
     if (rushProgress >= CAL_TOTAL) { badgeClass = 'complete'; badgeLabel = 'Complete!'; }
     else if (rushProgress > 0) { badgeClass = 'in-progress'; badgeLabel = 'In progress'; }
     const nextBossName = rushProgress < CAL_TOTAL ? CAL_ALL_BOSSES[rushProgress] : null;
- 
+
     let html = '<div class="cal-container">';
- 
-    // Rush card
+
     html += '<div class="cal-section-title">Boss Rush</div>';
     html += '<div class="cal-rush-card">';
     html += '<div class="cal-rush-header"><span class="cal-rush-title">Calamity Boss Rush</span><span class="cal-rush-badge ' + badgeClass + '">' + badgeLabel + '</span></div>';
     html += '<div class="cal-rush-body">';
     html += '<div class="cal-rush-progress-bar-bg"><div class="cal-rush-progress-bar-fill" style="width:' + pct + '%"></div></div>';
     html += '<div class="cal-rush-meta">';
-    html += '<span class="cal-rush-count">' + rushProgress + ' / ' + CAL_TOTAL + ' bosses cleared</span>';
-
+    html += '<span class="cal-rush-count">' + rushProgress + ' / ' + CAL_TOTAL + (nextBossName ? ' — ' + escapeHtml(nextBossName) : ' — Complete!') + '</span>';
     html += '</div></div></div>';
- 
-    // Boss tracker
+
     html += '<div class="cal-section-title">Boss Tracker — ' + defeatedCount + ' / ' + CAL_TOTAL + ' Defeated</div>';
- 
+
     CAL_PHASES.forEach(phase => {
         html += '<div class="cal-phase-block">';
         html += '<div class="cal-section-title" style="font-size:0.65rem;margin-bottom:0.6rem">' + escapeHtml(phase.name) + '</div>';
@@ -946,7 +1068,7 @@ function renderCalamity() {
         });
         html += '</div></div>';
     });
- 
+
     html += '</div>';
     container.innerHTML = html;
 }
