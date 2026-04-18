@@ -663,6 +663,89 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
     .cal-boss-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
     .wishlist-container { padding: 1rem; }
 }
+
+.creations-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
+.creations-section-title {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+}
+.creations-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.creations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+.creation-card {
+    background: linear-gradient(135deg, rgba(30,30,46,0.9) 0%, rgba(20,20,35,0.95) 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.creation-card:hover { transform: translateY(-2px); border-color: #3a3a5a; }
+.creation-card.gd-classic { border-color: rgba(99,102,241,0.35); }
+.creation-card.gd-platformer { border-color: rgba(99,255,180,0.25); }
+.creation-card.celeste { border-color: rgba(255,120,180,0.25); }
+.creation-thumb {
+    width: 100%; aspect-ratio: 16/9;
+    background: var(--bg-tertiary);
+    position: relative; overflow: hidden;
+}
+.creation-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.creation-thumb .no-thumb {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 0.8rem;
+}
+.creation-thumb.clickable { cursor: pointer; }
+.creation-thumb.clickable:hover img { opacity: 0.8; }
+.creation-thumb .play-icon {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px; height: 44px;
+    background: rgba(0,0,0,0.75); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.15s; pointer-events: none;
+}
+.creation-thumb.clickable:hover .play-icon { opacity: 1; }
+.creation-thumb .play-icon svg { width: 16px; height: 16px; fill: white; margin-left: 2px; }
+.creation-body { padding: 0.875rem 1rem; }
+.creation-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.4rem; }
+.creation-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+.creation-type-badge {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center;
+    padding: 0.15rem 0.5rem; border-radius: 4px;
+    font-size: 0.65rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    border: 1px solid;
+}
+.badge-classic  { background: rgba(99,102,241,0.12); color: #818cf8; border-color: rgba(99,102,241,0.3); }
+.badge-platformer { background: rgba(99,255,180,0.1); color: #6effc0; border-color: rgba(99,255,180,0.25); }
+.badge-celeste  { background: rgba(255,120,180,0.1); color: #ff8ec8; border-color: rgba(255,120,180,0.25); }
+.creation-difficulty { font-size: 0.78rem; color: var(--text-secondary); font-weight: 500; margin-bottom: 0.5rem; }
+.creation-description {
+    font-size: 0.8125rem; color: var(--text-secondary);
+    line-height: 1.55; margin-bottom: 0.75rem;
+}
+.creation-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.creation-btn {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.35rem 0.75rem; border-radius: 6px;
+    font-size: 0.75rem; font-weight: 600;
+    border: 1px solid; cursor: pointer;
+    text-decoration: none; transition: all 0.15s;
+    font-family: inherit;
+}
+.btn-video { background: rgba(99,102,241,0.1); color: #818cf8; border-color: rgba(99,102,241,0.25); }
+.btn-video:hover { background: rgba(99,102,241,0.2); }
+.btn-gb { background: rgba(255,120,180,0.1); color: #ff8ec8; border-color: rgba(255,120,180,0.25); }
+.btn-gb:hover { background: rgba(255,120,180,0.2); }
+.btn-copy { background: rgba(99,255,180,0.08); color: #6effc0; border-color: rgba(99,255,180,0.2); }
+.btn-copy:hover { background: rgba(99,255,180,0.15); }
+.btn-copy.copied { background: rgba(34,197,94,0.15); color: #4ade80; border-color: rgba(34,197,94,0.3); }
     </style>
 <base target="_blank">
 </head>
@@ -678,6 +761,7 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
     <button class="tab-btn" onclick="switchTab('hollow_knight', this)">Hollow Knight</button>
     <button class="tab-btn" onclick="switchTab('calamity', this)">Calamity</button>
     <button class="tab-btn" onclick="switchTab('wishlist', this)">Wishlist</button>
+    <button class="tab-btn" onclick="switchTab('creations', this)">Our Creations</button>
 </nav>
 
 <main id="content"></main>
@@ -766,6 +850,7 @@ function renderTab(tab) {
     else if (tab === 'hollow_knight') renderHollowKnight();
     else if (tab === 'calamity') renderCalamity();
     else if (tab === 'wishlist') renderWishlist();
+    else if (tab === 'creations') renderCreations();
     else renderAchievementsTab(tab);
 }
 
@@ -1081,6 +1166,81 @@ function renderCalamity() {
 
     html += '</div>';
     container.innerHTML = html;
+}
+
+function renderCreations() {
+    const container = document.getElementById('content');
+    const creations = currentData.creations || [];
+    if (!creations.length) {
+        container.innerHTML = '<div class="empty-state">No creations yet</div>';
+        return;
+    }
+
+    const gd = creations.filter(c => c.game === 'gd');
+    const cel = creations.filter(c => c.game === 'celeste');
+
+    let html = '<div class="creations-container">';
+
+    if (gd.length) {
+        html += '<div class="creations-section-title">Geometry Dash</div>';
+        html += '<div class="creations-grid">';
+        gd.forEach(c => { html += buildCreationCard(c); });
+        html += '</div>';
+    }
+
+    if (cel.length) {
+        html += '<div class="creations-section-title">Celeste</div>';
+        html += '<div class="creations-grid">';
+        cel.forEach(c => { html += buildCreationCard(c); });
+        html += '</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+function buildCreationCard(c) {
+    const ytId = getYouTubeId(c.video);
+    const thumb = ytId ? 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg' : null;
+    const hasVideo = !!c.video;
+    const thumbHtml = thumb
+        ? '<img src="' + escapeHtml(thumb) + '" alt="" loading="lazy">'
+        : '<div class="no-thumb">No Video</div>';
+    const playIcon = hasVideo ? '<div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' : '';
+    const thumbClick = hasVideo ? 'onclick="window.open(\'' + escapeHtml(c.video) + '\',\'_blank\')"' : '';
+
+    let typeClass = '', badgeClass = '', badgeLabel = '';
+    if (c.game === 'celeste') { typeClass = 'celeste'; badgeClass = 'badge-celeste'; badgeLabel = 'Celeste'; }
+    else if (c.type === 'platformer') { typeClass = 'gd-platformer'; badgeClass = 'badge-platformer'; badgeLabel = 'Platformer'; }
+    else { typeClass = 'gd-classic'; badgeClass = 'badge-classic'; badgeLabel = 'Classic'; }
+
+    let actionsHtml = '';
+    if (hasVideo) {
+        actionsHtml += '<a href="' + escapeHtml(c.video) + '" target="_blank" class="creation-btn btn-video"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch</a>';
+    }
+    if (c.game === 'celeste' && c.link) {
+        actionsHtml += '<a href="' + escapeHtml(c.link) + '" target="_blank" class="creation-btn btn-gb">GameBanana</a>';
+    }
+    if (c.game === 'gd' && c.level_id) {
+        actionsHtml += '<button class="creation-btn btn-copy" onclick="copyLevelId(this, \'' + escapeHtml(c.level_id) + '\')">Copy ID</button>';
+    }
+
+    return '<div class="creation-card ' + typeClass + '">'
+        + '<div class="creation-thumb ' + (hasVideo ? 'clickable' : '') + '" ' + thumbClick + '>' + thumbHtml + playIcon + '</div>'
+        + '<div class="creation-body">'
+        + '<div class="creation-top"><span class="creation-name">' + escapeHtml(c.name) + '</span><span class="creation-type-badge ' + badgeClass + '">' + badgeLabel + '</span></div>'
+        + (c.difficulty ? '<div class="creation-difficulty">' + escapeHtml(c.difficulty) + '</div>' : '')
+        + (c.description ? '<div class="creation-description">' + escapeHtml(c.description) + '</div>' : '')
+        + (actionsHtml ? '<div class="creation-actions">' + actionsHtml + '</div>' : '')
+        + '</div></div>';
+}
+
+function copyLevelId(btn, id) {
+    navigator.clipboard.writeText(id).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy ID'; btn.classList.remove('copied'); }, 2000);
+    });
 }
 
 loadAchievements();
