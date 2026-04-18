@@ -718,13 +718,11 @@ async function saveWishlistItem() {
     try {
         await saveEntries();
         showMessage('Added to wishlist!', 'success');
-        document.getElementById('wl-category').value = '';
         document.getElementById('wl-name').value = '';
         document.getElementById('wl-creator').value = '';
         document.getElementById('wl-campaign').value = '';
         document.getElementById('wl-video').value = '';
         document.getElementById('wl-thumbnail-preview').style.display = 'none';
-        document.getElementById('wl-difficulty-row').style.display = 'none';
         renderWishlistAdmin();
     } catch(err) {
         allEntries.wishlist.pop();
