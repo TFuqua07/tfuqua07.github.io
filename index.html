@@ -884,8 +884,8 @@ function renderCreations() {
     html += '<div class="cr-sort-bar"><span>Sort</span><select id="cr-sort-select" onchange="renderCreations()">'
         + '<option value="alpha-asc"' + (sortVal==='alpha-asc'?' selected':'') + '>A → Z</option>'
         + '<option value="alpha-desc"' + (sortVal==='alpha-desc'?' selected':'') + '>Z → A</option>'
-        + '<option value="diff-asc"' + (sortVal==='diff-asc'?' selected':'') + '>Difficulty ↑</option>'
-        + '<option value="diff-desc"' + (sortVal==='diff-desc'?' selected':'') + '>Difficulty ↓</option>'
+        + '<option value="diff-asc"' + (sortVal==='diff-asc'?' selected':'') + '>Difficulty (Ascending)</option>'
+        + '<option value="diff-desc"' + (sortVal==='diff-desc'?' selected':'') + '>Difficulty (Descending)</option>'
         + '</select></div>';
 
     if (gd.length) {
