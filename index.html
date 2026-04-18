@@ -722,10 +722,9 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
     text-transform: uppercase; letter-spacing: 0.05em;
     border: 1px solid;
 }
-.badge-classic  { background: rgba(99,102,241,0.12); color: #818cf8; border-color: rgba(99,102,241,0.3); }
-.badge-platformer { background: rgba(99,255,180,0.1); color: #6effc0; border-color: rgba(99,255,180,0.25); }
-.badge-celeste  { background: rgba(255,120,180,0.1); color: #ff8ec8; border-color: rgba(255,120,180,0.25); }
-.creation-difficulty { font-size: 0.78rem; color: var(--text-secondary); font-weight: 500; margin-bottom: 0.5rem; }
+.badge-classic { background: rgba(255,210,0,0.1); color: #ffd200; border-color: rgba(255,210,0,0.3); }
+.badge-platformer { background: rgba(99,180,255,0.1); color: #63b4ff; border-color: rgba(99,180,255,0.3); }
+.creation-difficulty { font-size: 0.875rem; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; }
 .creation-description {
     font-size: 0.8125rem; color: var(--text-secondary);
     line-height: 1.55; margin-bottom: 0.75rem;
@@ -741,8 +740,8 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
 }
 .btn-video { background: rgba(99,102,241,0.1); color: #818cf8; border-color: rgba(99,102,241,0.25); }
 .btn-video:hover { background: rgba(99,102,241,0.2); }
-.btn-gb { background: rgba(255,120,180,0.1); color: #ff8ec8; border-color: rgba(255,120,180,0.25); }
-.btn-gb:hover { background: rgba(255,120,180,0.2); }
+.btn-gb { background: rgba(255,210,0,0.1); color: #ffd200; border-color: rgba(255,210,0,0.3); }
+.btn-gb:hover { background: rgba(255,210,0,0.2); }
 .btn-copy { background: rgba(99,255,180,0.08); color: #6effc0; border-color: rgba(99,255,180,0.2); }
 .btn-copy:hover { background: rgba(99,255,180,0.15); }
 .btn-copy.copied { background: rgba(34,197,94,0.15); color: #4ade80; border-color: rgba(34,197,94,0.3); }
@@ -1209,15 +1208,17 @@ function buildCreationCard(c) {
     const playIcon = hasVideo ? '<div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' : '';
     const thumbClick = hasVideo ? 'onclick="window.open(\'' + escapeHtml(c.video) + '\',\'_blank\')"' : '';
 
-    let typeClass = '', badgeClass = '', badgeLabel = '';
-    if (c.game === 'celeste') { typeClass = 'celeste'; badgeClass = 'badge-celeste'; badgeLabel = 'Celeste'; }
-    else if (c.type === 'platformer') { typeClass = 'gd-platformer'; badgeClass = 'badge-platformer'; badgeLabel = 'Platformer'; }
-    else { typeClass = 'gd-classic'; badgeClass = 'badge-classic'; badgeLabel = 'Classic'; }
+    let typeClass = '';
+    if (c.game === 'celeste') typeClass = 'celeste';
+    else if (c.type === 'platformer') typeClass = 'gd-platformer';
+    else typeClass = 'gd-classic';
+
+    const gdBadge = c.game === 'gd'
+        ? '<span class="creation-type-badge ' + (c.type === 'platformer' ? 'badge-platformer' : 'badge-classic') + '">'
+          + (c.type === 'platformer' ? 'Platformer' : 'Classic') + '</span>'
+        : '';
 
     let actionsHtml = '';
-    if (hasVideo) {
-        actionsHtml += '<a href="' + escapeHtml(c.video) + '" target="_blank" class="creation-btn btn-video"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch</a>';
-    }
     if (c.game === 'celeste' && c.link) {
         actionsHtml += '<a href="' + escapeHtml(c.link) + '" target="_blank" class="creation-btn btn-gb">GameBanana</a>';
     }
@@ -1228,7 +1229,7 @@ function buildCreationCard(c) {
     return '<div class="creation-card ' + typeClass + '">'
         + '<div class="creation-thumb ' + (hasVideo ? 'clickable' : '') + '" ' + thumbClick + '>' + thumbHtml + playIcon + '</div>'
         + '<div class="creation-body">'
-        + '<div class="creation-top"><span class="creation-name">' + escapeHtml(c.name) + '</span><span class="creation-type-badge ' + badgeClass + '">' + badgeLabel + '</span></div>'
+        + '<div class="creation-top"><span class="creation-name">' + escapeHtml(c.name) + '</span>' + gdBadge + '</div>'
         + (c.difficulty ? '<div class="creation-difficulty">' + escapeHtml(c.difficulty) + '</div>' : '')
         + (c.description ? '<div class="creation-description">' + escapeHtml(c.description) + '</div>' : '')
         + (actionsHtml ? '<div class="creation-actions">' + actionsHtml + '</div>' : '')
