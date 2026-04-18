@@ -1145,6 +1145,16 @@
       "date": "2026-04-18T23:26:56.657Z",
       "type": "classic",
       "level_id": "99674832"
+    },
+    {
+      "game": "gd",
+      "name": "Hollywood",
+      "difficulty": "Insane",
+      "description": "our last 2.1 level!! this was interesting to make but i kinda forgot a lot about it but it was an idea dump!! making easy gameplay is hard!",
+      "video": "https://youtu.be/8nOsqEw5MAc",
+      "date": "2026-04-18T23:29:57.360Z",
+      "type": "classic",
+      "level_id": "97400062"
     }
   ]
 }
