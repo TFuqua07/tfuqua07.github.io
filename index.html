@@ -1049,7 +1049,7 @@ function renderCalamity() {
     let badgeClass = 'not-started', badgeLabel = 'Not started';
     if (rushProgress >= CAL_TOTAL) { badgeClass = 'complete'; badgeLabel = 'Complete!'; }
     else if (rushProgress > 0) { badgeClass = 'in-progress'; badgeLabel = 'In progress'; }
-    const nextBossName = rushProgress < CAL_TOTAL ? CAL_ALL_BOSSES[rushProgress] : null;
+    const nextBossName = rushProgress > 0 && rushProgress <= CAL_TOTAL ? CAL_ALL_BOSSES[rushProgress - 1] : null;
 
     let html = '<div class="cal-container">';
 
