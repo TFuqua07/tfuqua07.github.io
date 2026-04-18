@@ -339,6 +339,15 @@
       "thumbnail": "https://img.youtube.com/vi/VpaKFkqtDc4/hqdefault.jpg",
       "tier": 1,
       "attempts": 4268
+    },
+    {
+      "name": "Mizureta",
+      "campaign": "dutchiee & co.",
+      "video": "https://youtu.be/Z1SRz4CM2pA",
+      "date": "2026-04-18T03:02:21.964Z",
+      "thumbnail": "https://img.youtube.com/vi/Z1SRz4CM2pA/hqdefault.jpg",
+      "tier": 1,
+      "attempts": 1422
     }
   ],
   "gd_platformer": [],
