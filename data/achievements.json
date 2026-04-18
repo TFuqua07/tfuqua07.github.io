@@ -1135,6 +1135,16 @@
       "date": "2026-04-18T21:02:33.434Z",
       "link": "https://gamebanana.com/mods/656794",
       "diff_order": 2
+    },
+    {
+      "game": "gd",
+      "name": "Fight Song (Hosted by Ai)",
+      "difficulty": "Insane Demon",
+      "description": "wow i made a part in a level for Kay's 19th birthday! im quite proud of my gameplay for this and i think everyone else did a wonderful job with their parts! much love to kay for being a huge inspiration :D",
+      "video": "https://youtu.be/kiHRNv0tDhg",
+      "date": "2026-04-18T23:26:56.657Z",
+      "type": "classic",
+      "level_id": "99674832"
     }
   ]
 }
