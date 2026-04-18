@@ -1144,7 +1144,8 @@
       "video": "https://youtu.be/kiHRNv0tDhg",
       "date": "2026-04-18T23:26:56.657Z",
       "type": "classic",
-      "level_id": "99674832"
+      "level_id": "99674832",
+      "diff_order": 1
     },
     {
       "game": "gd",
@@ -1154,7 +1155,8 @@
       "video": "https://youtu.be/8nOsqEw5MAc",
       "date": "2026-04-18T23:29:57.360Z",
       "type": "classic",
-      "level_id": "97400062"
+      "level_id": "97400062",
+      "diff_order": 3
     },
     {
       "game": "gd",
@@ -1164,7 +1166,8 @@
       "video": "https://youtu.be/bf1h6CN9olI",
       "date": "2026-04-18T23:33:59.185Z",
       "type": "classic",
-      "level_id": "97091537"
+      "level_id": "97091537",
+      "diff_order": 2
     }
   ]
 }
