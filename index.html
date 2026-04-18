@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -378,75 +377,18 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
 
 /* Hollow Knight */
 .hk-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
-
-.hk-section-title {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-.hk-section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-}
-
-.hog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 0.625rem;
-    margin-bottom: 2.5rem;
-    justify-items: stretch;
-}
-
-.hog-card {
-    background: linear-gradient(160deg, #14141e 0%, #0e0e18 100%);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.75rem 0.875rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    transition: border-color 0.15s, transform 0.15s;
-    position: relative;
-    overflow: hidden;
-}
-.hog-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% -20%, rgba(160,120,255,0.06) 0%, transparent 65%);
-    pointer-events: none;
-}
+.hk-section-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+.hk-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.hog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.625rem; margin-bottom: 2.5rem; justify-items: stretch; }
+.hog-card { background: linear-gradient(160deg, #14141e 0%, #0e0e18 100%); border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem 0.875rem; display: flex; flex-direction: column; gap: 0.5rem; transition: border-color 0.15s, transform 0.15s; position: relative; overflow: hidden; }
+.hog-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% -20%, rgba(160,120,255,0.06) 0%, transparent 65%); pointer-events: none; }
 .hog-card:hover { transform: translateY(-1px); border-color: rgba(160,120,255,0.3); }
 .hog-card.has-radiant { border-color: rgba(255,200,60,0.4); background: linear-gradient(160deg, #1a1508 0%, #110f05 100%); }
 .hog-card.has-radiant::before { background: radial-gradient(ellipse at 50% -20%, rgba(255,200,60,0.1) 0%, transparent 65%); }
 .hog-card.has-ascended:not(.has-radiant) { border-color: rgba(180,140,255,0.35); }
-
 .hog-name { font-size: 0.78rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
-
 .hog-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-
-.hog-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.2rem 0.45rem;
-    border-radius: 5px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    border: 1px solid;
-    opacity: 0.25;
-    transition: opacity 0.15s;
-}
+.hog-badge { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.2rem 0.45rem; border-radius: 5px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid; opacity: 0.25; transition: opacity 0.15s; }
 .hog-badge.earned { opacity: 1; }
 .badge-ascended { background: rgba(180,140,255,0.12); color: #c4a8ff; border-color: #c4a8ff44; }
 .badge-radiant  { background: rgba(255,200,60,0.12);  color: #ffc83c; border-color: #ffc83c44; }
@@ -478,175 +420,85 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
 
 /* Calamity */
 .cal-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
-.cal-section-title {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
+.cal-section-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
 .cal-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .cal-phase-block { margin-bottom: 2.5rem; }
-.cal-boss-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-    gap: 0.625rem;
-}
-.cal-boss-card {
-    background: linear-gradient(160deg, #14141e 0%, #0e0e18 100%);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.65rem 0.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    transition: border-color 0.15s, transform 0.15s;
-    position: relative;
-    overflow: hidden;
-}
-.cal-boss-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% -20%, rgba(255,120,60,0.05) 0%, transparent 65%);
-    pointer-events: none;
-}
+.cal-boss-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 0.625rem; }
+.cal-boss-card { background: linear-gradient(160deg, #14141e 0%, #0e0e18 100%); border: 1px solid var(--border); border-radius: 10px; padding: 0.65rem 0.875rem; display: flex; align-items: center; gap: 0.6rem; transition: border-color 0.15s, transform 0.15s; position: relative; overflow: hidden; }
+.cal-boss-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% -20%, rgba(255,120,60,0.05) 0%, transparent 65%); pointer-events: none; }
 .cal-boss-card:hover { transform: translateY(-1px); border-color: rgba(255,140,80,0.25); }
 .cal-boss-card.defeated { border-color: rgba(100,200,120,0.4); background: linear-gradient(160deg, #0e1a10 0%, #0a110b 100%); }
 .cal-boss-card.defeated::before { background: radial-gradient(ellipse at 50% -20%, rgba(100,200,120,0.08) 0%, transparent 65%); }
-.cal-boss-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    border: 1.5px solid var(--text-muted);
-    background: transparent;
-    transition: all 0.15s;
-}
+.cal-boss-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; border: 1.5px solid var(--text-muted); background: transparent; transition: all 0.15s; }
 .cal-boss-card.defeated .cal-boss-dot { background: #64c878; border-color: rgba(100,200,120,0.6); }
 .cal-boss-name { font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); line-height: 1.3; }
 .cal-boss-card.defeated .cal-boss-name { color: #64c878; }
-.cal-rush-card {
-    background: linear-gradient(160deg, #14101e 0%, #0e0a17 100%);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 2.5rem;
-}
-.cal-rush-header {
-    padding: 0.875rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+.cal-rush-card { background: linear-gradient(160deg, #14101e 0%, #0e0a17 100%); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; }
+.cal-rush-header { padding: 0.875rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; }
 .cal-rush-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
-.cal-rush-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.2rem 0.6rem;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    border: 1px solid;
-}
+.cal-rush-badge { display: inline-flex; align-items: center; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; border: 1px solid; }
 .cal-rush-badge.in-progress { background: rgba(255,180,60,0.12); color: #ffb43c; border-color: #ffb43c44; }
 .cal-rush-badge.not-started { background: rgba(80,80,100,0.2); color: var(--text-muted); border-color: rgba(80,80,100,0.2); }
 .cal-rush-badge.complete { background: rgba(100,200,120,0.12); color: #64c878; border-color: rgba(100,200,120,0.3); }
 .cal-rush-body { padding: 0.875rem 1rem; }
-.cal-rush-progress-bar-bg {
-    height: 4px;
-    background: rgba(255,255,255,0.07);
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 0.75rem;
-}
-.cal-rush-progress-bar-fill {
-    height: 100%;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #ffb43c, #ff8c3c);
-    transition: width 0.4s ease;
-}
+.cal-rush-progress-bar-bg { height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; margin-bottom: 0.75rem; }
+.cal-rush-progress-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, #ffb43c, #ff8c3c); transition: width 0.4s ease; }
 .cal-rush-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; }
 .cal-rush-count { color: var(--text-secondary); }
 
-/* ===== WISHLIST ===== */
+/* Wishlist */
 .wishlist-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
 .wishlist-section { margin-bottom: 2.5rem; }
-.wishlist-section-header {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
+.wishlist-section-header { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
 .wishlist-section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.wishlist-section-header .wl-count {
-    background: rgba(99,102,241,0.15);
-    color: var(--accent);
-    border: 1px solid rgba(99,102,241,0.25);
-    padding: 0.1rem 0.5rem;
-    border-radius: 20px;
-    font-size: 0.65rem;
-    font-weight: 700;
-}
-.wishlist-scroll {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 0.75rem;
-    padding-bottom: 0.5rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
-}
+.wishlist-section-header .wl-count { background: rgba(99,102,241,0.15); color: var(--accent); border: 1px solid rgba(99,102,241,0.25); padding: 0.1rem 0.5rem; border-radius: 20px; font-size: 0.65rem; font-weight: 700; }
+.wishlist-scroll { display: flex; flex-direction: row; overflow-x: auto; gap: 0.75rem; padding-bottom: 0.5rem; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
 .wishlist-scroll::-webkit-scrollbar { height: 4px; }
 .wishlist-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-.wishlist-card {
-    flex: 0 0 320px;
-    background: linear-gradient(135deg, rgba(30,30,46,0.9) 0%, rgba(20,20,35,0.95) 100%);
-    border: 2px solid;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    transition: all 0.2s ease;
-    min-height: 90px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
+.wishlist-card { flex: 0 0 320px; background: linear-gradient(135deg, rgba(30,30,46,0.9) 0%, rgba(20,20,35,0.95) 100%); border: 2px solid; border-radius: 12px; overflow: hidden; display: flex; flex-direction: row; align-items: stretch; transition: all 0.2s ease; min-height: 90px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 .wishlist-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
 .wishlist-card .card-thumb { flex: 0 0 130px; }
 .wishlist-card .card-body { padding: 0.65rem 0.875rem; }
-.wishlist-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.15rem 0.45rem;
-    border-radius: 4px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 0.25rem;
-    background: rgba(99,102,241,0.15);
-    color: #818cf8;
-    border: 1px solid rgba(99,102,241,0.25);
-}
-.wishlist-creator {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-top: 0.1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+.wishlist-tag { display: inline-flex; align-items: center; padding: 0.15rem 0.45rem; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.25); }
+.wishlist-creator { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Creations */
+.creations-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
+.creations-section-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+.creations-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.creations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+.creation-card { background: linear-gradient(135deg, rgba(30,30,46,0.9) 0%, rgba(20,20,35,0.95) 100%); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease; }
+.creation-card:hover { transform: translateY(-2px); border-color: #3a3a5a; }
+.creation-card.gd-classic { border-color: rgba(255,210,0,0.3); }
+.creation-card.gd-platformer { border-color: rgba(99,180,255,0.25); }
+.creation-card.celeste { border-color: rgba(255,120,180,0.25); }
+.creation-thumb { width: 100%; aspect-ratio: 16/9; background: var(--bg-tertiary); position: relative; overflow: hidden; }
+.creation-thumb::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to bottom, transparent, rgba(20,20,35,0.95)); pointer-events: none; }
+.creation-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.creation-thumb .no-thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; }
+.creation-thumb.clickable { cursor: pointer; }
+.creation-thumb.clickable:hover img { opacity: 0.8; }
+.creation-thumb .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; background: rgba(0,0,0,0.75); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.15s; pointer-events: none; z-index: 1; }
+.creation-thumb.clickable:hover .play-icon { opacity: 1; }
+.creation-thumb .play-icon svg { width: 16px; height: 16px; fill: white; margin-left: 2px; }
+.creation-body { padding: 0.875rem 1rem; }
+.creation-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.4rem; }
+.creation-name { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+.creation-type-badge { flex-shrink: 0; display: inline-flex; align-items: center; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid; }
+.badge-classic { background: rgba(255,210,0,0.1); color: #ffd200; border-color: rgba(255,210,0,0.3); }
+.badge-platformer { background: rgba(99,180,255,0.1); color: #63b4ff; border-color: rgba(99,180,255,0.3); }
+.creation-difficulty { font-size: 0.875rem; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; }
+.creation-description { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 0.75rem; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.creation-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.creation-btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; border: 1px solid; cursor: pointer; text-decoration: none; transition: all 0.15s; font-family: inherit; }
+.btn-gb { background: rgba(255,210,0,0.1); color: #ffd200; border-color: rgba(255,210,0,0.3); }
+.btn-gb:hover { background: rgba(255,210,0,0.2); }
+.btn-copy { background: rgba(99,255,180,0.08); color: #6effc0; border-color: rgba(99,255,180,0.2); }
+.btn-copy:hover { background: rgba(99,255,180,0.15); }
+.btn-copy.copied { background: rgba(34,197,94,0.15); color: #4ade80; border-color: rgba(34,197,94,0.3); }
+.cr-sort-bar { display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; margin-bottom: 1.5rem; }
+.cr-sort-bar span { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+.cr-sort-bar select { background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-primary); padding: 0.4rem 0.75rem; border-radius: 8px; font-size: 0.8rem; font-family: inherit; cursor: pointer; }
 
 @media (max-width: 640px) {
     .nw-container { padding: 1rem; }
@@ -662,89 +514,9 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
     .cal-container { padding: 1rem; }
     .cal-boss-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
     .wishlist-container { padding: 1rem; }
+    .creations-container { padding: 1rem; }
+    .creations-grid { grid-template-columns: 1fr; }
 }
-
-.creations-container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
-.creations-section-title {
-    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 0.75rem;
-}
-.creations-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.creations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-}
-.creation-card {
-    background: linear-gradient(135deg, rgba(30,30,46,0.9) 0%, rgba(20,20,35,0.95) 100%);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-.creation-card:hover { transform: translateY(-2px); border-color: #3a3a5a; }
-.creation-card.gd-classic { border-color: rgba(99,102,241,0.35); }
-.creation-card.gd-platformer { border-color: rgba(99,255,180,0.25); }
-.creation-card.celeste { border-color: rgba(255,120,180,0.25); }
-.creation-thumb {
-    width: 100%; aspect-ratio: 16/9;
-    background: var(--bg-tertiary);
-    position: relative; overflow: hidden;
-}
-.creation-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.creation-thumb .no-thumb {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--text-muted); font-size: 0.8rem;
-}
-.creation-thumb.clickable { cursor: pointer; }
-.creation-thumb.clickable:hover img { opacity: 0.8; }
-.creation-thumb .play-icon {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 44px; height: 44px;
-    background: rgba(0,0,0,0.75); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.15s; pointer-events: none;
-}
-.creation-thumb.clickable:hover .play-icon { opacity: 1; }
-.creation-thumb .play-icon svg { width: 16px; height: 16px; fill: white; margin-left: 2px; }
-.creation-body { padding: 0.875rem 1rem; }
-.creation-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.4rem; }
-.creation-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
-.creation-type-badge {
-    flex-shrink: 0;
-    display: inline-flex; align-items: center;
-    padding: 0.15rem 0.5rem; border-radius: 4px;
-    font-size: 0.65rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.05em;
-    border: 1px solid;
-}
-.badge-classic { background: rgba(255,210,0,0.1); color: #ffd200; border-color: rgba(255,210,0,0.3); }
-.badge-platformer { background: rgba(99,180,255,0.1); color: #63b4ff; border-color: rgba(99,180,255,0.3); }
-.creation-difficulty { font-size: 0.875rem; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; }
-.creation-description {
-    font-size: 0.8125rem; color: var(--text-secondary);
-    line-height: 1.55; margin-bottom: 0.75rem;
-}
-.creation-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.creation-btn {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    padding: 0.35rem 0.75rem; border-radius: 6px;
-    font-size: 0.75rem; font-weight: 600;
-    border: 1px solid; cursor: pointer;
-    text-decoration: none; transition: all 0.15s;
-    font-family: inherit;
-}
-.btn-video { background: rgba(99,102,241,0.1); color: #818cf8; border-color: rgba(99,102,241,0.25); }
-.btn-video:hover { background: rgba(99,102,241,0.2); }
-.btn-gb { background: rgba(255,210,0,0.1); color: #ffd200; border-color: rgba(255,210,0,0.3); }
-.btn-gb:hover { background: rgba(255,210,0,0.2); }
-.btn-copy { background: rgba(99,255,180,0.08); color: #6effc0; border-color: rgba(99,255,180,0.2); }
-.btn-copy:hover { background: rgba(99,255,180,0.15); }
-.btn-copy.copied { background: rgba(34,197,94,0.15); color: #4ade80; border-color: rgba(34,197,94,0.3); }
     </style>
 <base target="_blank">
 </head>
@@ -770,32 +542,12 @@ const NW_DATA = {"Rebirth": [{"stage": "Movement", "diamond": "00:17.549", "topa
 const MEDAL_ORDER  = ['diamond','topaz','sapphire','amethyst','emerald','red','ace'];
 const MEDAL_LABELS = { diamond:'DMD', topaz:'TPZ', sapphire:'SPH', amethyst:'AME', emerald:'EMR', red:'RED', ace:'ACE' };
 
-const HK_BOSSES_DEFAULT = [
-    "Gruz Mother","Vengefly King","Brooding Mawlek","False Knight","Failed Champion",
-    "Hornet Protector","Hornet Sentinel","Massive Moss Charger","Flukemarm","Mantis Lords","Sisters of Battle",
-    "Oblobble","Hive Knight","Broken Vessel","Lost Kin","Nosk",
-    "Winged Nosk","The Collector","God Tamer","Crystal Guardian","Enraged Guardian","Uumuu",
-    "Traitor Lord","Grey Prince Zote","Soul Warrior","Soul Master","Soul Tyrant",
-    "Dung Defender","White Defender","Watcher Knight","No Eyes","Marmu","Galien",
-    "Markoth","Xero","Gorb","Elder Hu","Oro & Mato","Paintmaster Sheo",
-    "Nailsage Sly","Pure Vessel","Grimm","Nightmare King","Radiance"
-];
-const HK_PANTHEONS_DEFAULT = [
-    { id:1, name:"Pantheon of the Master" },
-    { id:2, name:"Pantheon of the Artist" },
-    { id:3, name:"Pantheon of the Sage" },
-    { id:4, name:"Pantheon of the Knight" },
-    { id:5, name:"Pantheon of Hallownest" }
-];
+const HK_BOSSES_DEFAULT = ["Gruz Mother","Vengefly King","Brooding Mawlek","False Knight","Failed Champion","Hornet Protector","Hornet Sentinel","Massive Moss Charger","Flukemarm","Mantis Lords","Sisters of Battle","Oblobble","Hive Knight","Broken Vessel","Lost Kin","Nosk","Winged Nosk","The Collector","God Tamer","Crystal Guardian","Enraged Guardian","Uumuu","Traitor Lord","Grey Prince Zote","Soul Warrior","Soul Master","Soul Tyrant","Dung Defender","White Defender","Watcher Knight","No Eyes","Marmu","Galien","Markoth","Xero","Gorb","Elder Hu","Oro & Mato","Paintmaster Sheo","Nailsage Sly","Pure Vessel","Grimm","Nightmare King","Radiance"];
+const HK_PANTHEONS_DEFAULT = [{id:1,name:"Pantheon of the Master"},{id:2,name:"Pantheon of the Artist"},{id:3,name:"Pantheon of the Sage"},{id:4,name:"Pantheon of the Knight"},{id:5,name:"Pantheon of Hallownest"}];
 
 let nwTimes = {};
 const RAW_URL = 'https://raw.githubusercontent.com/TFuqua07/tfuqua07.github.io/main/data/achievements.json';
-const gdTierNames = {
-    1:'Beginner',2:'Easy',3:'Medium',4:'Hard',5:'Very Hard',
-    6:'Insane',7:'Extreme',8:'Remorseless',9:'Relentless',10:'Terrifying',
-    11:'Catastrophic',12:'Inexorable',13:'Excruciating',14:'Merciless',15:'Monstrous',
-    16:'Apocalyptic',17:'Demonic',18:'Menacing',19:'Unreal',20:'Nightmare'
-};
+const gdTierNames = {1:'Beginner',2:'Easy',3:'Medium',4:'Hard',5:'Very Hard',6:'Insane',7:'Extreme',8:'Remorseless',9:'Relentless',10:'Terrifying',11:'Catastrophic',12:'Inexorable',13:'Excruciating',14:'Merciless',15:'Monstrous',16:'Apocalyptic',17:'Demonic',18:'Menacing',19:'Unreal',20:'Nightmare'};
 
 let currentData = {};
 let currentTab = 'celeste_goldens';
@@ -910,94 +662,61 @@ function renderCard(item, category, borderClass) {
 function renderWishlist() {
     const container = document.getElementById('content');
     const wishlist = currentData.wishlist || [];
-
-    if (!wishlist.length) {
-        container.innerHTML = '<div class="empty-state">Wishlist is empty — add items in the admin panel</div>';
-        return;
-    }
-
+    if (!wishlist.length) { container.innerHTML = '<div class="empty-state">Wishlist is empty — add items in the admin panel</div>'; return; }
     const sections = [
         { key: 'celeste_goldens', label: 'Celeste Goldens' },
         { key: 'celeste_clears',  label: 'Celeste Clears' },
         { key: 'demons',          label: 'Demons' },
         { key: 'gd_platformer',   label: 'GD Platformers' },
     ];
-
     const grouped = { celeste_goldens: [], celeste_clears: [], demons: [], gd_platformer: [] };
     wishlist.forEach(item => { if (grouped[item.category]) grouped[item.category].push(item); });
-
     let outerHtml = '';
-
     sections.forEach(sec => {
         const items = grouped[sec.key];
         if (!items.length) return;
-
-        const isClears  = sec.key === 'celeste_clears';
+        const isClears = sec.key === 'celeste_clears';
         const isGoldens = sec.key === 'celeste_goldens';
-        const isGD      = sec.key === 'demons' || sec.key === 'gd_platformer';
-
         const tierGrouped = {};
         items.forEach(item => {
             const key = isClears ? 'star-' + item.star : 'tier-' + item.tier;
             if (!tierGrouped[key]) tierGrouped[key] = [];
             tierGrouped[key].push(item);
         });
-        Object.keys(tierGrouped).forEach(key => {
-            tierGrouped[key].sort((a, b) => a.name.localeCompare(b.name));
-        });
+        Object.keys(tierGrouped).forEach(key => { tierGrouped[key].sort((a, b) => a.name.localeCompare(b.name)); });
         const sortedKeys = Object.keys(tierGrouped).sort((a, b) => parseInt(b.split('-')[1]) - parseInt(a.split('-')[1]));
-
         outerHtml += '<div style="padding:1.25rem 1.5rem 0.25rem;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);display:flex;align-items:center;gap:0.75rem">'
-            + sec.label
-            + ' <span style="background:rgba(99,102,241,0.15);color:#6366f1;border:1px solid rgba(99,102,241,0.25);padding:0.1rem 0.5rem;border-radius:20px;font-size:0.65rem">' + items.length + '</span>'
+            + sec.label + ' <span style="background:rgba(99,102,241,0.15);color:#6366f1;border:1px solid rgba(99,102,241,0.25);padding:0.1rem 0.5rem;border-radius:20px;font-size:0.65rem">' + items.length + '</span>'
             + '<span style="flex:1;height:1px;background:#2a2a3a;display:inline-block"></span></div>';
-
         outerHtml += '<div class="tiers-container" style="min-height:auto;padding-top:0.75rem;padding-bottom:1.5rem">';
-
         sortedKeys.forEach(key => {
             const group = tierGrouped[key];
             const num = parseInt(key.split('-')[1]);
             let colorClass, label, borderClass;
-
-            if (isClears) {
-                colorClass = 'star-color-' + num; borderClass = 'star-border-' + num; label = num + '★';
-            } else if (isGoldens) {
-                colorClass = 'tier-color-' + num; borderClass = 'tier-border-' + num; label = 'Tier ' + num;
-            } else {
-                colorClass = 'gd-tier-color-' + num; borderClass = 'gd-tier-border-' + num; label = gdTierNames[num] || 'Tier ' + num;
-            }
-
+            if (isClears) { colorClass = 'star-color-' + num; borderClass = 'star-border-' + num; label = num + '★'; }
+            else if (isGoldens) { colorClass = 'tier-color-' + num; borderClass = 'tier-border-' + num; label = 'Tier ' + num; }
+            else { colorClass = 'gd-tier-color-' + num; borderClass = 'gd-tier-border-' + num; label = gdTierNames[num] || 'Tier ' + num; }
             outerHtml += '<div class="tier-column">';
             outerHtml += '<div class="tier-header ' + colorClass + '"><span>' + label + '</span><span class="tier-count">' + group.length + '</span></div>';
-
             group.forEach(item => {
                 const ytId = getYouTubeId(item.video);
                 const thumbnailUrl = ytId ? 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg' : null;
                 const hasVideo = !!item.video;
-                const thumbContent = thumbnailUrl
-                    ? '<img src="' + escapeHtml(thumbnailUrl) + '" alt="" loading="lazy">'
-                    : '<div class="no-thumb">No Video</div>';
+                const thumbContent = thumbnailUrl ? '<img src="' + escapeHtml(thumbnailUrl) + '" alt="" loading="lazy">' : '<div class="no-thumb">No Video</div>';
                 const thumbClick = hasVideo ? 'onclick="window.open(\'' + escapeHtml(item.video) + '\',\'_blank\')"' : '';
                 const playIcon = hasVideo ? '<div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' : '';
                 const subLine = item.creator
                     ? '<div class="card-campaign">by ' + escapeHtml(item.creator) + (item.campaign ? ' · ' + escapeHtml(item.campaign) : '') + '</div>'
                     : (item.campaign ? '<div class="card-campaign">' + escapeHtml(item.campaign) + '</div>' : '');
-
                 outerHtml += '<article class="achievement-card ' + borderClass + '">'
                     + '<div class="card-thumb ' + (hasVideo ? 'has-video' : '') + '" ' + thumbClick + '>' + thumbContent + playIcon + '</div>'
-                    + '<div class="card-body"><div>'
-                    + '<div class="card-title">' + escapeHtml(item.name) + '</div>'
-                    + subLine
-                    + '</div><div class="card-bottom"><div class="card-meta"></div></div></div>'
+                    + '<div class="card-body"><div><div class="card-title">' + escapeHtml(item.name) + '</div>' + subLine + '</div><div class="card-bottom"><div class="card-meta"></div></div></div>'
                     + '</article>';
             });
-
             outerHtml += '</div>';
         });
-
         outerHtml += '</div>';
     });
-
     container.innerHTML = outerHtml;
 }
 
@@ -1056,46 +775,37 @@ function renderHollowKnight() {
     (hkData.hall_of_gods || []).forEach(b => { hogMap[b.name] = b; });
     const pantheonMap = {};
     (hkData.pantheons || []).forEach(p => { pantheonMap[p.id] = p; });
-
     const ascendedCount = HK_BOSSES_DEFAULT.filter(n => hogMap[n] && hogMap[n].ascended).length;
     const radiantCount  = HK_BOSSES_DEFAULT.filter(n => hogMap[n] && hogMap[n].radiant).length;
-
     const hogCards = HK_BOSSES_DEFAULT.map(name => {
         const b = hogMap[name] || {};
         const hasAsc = !!b.ascended;
         const hasRad = !!b.radiant;
         const cardClass = hasRad ? 'hog-card has-radiant' : hasAsc ? 'hog-card has-ascended' : 'hog-card';
-        return '<div class="' + cardClass + '">'
-            + '<div class="hog-name">' + escapeHtml(name) + '</div>'
-            + '<div class="hog-badges">'
+        return '<div class="' + cardClass + '"><div class="hog-name">' + escapeHtml(name) + '</div><div class="hog-badges">'
             + '<span class="hog-badge badge-ascended ' + (hasAsc ? 'earned' : '') + '"><svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>Asc</span>'
             + '<span class="hog-badge badge-radiant ' + (hasRad ? 'earned' : '') + '"><svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>Rad</span>'
             + '</div></div>';
     }).join('');
-
     const bindingDefs = [
         { key: 'nail',  label: 'Nail',  cls: 'binding-nail',  icon: '<svg class="binding-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l6 6-10 10-3-3L15 6l-3-3z"/><path d="M5 19l-2 2"/></svg>' },
         { key: 'shell', label: 'Shell', cls: 'binding-shell', icon: '<svg class="binding-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c-4.97 0-9-3.58-9-8 0-3.87 2.69-7.16 6.5-8.2M12 22c4.97 0 9-3.58 9-8 0-3.87-2.69-7.16-6.5-8.2M12 2v4M9 6h6"/></svg>' },
         { key: 'heart', label: 'Heart', cls: 'binding-heart', icon: '<svg class="binding-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' },
         { key: 'soul',  label: 'Soul',  cls: 'binding-soul',  icon: '<svg class="binding-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c-4.5 4-4.5 10 0 14 4.5-4 4.5-10 0-14z"/><path d="M12 3c4.5 4 4.5 10 0 14"/><path d="M12 3v14"/></svg>' }
     ];
-
     const pantheonCards = HK_PANTHEONS_DEFAULT.map(def => {
         const p = pantheonMap[def.id] || {};
         const isCompleted = !!p.completed;
         const bindings = p.bindings || {};
         const allBindings = bindingDefs.every(b => bindings[b.key]);
         const cardClass = allBindings ? 'pantheon-card completed all-bindings' : isCompleted ? 'pantheon-card completed' : 'pantheon-card';
-        const statusBadge = isCompleted
-            ? '<span class="pantheon-complete-badge pc-done">✓ Cleared</span>'
-            : '<span class="pantheon-complete-badge pc-undone">Uncleared</span>';
+        const statusBadge = isCompleted ? '<span class="pantheon-complete-badge pc-done">✓ Cleared</span>' : '<span class="pantheon-complete-badge pc-undone">Uncleared</span>';
         const bindingChips = bindingDefs.map(b => {
             const earned = !!bindings[b.key];
             return '<div class="binding-chip ' + b.cls + ' ' + (earned ? 'earned' : '') + '">' + b.icon + '<span class="binding-label">' + b.label + '</span></div>';
         }).join('');
         return '<div class="' + cardClass + '"><div class="pantheon-header"><div class="pantheon-info"><div class="pantheon-number">Pantheon ' + def.id + '</div><div class="pantheon-name">' + escapeHtml(def.name) + '</div></div><div>' + statusBadge + '</div></div><div class="pantheon-body"><div class="bindings-label">Bindings</div><div class="bindings-row">' + bindingChips + '</div></div></div>';
     }).join('');
-
     container.innerHTML = '<div class="hk-container"><div class="hk-section-title">Hall of Gods — ' + ascendedCount + ' Ascended · ' + radiantCount + ' Radiant</div><div class="hog-grid">' + hogCards + '</div><div class="hk-section-title">Pantheons</div><div class="pantheon-grid">' + pantheonCards + '</div></div>';
 }
 
@@ -1126,43 +836,27 @@ function renderCalamity() {
     const bossMap = {};
     (calData.bosses || []).forEach(b => { bossMap[b.name] = b; });
     const rushProgress = calData.boss_rush_progress || 0;
-
     const defeatedCount = CAL_ALL_BOSSES.filter(n => bossMap[n] && bossMap[n].defeated).length;
-
     const pct = CAL_TOTAL > 0 ? (rushProgress / CAL_TOTAL * 100).toFixed(1) : 0;
     let badgeClass = 'not-started', badgeLabel = 'Not started';
     if (rushProgress >= CAL_TOTAL) { badgeClass = 'complete'; badgeLabel = 'Complete!'; }
     else if (rushProgress > 0) { badgeClass = 'in-progress'; badgeLabel = 'In progress'; }
-    const nextBossName = rushProgress > 0 && rushProgress <= CAL_TOTAL ? CAL_ALL_BOSSES[rushProgress - 1] : null;
-
+    const currentBossName = rushProgress > 0 && rushProgress <= CAL_TOTAL ? CAL_ALL_BOSSES[rushProgress - 1] : null;
     let html = '<div class="cal-container">';
-
     html += '<div class="cal-section-title">Boss Rush</div>';
-    html += '<div class="cal-rush-card">';
-    html += '<div class="cal-rush-header"><span class="cal-rush-title">Calamity Boss Rush</span><span class="cal-rush-badge ' + badgeClass + '">' + badgeLabel + '</span></div>';
-    html += '<div class="cal-rush-body">';
-    html += '<div class="cal-rush-progress-bar-bg"><div class="cal-rush-progress-bar-fill" style="width:' + pct + '%"></div></div>';
-    html += '<div class="cal-rush-meta">';
-    html += '<span class="cal-rush-count">' + rushProgress + ' / ' + CAL_TOTAL + (nextBossName ? ' — ' + escapeHtml(nextBossName) : ' — Complete!') + '</span>';
-    html += '</div></div></div>';
-
+    html += '<div class="cal-rush-card"><div class="cal-rush-header"><span class="cal-rush-title">Calamity Boss Rush</span><span class="cal-rush-badge ' + badgeClass + '">' + badgeLabel + '</span></div>';
+    html += '<div class="cal-rush-body"><div class="cal-rush-progress-bar-bg"><div class="cal-rush-progress-bar-fill" style="width:' + pct + '%"></div></div>';
+    html += '<div class="cal-rush-meta"><span class="cal-rush-count">' + rushProgress + ' / ' + CAL_TOTAL + (rushProgress === 0 ? ' — Not started' : currentBossName ? ' — ' + escapeHtml(currentBossName) : ' — Complete!') + '</span></div></div></div>';
     html += '<div class="cal-section-title">Boss Tracker — ' + defeatedCount + ' / ' + CAL_TOTAL + ' Defeated</div>';
-
     CAL_PHASES.forEach(phase => {
-        html += '<div class="cal-phase-block">';
-        html += '<div class="cal-section-title" style="font-size:0.65rem;margin-bottom:0.6rem">' + escapeHtml(phase.name) + '</div>';
-        html += '<div class="cal-boss-grid">';
+        html += '<div class="cal-phase-block"><div class="cal-section-title" style="font-size:0.65rem;margin-bottom:0.6rem">' + escapeHtml(phase.name) + '</div><div class="cal-boss-grid">';
         phase.bosses.forEach(name => {
             const b = bossMap[name] || {};
             const defeated = !!b.defeated;
-            html += '<div class="cal-boss-card ' + (defeated ? 'defeated' : '') + '">';
-            html += '<div class="cal-boss-dot"></div>';
-            html += '<span class="cal-boss-name">' + escapeHtml(name) + '</span>';
-            html += '</div>';
+            html += '<div class="cal-boss-card ' + (defeated ? 'defeated' : '') + '"><div class="cal-boss-dot"></div><span class="cal-boss-name">' + escapeHtml(name) + '</span></div>';
         });
         html += '</div></div>';
     });
-
     html += '</div>';
     container.innerHTML = html;
 }
@@ -1170,26 +864,37 @@ function renderCalamity() {
 function renderCreations() {
     const container = document.getElementById('content');
     const creations = currentData.creations || [];
-    if (!creations.length) {
-        container.innerHTML = '<div class="empty-state">No creations yet</div>';
-        return;
+    if (!creations.length) { container.innerHTML = '<div class="empty-state">No creations yet</div>'; return; }
+
+    const sortVal = document.getElementById('cr-sort-select') ? document.getElementById('cr-sort-select').value : 'alpha-asc';
+
+    function sorted(arr) {
+        const copy = [...arr];
+        if (sortVal === 'alpha-asc') copy.sort((a, b) => a.name.localeCompare(b.name));
+        else if (sortVal === 'alpha-desc') copy.sort((a, b) => b.name.localeCompare(a.name));
+        else if (sortVal === 'diff-asc') copy.sort((a, b) => (a.diff_order != null ? a.diff_order : 999) - (b.diff_order != null ? b.diff_order : 999));
+        else if (sortVal === 'diff-desc') copy.sort((a, b) => (b.diff_order != null ? b.diff_order : 999) - (a.diff_order != null ? a.diff_order : 999));
+        return copy;
     }
 
-    const gd = creations.filter(c => c.game === 'gd');
-    const cel = creations.filter(c => c.game === 'celeste');
+    const gd = sorted(creations.filter(c => c.game === 'gd'));
+    const cel = sorted(creations.filter(c => c.game === 'celeste'));
 
     let html = '<div class="creations-container">';
+    html += '<div class="cr-sort-bar"><span>Sort</span><select id="cr-sort-select" onchange="renderCreations()">'
+        + '<option value="alpha-asc"' + (sortVal==='alpha-asc'?' selected':'') + '>A → Z</option>'
+        + '<option value="alpha-desc"' + (sortVal==='alpha-desc'?' selected':'') + '>Z → A</option>'
+        + '<option value="diff-asc"' + (sortVal==='diff-asc'?' selected':'') + '>Difficulty ↑</option>'
+        + '<option value="diff-desc"' + (sortVal==='diff-desc'?' selected':'') + '>Difficulty ↓</option>'
+        + '</select></div>';
 
     if (gd.length) {
-        html += '<div class="creations-section-title">Geometry Dash</div>';
-        html += '<div class="creations-grid">';
+        html += '<div class="creations-section-title">Geometry Dash</div><div class="creations-grid">';
         gd.forEach(c => { html += buildCreationCard(c); });
         html += '</div>';
     }
-
     if (cel.length) {
-        html += '<div class="creations-section-title">Celeste</div>';
-        html += '<div class="creations-grid">';
+        html += '<div class="creations-section-title">Celeste</div><div class="creations-grid">';
         cel.forEach(c => { html += buildCreationCard(c); });
         html += '</div>';
     }
@@ -1202,30 +907,16 @@ function buildCreationCard(c) {
     const ytId = getYouTubeId(c.video);
     const thumb = ytId ? 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg' : null;
     const hasVideo = !!c.video;
-    const thumbHtml = thumb
-        ? '<img src="' + escapeHtml(thumb) + '" alt="" loading="lazy">'
-        : '<div class="no-thumb">No Video</div>';
+    const thumbHtml = thumb ? '<img src="' + escapeHtml(thumb) + '" alt="" loading="lazy">' : '<div class="no-thumb">No Video</div>';
     const playIcon = hasVideo ? '<div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' : '';
     const thumbClick = hasVideo ? 'onclick="window.open(\'' + escapeHtml(c.video) + '\',\'_blank\')"' : '';
-
-    let typeClass = '';
-    if (c.game === 'celeste') typeClass = 'celeste';
-    else if (c.type === 'platformer') typeClass = 'gd-platformer';
-    else typeClass = 'gd-classic';
-
+    let typeClass = c.game === 'celeste' ? 'celeste' : (c.type === 'platformer' ? 'gd-platformer' : 'gd-classic');
     const gdBadge = c.game === 'gd'
-        ? '<span class="creation-type-badge ' + (c.type === 'platformer' ? 'badge-platformer' : 'badge-classic') + '">'
-          + (c.type === 'platformer' ? 'Platformer' : 'Classic') + '</span>'
+        ? '<span class="creation-type-badge ' + (c.type === 'platformer' ? 'badge-platformer' : 'badge-classic') + '">' + (c.type === 'platformer' ? 'Platformer' : 'Classic') + '</span>'
         : '';
-
     let actionsHtml = '';
-    if (c.game === 'celeste' && c.link) {
-        actionsHtml += '<a href="' + escapeHtml(c.link) + '" target="_blank" class="creation-btn btn-gb">GameBanana</a>';
-    }
-    if (c.game === 'gd' && c.level_id) {
-        actionsHtml += '<button class="creation-btn btn-copy" onclick="copyLevelId(this, \'' + escapeHtml(c.level_id) + '\')">Copy ID</button>';
-    }
-
+    if (c.game === 'celeste' && c.link) actionsHtml += '<a href="' + escapeHtml(c.link) + '" target="_blank" class="creation-btn btn-gb">GameBanana</a>';
+    if (c.game === 'gd' && c.level_id) actionsHtml += '<button class="creation-btn btn-copy" onclick="copyLevelId(this, \'' + escapeHtml(c.level_id) + '\')">Copy ID</button>';
     return '<div class="creation-card ' + typeClass + '">'
         + '<div class="creation-thumb ' + (hasVideo ? 'clickable' : '') + '" ' + thumbClick + '>' + thumbHtml + playIcon + '</div>'
         + '<div class="creation-body">'
@@ -1246,6 +937,5 @@ function copyLevelId(btn, id) {
 
 loadAchievements();
 </script>
-
 </body>
 </html>
