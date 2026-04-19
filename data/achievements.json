@@ -736,6 +736,10 @@
       {
         "name": "Queen Slime",
         "defeated": false
+      },
+      {
+        "name": "Wall of Flesh",
+        "defeated": true
       }
     ],
     "boss_rush_progress": 18
