@@ -740,6 +740,10 @@
       {
         "name": "Wall of Flesh",
         "defeated": true
+      },
+      {
+        "name": "The Slime God",
+        "defeated": true
       }
     ],
     "boss_rush_progress": 18
