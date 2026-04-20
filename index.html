@@ -691,7 +691,6 @@ function renderCard(item, category, borderClass) {
     const thumbnailUrl = item.thumbnail || (ytId ? 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg' : null);
     const hasVideo = !!item.video;
     const thumbContent = thumbnailUrl ? '<img src="' + escapeHtml(thumbnailUrl) + '" alt="" loading="lazy">' : '<div class="no-thumb">No Video</div>';
-    const thumbClick = hasVideo ? 'onclick="window.open(\'' + escapeHtml(item.video) + '\',\'_blank\')"' : '';
     const playIcon = hasVideo ? '<div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' : '';
     let metaHtml = '';
     if ((isGoldens || isClears) && item.time) {
@@ -703,11 +702,14 @@ function renderCard(item, category, borderClass) {
     }
     const ratingHtml = item.rating != null ? '<div class="card-rating"><span class="rating-heart"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="rating-value">' + item.rating + '</span></div>' : '';
     const itemJson = escapeHtml(JSON.stringify(item));
-const itemJson = escapeHtml(JSON.stringify(item));
-const catStr = escapeHtml(category);
-return '<article class="achievement-card ' + borderClass + '" onclick="openAchievementModal(' + itemJson + ', \'' + catStr + '\')" ><div class="card-thumb ' + (hasVideo ? 'has-video' : '') + '" onclick="event.stopPropagation();' + (hasVideo ? 'window.open(\'' + escapeHtml(item.video) + '\',\'_blank\')' : '') + '">'
+    const catStr = category;
+    return '<article class="achievement-card ' + borderClass + '" onclick="openAchievementModal(' + itemJson + ', \'' + catStr + '\')">'
+        + '<div class="card-thumb ' + (hasVideo ? 'has-video' : '') + '" onclick="event.stopPropagation();' + (hasVideo ? 'window.open(\'' + escapeHtml(item.video) + '\',\'_blank\')' : '') + '">'
+        + thumbContent + playIcon + '</div>'
+        + '<div class="card-body"><div><div class="card-title">' + escapeHtml(item.name) + '</div>'
+        + (item.campaign ? '<div class="card-campaign">' + escapeHtml(item.campaign) + '</div>' : '')
+        + '</div><div class="card-bottom"><div class="card-meta">' + metaHtml + '</div>' + ratingHtml + '</div></div></article>';
 }
-
 function renderWishlist() {
     const container = document.getElementById('content');
     const wishlist = currentData.wishlist || [];
@@ -809,8 +811,12 @@ function renderNWCards() {
         const pbDisplay = pb ? '<span class="pb-value" style="color:' + getNWMedalColor(medal) + '">' + pb + '</span>' : '<span class="pb-none">No time yet</span>';
         const videoBtn = video ? '<a href="' + escapeHtml(video) + '" class="pb-video-link" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>VOD</a>' : '';
         const stageJson = escapeHtml(JSON.stringify(s));
-const savedJson = escapeHtml(JSON.stringify(saved || {}));
-return '<div class="nw-stage-card" style="cursor:pointer" onclick="openNWModal(' + stageJson + ',' + savedJson + ')"><div class="stage-header">';<div><div class="stage-name">' + escapeHtml(s.stage) + '</div><div class="stage-mission">' + escapeHtml(s._mission) + '</div></div>' + medalBadge + '</div><div class="stage-body"><div class="time-row">' + timeCells + '</div><div class="stage-pb-row"><span class="pb-label">Personal Best</span><div style="display:flex;align-items:center;gap:0.5rem">' + videoBtn + pbDisplay + '</div></div></div></div>';
+        const savedJson = escapeHtml(JSON.stringify(saved || {}));
+        return '<div class="nw-stage-card" style="cursor:pointer" onclick="openNWModal(' + stageJson + ',' + savedJson + ')">'
+            + '<div class="stage-header"><div><div class="stage-name">' + escapeHtml(s.stage) + '</div><div class="stage-mission">' + escapeHtml(s._mission) + '</div></div>' + medalBadge + '</div>'
+            + '<div class="stage-body"><div class="time-row">' + timeCells + '</div>'
+            + '<div class="stage-pb-row"><span class="pb-label">Personal Best</span><div style="display:flex;align-items:center;gap:0.5rem">' + videoBtn + pbDisplay + '</div></div>'
+            + '</div></div>';
     }).join('');
 }
 
