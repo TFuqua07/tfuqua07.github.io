@@ -1,4 +1,4 @@
-t<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -554,7 +554,6 @@ h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
 .modal-nw-cell.achieved { background: rgba(255,255,255,0.05); }
 .modal-nw-cell-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
 .modal-nw-cell-val { font-size: 0.65rem; font-weight: 600; font-variant-numeric: tabular-nums; }
-.achievement-card { cursor: pointer; }
 .creation-card { cursor: pointer; }
     </style>
 <base target="_blank">
@@ -701,6 +700,7 @@ function renderCard(item, category, borderClass) {
         ? '<img src="' + escapeHtml(thumbnailUrl) + '" alt="" loading="lazy">'
         : '<div class="no-thumb">No Video</div>';
     const playIcon = hasVideo ? '<div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' : '';
+    const videoUrl = item.video ? escapeHtml(item.video) : '';
 
     let metaHtml = '';
     if ((isGoldens || isClears) && item.time) {
@@ -714,11 +714,8 @@ function renderCard(item, category, borderClass) {
         ? '<div class="card-rating"><span class="rating-heart"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="rating-value">' + item.rating + '</span></div>'
         : '';
 
-    const sid = _s({ item, category });
-    const videoUrl = item.video ? escapeHtml(item.video) : '';
-
-    return '<article class="achievement-card ' + borderClass + '" onclick="_openAchievementModal(' + sid + ')">'
-        + '<div class="card-thumb ' + (hasVideo ? 'has-video' : '') + '" onclick="event.stopPropagation();' + (hasVideo ? 'window.open(\'' + videoUrl + '\',\'_blank\')' : '') + '">'
+    return '<article class="achievement-card ' + borderClass + '">'
+        + '<div class="card-thumb ' + (hasVideo ? 'has-video' : '') + '" onclick="' + (hasVideo ? 'window.open(\'' + videoUrl + '\',\'_blank\')' : '') + '">'
         + thumbContent + playIcon + '</div>'
         + '<div class="card-body"><div><div class="card-title">' + escapeHtml(item.name) + '</div>'
         + (item.campaign ? '<div class="card-campaign">' + escapeHtml(item.campaign) + '</div>' : '')
@@ -835,8 +832,7 @@ function renderNWCards() {
         const pbDisplay = pb ? '<span class="pb-value" style="color:' + getNWMedalColor(medal) + '">' + pb + '</span>' : '<span class="pb-none">No time yet</span>';
         const videoBtn = video ? '<a href="' + escapeHtml(video) + '" class="pb-video-link" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>VOD</a>' : '';
 
-        const sid = _s({ s, saved });
-        return '<div class="nw-stage-card" style="cursor:pointer" onclick="_openNWModal(' + sid + ')">'
+        return '<div class="nw-stage-card">'
             + '<div class="stage-header"><div><div class="stage-name">' + escapeHtml(s.stage) + '</div><div class="stage-mission">' + escapeHtml(s._mission) + '</div></div>' + medalBadge + '</div>'
             + '<div class="stage-body"><div class="time-row">' + timeCells + '</div>'
             + '<div class="stage-pb-row"><span class="pb-label">Personal Best</span><div style="display:flex;align-items:center;gap:0.5rem">' + videoBtn + pbDisplay + '</div></div>'
@@ -870,8 +866,7 @@ function renderHollowKnight() {
         const hasAsc = !!b.ascended;
         const hasRad = !!b.radiant;
         const cardClass = hasRad ? 'hog-card has-radiant' : hasAsc ? 'hog-card has-ascended' : 'hog-card';
-        const sid = _s({ name, b });
-        return '<div class="' + cardClass + '" style="cursor:pointer" onclick="_openHKBossModal(' + sid + ')"><div class="hog-name">' + escapeHtml(name) + '</div><div class="hog-badges">'
+        return '<div class="' + cardClass + '"><div class="hog-name">' + escapeHtml(name) + '</div><div class="hog-badges">'
             + '<span class="hog-badge badge-ascended ' + (hasAsc ? 'earned' : '') + '"><svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>Asc</span>'
             + '<span class="hog-badge badge-radiant ' + (hasRad ? 'earned' : '') + '"><svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>Rad</span>'
             + '</div></div>';
@@ -951,15 +946,13 @@ function renderCalamity() {
         phase.bosses.forEach(name => {
             const b = bossMap[name] || {};
             const defeated = !!b.defeated;
-            const sid = _s({ name, b });
-            html += '<div class="cal-boss-card ' + (defeated ? 'defeated' : '') + '" style="cursor:pointer" onclick="_openCalBossModal(' + sid + ')"><div class="cal-boss-dot"></div><span class="cal-boss-name">' + escapeHtml(name) + '</span></div>';
+            html += '<div class="cal-boss-card ' + (defeated ? 'defeated' : '') + '"><div class="cal-boss-dot"></div><span class="cal-boss-name">' + escapeHtml(name) + '</span></div>';
         });
         html += '</div></div>';
     });
     html += '</div>';
     container.innerHTML = html;
 }
-
 function _openCalBossModal(sid) {
     const d = _store[sid];
     if (d) openCalBossModal(d.name, d.b);
