@@ -1257,6 +1257,16 @@
       "type": "classic",
       "level_id": "97091537",
       "diff_order": 2
+    },
+    {
+      "game": "gd",
+      "name": "Swap Dash",
+      "difficulty": "Harder",
+      "description": "silly platformer level focused on toggling platforms when you jump :3 thats it theres nothing else but go play it",
+      "video": "https://youtu.be/tV83stz1-zo",
+      "date": "2026-04-20T01:40:32.225Z",
+      "type": "platformer",
+      "level_id": "113106507"
     }
   ]
 }
