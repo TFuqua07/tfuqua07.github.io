@@ -186,7 +186,15 @@
                             <div class="form-group" id="deaths-group" style="display:none"><label>Deaths <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label><input type="number" id="deaths" min="0" placeholder="0"></div>
                         </div>
                     </div>
-                    <div id="gd-fields" style="display:none"><div class="form-group"><label>Attempts <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label><input type="number" id="attempts" min="1" placeholder="e.g. 1500"></div></div>
+                    <div id="gd-fields" style="display:none">
+    <div class="form-group"><label>Attempts <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label><input type="number" id="attempts" min="1" placeholder="e.g. 1500"></div>
+    <div class="form-group"><label>AREDL Link <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label><input type="url" id="aredl" placeholder="https://aredl.net/..."></div>
+</div>
+<div id="celeste-extra-fields" style="display:none">
+    <div class="form-group"><label>Map Author <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label><input type="text" id="author" placeholder="e.g. Mazerius"></div>
+    <div class="form-group"><label>GameBanana Link <span style="color:var(--text-muted);font-weight:400">(Optional)</span></label><input type="url" id="gamebanana" placeholder="https://gamebanana.com/mods/..."></div>
+</div>
+<div class="form-group"><label>Notes <span style="color:var(--text-muted);font-weight:400">(Optional — shown in card modal)</span></label><input type="text" id="notes" placeholder="Any extra info about this entry"></div>
                     <button id="save-standard-btn" style="display:none" onclick="saveAchievement()">Save Achievement</button>
                 </div>
                 <div id="nw-fields" style="display:none">
@@ -322,6 +330,25 @@ function saveToken(){const t=document.getElementById('token-input').value.trim()
 function clearToken(){localStorage.removeItem('gh_token');updateTokenStatus();showMessage('Token cleared','success')}
 function updateTokenStatus(){const el=document.getElementById('token-status');if(!el)return;el.textContent=getToken()?'✓ Token is set':'⚠ No token set — saving will fail';el.style.color=getToken()?'var(--success)':'var(--error)'}
 
+    async function saveHKBossImage(name, url) {
+    if(!allEntries.hollow_knight)allEntries.hollow_knight={hall_of_gods:[],pantheons:[]};
+    if(!allEntries.hollow_knight.hall_of_gods)allEntries.hollow_knight.hall_of_gods=[];
+    let boss=allEntries.hollow_knight.hall_of_gods.find(b=>b.name===name);
+    if(!boss){boss={name};allEntries.hollow_knight.hall_of_gods.push(boss)}
+    boss.image=url||null;
+    try{await saveEntries();showMessage(name+': image saved','success')}
+    catch(err){showMessage('Error: '+err.message,'error')}
+}
+
+    async function saveCalBossImage(name, url) {
+    const cal = getCalData();
+    let boss = cal.bosses.find(b => b.name === name);
+    if (!boss) { boss = { name, defeated: false }; cal.bosses.push(boss); }
+    boss.image = url || null;
+    try { await saveEntries(); showMessage(name + ': image saved', 'success'); }
+    catch(err) { showMessage('Error: ' + err.message, 'error'); }
+}
+    
 async function ghFetch(method,body){
     const token=getToken();if(!token)throw new Error('No GitHub token set. Go to Settings tab.');
     const url='https://api.github.com/repos/'+REPO_OWNER+'/'+REPO_NAME+'/contents/'+FILE_PATH;
@@ -402,7 +429,8 @@ async function submitNWTime(){
 function updateFormFields(){
     const category=document.getElementById('category').value;
     const standardFields=document.getElementById('standard-fields'),diffRow=document.getElementById('difficulty-row'),diffSelect=document.getElementById('difficulty'),diffLabel=document.getElementById('difficulty-label'),celesteFields=document.getElementById('celeste-fields'),gdFields=document.getElementById('gd-fields'),deathsGroup=document.getElementById('deaths-group'),nwFields=document.getElementById('nw-fields'),saveBtn=document.getElementById('save-standard-btn');
-    standardFields.style.display='none';celesteFields.style.display='none';gdFields.style.display='none';deathsGroup.style.display='none';diffRow.style.display='none';nwFields.style.display='none';saveBtn.style.display='none';diffSelect.innerHTML='';
+standardFields.style.display='none';celesteFields.style.display='none';gdFields.style.display='none';deathsGroup.style.display='none';diffRow.style.display='none';nwFields.style.display='none';saveBtn.style.display='none';diffSelect.innerHTML='';
+const celesteExtra=document.getElementById('celeste-extra-fields');if(celesteExtra)celesteExtra.style.display='none';
     if(!category)return;
     if(category==='neon_white'){nwFields.style.display='block';return}
     standardFields.style.display='block';saveBtn.style.display='inline-block';diffRow.style.display='block';
@@ -421,16 +449,37 @@ async function saveAchievement(){
     if(!category){showMessage('Please select a category','error');return}
     if(!name){showMessage('Please enter a name','error');return}
     if(!difficulty){showMessage('Please select a difficulty','error');return}
-    const videoUrl=document.getElementById('video').value.trim(),entry={name,campaign:document.getElementById('campaign').value.trim()||null,video:videoUrl||null,date:new Date().toISOString()};
+    const videoUrl=document.getElementById('video').value.trim();
+const entry={
+    name,
+    campaign: document.getElementById('campaign').value.trim()||null,
+    video: videoUrl||null,
+    notes: document.getElementById('notes')?.value.trim()||null,
+    author: document.getElementById('author')?.value.trim()||null,
+    gamebanana: document.getElementById('gamebanana')?.value.trim()||null,
+    aredl: document.getElementById('aredl')?.value.trim()||null,
+    date: new Date().toISOString()
+};
     if(videoUrl){const m=videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);if(m)entry.thumbnail='https://img.youtube.com/vi/'+m[1]+'/hqdefault.jpg'}
     if(category==='celeste_clears'){entry.star=parseInt(difficulty);const d=document.getElementById('deaths').value;entry.deaths=d!==''?parseInt(d):null;entry.time=document.getElementById('time').value.trim()||null}
     else{entry.tier=parseInt(difficulty);if(category==='celeste_goldens'){entry.time=document.getElementById('time').value.trim()||null}else{const a=document.getElementById('attempts').value;entry.attempts=a!==''?parseInt(a):null}}
     try{
-        if(!allEntries[category])allEntries[category]=[];
+    if(!allEntries[category])allEntries[category]=[];
+    if(window._editingEntry && window._editingEntry.category===category){
+        allEntries[category][window._editingEntry.index]=entry;
+        window._editingEntry=null;
+    } else {
         allEntries[category].push(entry);
+    }
         if(category==='celeste_clears'){allEntries[category].sort((a,b)=>(b.star||0)-(a.star||0))}else{allEntries[category].sort((a,b)=>(b.tier||0)-(a.tier||0))}
         await saveEntries();
         showMessage('Achievement saved!','success');
+        document.getElementById('save-standard-btn').textContent='Save Achievement';
+window._editingEntry=null;
+try{document.getElementById('notes').value=''}catch(e){}
+try{document.getElementById('author').value=''}catch(e){}
+try{document.getElementById('gamebanana').value=''}catch(e){}
+try{document.getElementById('aredl').value=''}catch(e){}
         document.getElementById('name').value='';document.getElementById('campaign').value='';document.getElementById('video').value='';document.getElementById('thumbnail-preview').style.display='none';
         try{document.getElementById('time').value=''}catch(e){}
         try{document.getElementById('deaths').value=''}catch(e){}
@@ -492,7 +541,9 @@ function renderHOGAdmin(){
     const hk=getHKData();const hogMap={};(hk.hall_of_gods||[]).forEach(b=>{hogMap[b.name]=b});
     grid.innerHTML=HK_BOSSES.map(name=>{
         const b=hogMap[name]||{};const hasAsc=!!b.ascended;const hasRad=!!b.radiant;
-        return '<div class="hog-admin-card"><div class="hog-admin-name">'+escapeHtml(name)+'</div><div class="hog-toggle-row"><button class="hog-toggle hog-toggle-asc '+(hasAsc?'on':'')+'" onclick="toggleHOG(\''+name.replace(/'/g,"\\'")+'\',\'ascended\')">★ Ascended</button><button class="hog-toggle hog-toggle-rad '+(hasRad?'on':'')+'" onclick="toggleHOG(\''+name.replace(/'/g,"\\'")+'\',\'radiant\')">☀ Radiant</button></div></div>';
+        return '<div class="hog-admin-card"><div class="hog-admin-name">'+escapeHtml(name)+'</div>'
+    + '<input type="url" placeholder="Wiki image URL (optional)" value="'+(b.image||'')+'" style="font-size:0.75rem;padding:0.3rem 0.5rem;margin-bottom:0.4rem" onchange="saveHKBossImage(\''+name.replace(/'/g,"\\'")+'\', this.value)">'
+    + '<div class="hog-toggle-row"><button class="hog-toggle hog-toggle-asc '+(hasAsc?'on':'')+'" onclick="toggleHOG(\''+name.replace(/'/g,"\\'")+'\',\'ascended\')">★ Ascended</button><button class="hog-toggle hog-toggle-rad '+(hasRad?'on':'')+'" onclick="toggleHOG(\''+name.replace(/'/g,"\\'")+'\',\'radiant\')">☀ Radiant</button></div></div>';
     }).join('');
 }
 
@@ -743,6 +794,35 @@ function switchTab(tab,btn){
 
 function showMessage(text,type){const msg=document.getElementById('message');msg.textContent=text;msg.className='message '+type;clearTimeout(msg._t);msg._t=setTimeout(()=>msg.className='message',5000)}
 function escapeHtml(text){if(!text)return'';const d=document.createElement('div');d.textContent=text;return d.innerHTML}
+
+    function editEntry(category, index) {
+    const item = allEntries[category][index];
+    if (!item) return;
+    switchTab('add', document.querySelector('.tab'));
+    document.getElementById('category').value = category;
+    updateFormFields();
+    document.getElementById('name').value = item.name || '';
+    document.getElementById('campaign').value = item.campaign || '';
+    document.getElementById('video').value = item.video || '';
+    if (item.video) previewThumbnail();
+    if (category === 'celeste_clears') {
+        document.getElementById('difficulty').value = item.star || '';
+        document.getElementById('deaths').value = item.deaths != null ? item.deaths : '';
+        document.getElementById('time').value = item.time || '';
+    } else if (category === 'celeste_goldens') {
+        document.getElementById('difficulty').value = item.tier || '';
+        document.getElementById('time').value = item.time || '';
+    } else {
+        document.getElementById('difficulty').value = item.tier || '';
+        document.getElementById('attempts').value = item.attempts != null ? item.attempts : '';
+    }
+    document.getElementById('notes') && (document.getElementById('notes').value = item.notes || '');
+    document.getElementById('author') && (document.getElementById('author').value = item.author || '');
+    document.getElementById('gamebanana') && (document.getElementById('gamebanana').value = item.gamebanana || '');
+    document.getElementById('aredl') && (document.getElementById('aredl').value = item.aredl || '');
+    window._editingEntry = { category, index };
+    document.getElementById('save-standard-btn').textContent = 'Save Changes';
+}
 </script>
 </body>
 </html>
